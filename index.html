@@ -6,267 +6,205 @@
     <title>Legacy Lnodes Dashboard</title>
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --card-bg: rgba(22, 27, 34, 0.9);
-            --accent-green: #3fb950;
-            --accent-gold: #f0b429;
-            --accent-blue: #58a6ff;
-            --text-color: #c9d1d9;
-            --border-color: rgba(240, 180, 41, 0.2);
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #22c55e;
+            --border-color: #334155;
         }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); padding: 15px; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 480px; }
+        
+        /* Login Screen */
+        #login-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .login-box { background: var(--card-bg); padding: 25px; border-radius: 12px; width: 85%; text-align: center; border: 1px solid var(--border-color); }
+        .login-box h2 { margin-bottom: 15px; font-size: 1.2rem; color: var(--accent-color); }
+        .login-box input { width: 100%; padding: 10px; margin-bottom: 15px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; text-align: center; font-size: 1.2rem; letter-spacing: 5px; }
+        .login-box button { width: 100%; padding: 10px; background: var(--accent-color); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            margin: 0;
-            padding: 15px;
-            direction: rtl;
-        }
+        /* Header & Profile */
+        .header { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 12px 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-color); }
+        .btc-price-box { font-size: 0.85rem; color: var(--accent-color); font-weight: bold; }
+        .usd-price-box { font-size: 0.75rem; color: #38bdf8; margin-top: 3px; }
+        .profile-box { display: flex; align-items: center; gap: 10px; }
+        .profile-img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); }
+        .profile-name { font-size: 0.85rem; font-weight: bold; }
 
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #161b22;
-            padding: 10px 15px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 15px;
-        }
+        /* Device Tabs */
+        .device-tabs { display: flex; gap: 10px; margin-bottom: 15px; }
+        .tab-btn { flex: 1; padding: 10px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 0.9rem; text-align: center; transition: 0.3s; }
+        .tab-btn.active { background: var(--accent-color); color: #000; border-color: var(--accent-color); }
 
-        .node-badge {
-            background: #21262d;
-            padding: 6px 12px;
-            border-radius: 8px;
-            color: #fff;
-            font-weight: bold;
-            border: 1px solid #30363d;
-        }
+        /* Summary Card */
+        .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 15px; margin-bottom: 15px; text-align: center; }
+        .summary-title { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
+        .summary-grid { display: flex; justify-content: space-around; font-size: 0.9rem; }
+        .summary-item span { color: var(--success); font-weight: bold; }
 
-        .device-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .device-btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: #161b22;
-            color: var(--text-color);
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .device-btn.active {
-            background: linear-gradient(135deg, #f0b429, #d29922);
-            color: #0b0f19;
-        }
-
-        .channel-card {
-            background: var(--card-bg);
-            border: 1px solid #30363d;
-            border-radius: 14px;
-            padding: 15px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .channel-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .channel-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: bold;
-            font-size: 1.05rem;
-            color: #fff;
-        }
-
-        .dot-on {
-            height: 9px;
-            width: 9px;
-            background-color: var(--accent-green);
-            border-radius: 50%;
-            display: inline-block;
-            box-shadow: 0 0 8px var(--accent-green);
-        }
-
-        .dot-off {
-            height: 9px;
-            width: 9px;
-            background-color: #f85149;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .status-badge {
-            background: #21262d;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid #30363d;
-        }
-
-        .metric-box {
-            background: #0d1117;
-            border: 1px solid #21262d;
-            border-radius: 10px;
-            padding: 10px 12px;
-            margin-top: 8px;
-        }
-
-        .metric-label {
-            font-size: 0.75rem;
-            color: #8b949e;
-            margin-bottom: 3px;
-        }
-
-        .metric-val {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .metric-val.green {
-            color: var(--accent-green);
-        }
-
-        .sub-accruing {
-            font-size: 0.75rem;
-            color: #8b949e;
-            margin-top: 2px;
-        }
-
-        .summary-box {
-            background: linear-gradient(145deg, #161b22, #0d1117);
-            border: 1px solid var(--accent-gold);
-            border-radius: 14px;
-            padding: 15px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
+        /* Channel Card */
+        .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; margin-bottom: 12px; }
+        .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .channel-info { display: flex; align-items: center; gap: 10px; }
+        .channel-logo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+        .channel-name { font-size: 0.95rem; font-weight: bold; }
+        .status-badge { font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; background: rgba(34, 197, 94, 0.15); color: var(--success); }
+        .metric-box { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); }
+        .metric-value { color: var(--text-main); font-weight: bold; }
+        .metric-value.green { color: var(--success); }
     </style>
 </head>
 <body>
 
-    <div class="top-nav">
-        <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 1.3rem;">⚡</span>
-            <span class="node-badge">Legacy Lnodes</span>
-        </div>
-        <div id="btcLivePriceTxt" style="font-size: 0.85rem; color: var(--accent-gold);">BTC: بارگذاری...</div>
-    </div>
-
-    <!-- دکمه‌های جابجایی بین دو دستگاه -->
-    <div class="device-selector">
-        <div class="device-btn active" id="btn-dev1" onclick="switchDevice('device_1')">دستگاه اول (Device 1)</div>
-        <div class="device-btn" id="btn-dev2" onclick="switchDevice('device_2')">دستگاه دوم (Device 2)</div>
-    </div>
-
-    <!-- مجموع کل درآمد -->
-    <div class="summary-box">
-        <div style="color: var(--accent-gold); font-weight: bold; margin-bottom: 8px;">📊 مجموع کل درآمد این دستگاه</div>
-        <div style="display: flex; justify-content: space-around; font-size: 0.9rem;">
-            <div>روزانه: <span id="sumDaily" style="color: var(--accent-green); font-weight: bold;">0</span> sats</div>
-            <div>ماهانه: <span id="sumMonthly" style="color: var(--accent-blue); font-weight: bold;">0</span> sats</div>
+    <!-- Password Login Screen -->
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>ورود به داشبورد</h2>
+            <input type="password" id="pass-input" maxlength="4" placeholder="••••">
+            <button onclick="checkPassword()">ورود</button>
         </div>
     </div>
 
-    <!-- لیست کانال‌ها -->
-    <div id="channels-container"></div>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div>
+                <div class="btc-price-box" id="btc-price">BTC: بارگذاری...</div>
+                <div class="usd-price-box" id="usd-price">دلار: بارگذاری...</div>
+            </div>
+            <div class="profile-box">
+                <span class="profile-name">Mohammad</span>
+                <img src="https://avatars.githubusercontent.com/u/104332997?v=4" alt="Profile" class="profile-img">
+            </div>
+        </div>
+
+        <!-- Device Switcher -->
+        <div class="device-tabs">
+            <div id="btn-device-1" class="tab-btn active" onclick="switchDevice('device_1')">دستگاه اول (Device 1)</div>
+            <div id="btn-device-2" class="tab-btn" onclick="switchDevice('device_2')">دستگاه دوم (Device 2)</div>
+        </div>
+
+        <!-- Total Revenue Summary -->
+        <div class="summary-card">
+            <div class="summary-title">📊 مجموع کل درآمد این دستگاه</div>
+            <div class="summary-grid">
+                <div class="summary-item">روزانه: <span id="total-daily">0</span> sats</div>
+                <div class="summary-item">ماهانه: <span id="total-monthly">0</span> sats</div>
+            </div>
+        </div>
+
+        <!-- Channels Container -->
+        <div id="channels-container"></div>
+    </div>
 
     <script>
-        let currentBtcPrice = 80415;
-        let allData = {};
-        let activeDevice = 'device_1';
+        let currentDevice = 'device_1';
+        let globalData = {};
+        let btcUsd = 0;
+        let usdIrr = 0;
 
-        async function loadData() {
-            try {
-                const response = await fetch('devices_data.json');
-                allData = await response.json();
-                renderDevice(activeDevice);
-            } catch (e) {
-                console.log("خطا در بارگذاری اطلاعات");
+        function checkPassword() {
+            const val = document.getElementById('pass-input').value;
+            if (val === '7091') {
+                document.getElementById('login-screen').style.display = 'none';
+                initDashboard();
+            } else {
+                alert('رمز اشتباه است!');
             }
         }
 
-        function switchDevice(dev) {
-            activeDevice = dev;
-            document.getElementById('btn-dev1').classList.toggle('active', dev === 'device_1');
-            document.getElementById('btn-dev2').classList.toggle('active', dev === 'device_2');
-            renderDevice(dev);
+        async function fetchPrices() {
+            try {
+                const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
+                const data = await res.json();
+                btcUsd = data.bpi.USD.rate_float;
+                document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString(undefined, {maximumFractionDigits:0})}`;
+                
+                // قیمت تخمینی دلار آزاد برای نمونه
+                usdIrr = 650000; 
+                document.getElementById('usd-price').innerText = `دلار: ~${(usdIrr/10).toLocaleString()} تومان`;
+            } catch (e) {
+                document.getElementById('btc-price').innerText = 'BTC: خطا در دریافت';
+            }
         }
 
-        function renderDevice(dev) {
-            const container = document.getElementById('channels-container');
-            container.innerHTML = '';
-            const channels = allData[dev] || [];
+        async function initDashboard() {
+            fetchPrices();
+            setInterval(fetchPrices, 60000);
 
-            let totalD = 0;
-            let totalM = 0;
+            try {
+                const res = await fetch('devices_data.json');
+                globalData = await res.json();
+                renderDevice();
+                setInterval(updateAccruing, 1000);
+            } catch (e) {
+                console.error("Error loading data", e);
+            }
+        }
 
-            channels.forEach(ch => {
-                totalD += ch.dailySats;
-                totalM += ch.monthlySats;
+        function switchDevice(devKey) {
+            currentDevice = devKey;
+            document.getElementById('btn-device-1').classList.toggle('active', devKey === 'device_1');
+            document.getElementById('btn-device-2').classList.toggle('active', devKey === 'device_2');
+            renderDevice();
+        }
 
-                const isOn = ch.status === 'On';
-                const card = document.createElement('div');
-                card.className = 'channel-card';
-                card.innerHTML = `
-                    <div class="channel-header">
-                        <div class="channel-title">
-                            <span class="${isOn ? 'dot-on' : 'dot-off'}"></span>
-                            <span>${ch.name}</span>
+        function renderDevice() {
+            const data = globalData[currentDevice];
+            if (!data) return;
+
+            let totalDaily = 0;
+            let totalMonthly = 0;
+            let html = '';
+
+            data.channels.forEach(ch => {
+                totalDaily += ch.revenue_per_active_day;
+                totalMonthly += ch.revenue_30_days;
+
+                html += `
+                    <div class="channel-card">
+                        <div class="channel-header">
+                            <div class="channel-info">
+                                <img src="${ch.logo}" class="channel-logo" alt="logo">
+                                <span class="channel-name">${ch.name}</span>
+                            </div>
+                            <span class="status-badge">${ch.status}</span>
                         </div>
-                        <span class="status-badge" style="color: ${isOn ? 'var(--accent-green)' : '#f85149'}">${ch.status}</span>
-                    </div>
-                    <div class="metric-box">
-                        <div class="metric-label">Revenue per active day</div>
-                        <div class="metric-val">${ch.dailySats.toLocaleString()} sats</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="metric-label">Revenue per 30 active days</div>
-                        <div class="metric-val">${ch.monthlySats.toLocaleString()} sats</div>
-                    </div>
-                    <div class="metric-box">
-                        <div class="metric-label">Claimable Earnings</div>
-                        <div class="metric-val green">${ch.claimable.toLocaleString()} sats</div>
-                        <div class="sub-accruing">Accruing + ${ch.accruing} sats</div>
+                        <div class="metric-box">
+                            <span>Revenue per active day</span>
+                            <span class="metric-value">sats ${ch.revenue_per_active_day.toLocaleString()}</span>
+                        </div>
+                        <div class="metric-box">
+                            <span>Revenue per 30 active days</span>
+                            <span class="metric-value">sats ${ch.revenue_30_days.toLocaleString()}</span>
+                        </div>
+                        <div class="metric-box">
+                            <span>Claimable Earnings</span>
+                            <span class="metric-value green" id="claim-${ch.id}">sats ${ch.claimable}</span>
+                        </div>
                     </div>
                 `;
-                container.appendChild(card);
             });
 
-            document.getElementById('sumDaily').innerText = totalD.toLocaleString();
-            document.getElementById('sumMonthly').innerText = totalM.toLocaleString();
+            document.getElementById('total-daily').innerText = totalDaily.toLocaleString();
+            document.getElementById('total-monthly').innerText = totalMonthly.toLocaleString();
+            document.getElementById('channels-container').innerHTML = html;
         }
 
-        async function fetchBtcPrice() {
-            try {
-                const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
-                const data = await res.json();
-                if (data?.bitcoin?.usd) {
-                    currentBtcPrice = data.bitcoin.usd;
-                    document.getElementById('btcLivePriceTxt').innerText = `BTC: $${currentBtcPrice.toLocaleString()}`;
-                }
-            } catch (e) {
-                console.log("خطا در قیمت بیت‌کوین");
-            }
+        function updateAccruing() {
+            const data = globalData[currentDevice];
+            if (!data) return;
+            data.channels.forEach(ch => {
+                ch.claimable += 1;
+                const el = document.getElementById(`claim-${ch.id}`);
+                if (el) el.innerText = `sats ${ch.claimable.toLocaleString()} (Accruing)`;
+            });
         }
-
-        loadData();
-        fetchBtcPrice();
-        setInterval(fetchBtcPrice, 1000);
     </script>
 </body>
 </html>
