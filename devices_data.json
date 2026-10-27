@@ -1,5 +1,6 @@
 {
   "device_1": {
+    "node_id": "9508-3100-99",
     "channels": [
       {
         "id": 1,
@@ -18,23 +19,69 @@
         "revenue_per_active_day": 2008,
         "revenue_30_days": 60248,
         "claimable": 15
-      }
-    ]
-  },
-  "device_2": {
-    "channels": [
+      },
       {
         "id": 3,
-        "name": "Blixt Wallet",
+        "name": "Acinq.1ml",
         "logo": "https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035",
         "status": "On",
         "revenue_per_active_day": 1500,
         "revenue_30_days": 45000,
-        "claimable": 12
+        "claimable": 5
       },
       {
         "id": 4,
-        "name": "Phoenix Node",
+        "name": "BTC Pay Server",
+        "logo": "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=035",
+        "status": "On",
+        "revenue_per_active_day": 2100,
+        "revenue_30_days": 63000,
+        "claimable": 10
+      }
+    ]
+  },
+  "device_2": {
+    "node_id": "8225-8510-45",
+    "channels": [
+      {
+        "id": 5,
+        "name": "Open Node",
+        "logo": "https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035",
+        "status": "On",
+        "revenue_per_active_day": 1800,
+        "revenue_30_days": 54000,
+        "claimable": 8
+      },
+      {
+        "id": 6,
+        "name": "Wallet Of Satoshi",
+        "logo": "https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035",
+        "status": "On",
+        "revenue_per_active_day": 1239,
+        "revenue_30_days": 37169,
+        "claimable": 12
+      },
+      {
+        "id": 7,
+        "name": "WX Network",
+        "logo": "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=035",
+        "status": "On",
+        "revenue_per_active_day": 2008,
+        "revenue_30_days": 60248,
+        "claimable": 20
+      },
+      {
+        "id": 8,
+        "name": "Acinq.1ml",
+        "logo": "https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035",
+        "status": "On",
+        "revenue_per_active_day": 1500,
+        "revenue_30_days": 45000,
+        "claimable": 14
+      },
+      {
+        "id": 9,
+        "name": "BTC Pay Server",
         "logo": "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=035",
         "status": "On",
         "revenue_per_active_day": 2400,
