@@ -99,13 +99,27 @@
         .tab-btn { flex: 1; padding: 10px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 0.85rem; text-align: center; transition: 0.3s; }
         .tab-btn.active { background: var(--accent-color); color: #000; border-color: var(--accent-color); }
         
-        .device-id-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 8px; border-radius: 10px; margin-bottom: 12px; text-align: center; font-size: 0.8rem; color: var(--accent-color); font-weight: bold; }
+        /* Clickable Device ID for Copy */
+        .device-id-box { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            padding: 9px; 
+            border-radius: 10px; 
+            margin-bottom: 12px; 
+            text-align: center; 
+            font-size: 0.8rem; 
+            color: var(--accent-color); 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.2s; 
+        }
+        .device-id-box:active { background: #1f293d; transform: scale(0.99); }
 
         /* Summary Card */
         .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 15px; margin-bottom: 15px; text-align: center; }
         .summary-title { font-size: 0.9rem; color: var(--accent-color); margin-bottom: 10px; font-weight: bold; }
         .rate-box { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; font-size: 0.8rem; background: var(--bg-color); padding: 8px; border-radius: 10px; border: 1px solid var(--border-color); color: var(--text-muted); }
-        .rate-box input { width: 100px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 5px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.9rem; }
+        .rate-box input { width: 100px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 5px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.9rem; outline: none; }
         
         .summary-grid { display: flex; gap: 10px; }
         .summary-box { flex: 1; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; }
@@ -113,8 +127,11 @@
         .sats-val { font-size: 0.95rem; font-weight: bold; color: var(--success); margin-bottom: 2px; }
         .sub-val { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
 
-        /* Grand Total Card Style (Special accent border) */
         .grand-total-card { border: 1px solid var(--accent-color); background: linear-gradient(145deg, #111827 0%, #1f293d 100%); }
+
+        /* Fade Animation */
+        .fade-in { animation: fadeIn 0.35s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Channel Card */
         .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
@@ -169,15 +186,15 @@
             <div id="btn-device-2" class="tab-btn" onclick="switchDevice('device_2')">دستگاه دوم (Device 2)</div>
         </div>
 
-        <!-- Device ID Display -->
-        <div class="device-id-box" id="device-id-display">ID: بارگذاری...</div>
+        <!-- Device ID Display (Click to Copy) -->
+        <div class="device-id-box" id="device-id-display" onclick="copyNodeId()" title="برای کپی کلیک کنید">ID : بارگذاری...</div>
 
         <!-- Total Revenue Summary Card (Current Device) -->
         <div class="summary-card">
             <div class="summary-title" id="summary-title-text">📊 مجموع کل درآمد این دستگاه</div>
             <div class="rate-box">
                 <span>نرخ دلار (تومان):</span>
-                <input type="number" id="usd-rate-input" value="70000" oninput="renderDashboard()">
+                <input type="number" id="usd-rate-input" value="70000" oninput="saveUsdRate()">
             </div>
             <div class="summary-grid">
                 <div class="summary-box">
@@ -215,7 +232,7 @@
         </div>
 
         <!-- Channels Container -->
-        <div id="channels-container"></div>
+        <div id="channels-container" class="fade-in"></div>
     </div>
 
     <script>
@@ -223,14 +240,46 @@
         let globalData = {};
         let btcUsd = 80000;
 
+        // Check Session Authentication on load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('auth') === 'true') {
+                document.getElementById('login-screen').style.display = 'none';
+                initDashboard();
+            }
+            // Load saved USD rate from LocalStorage if available
+            const savedRate = localStorage.getItem('usd_rate');
+            if (savedRate) {
+                document.getElementById('usd-rate-input').value = savedRate;
+            }
+        });
+
         function checkPassword() {
             const val = document.getElementById('pass-input').value;
             if (val === '7091') {
+                sessionStorage.setItem('auth', 'true');
                 document.getElementById('login-screen').style.display = 'none';
                 initDashboard();
             } else {
                 alert('رمز اشتباه است!');
             }
+        }
+
+        function saveUsdRate() {
+            const rate = document.getElementById('usd-rate-input').value;
+            localStorage.setItem('usd_rate', rate);
+            renderDashboard();
+        }
+
+        function copyNodeId() {
+            const data = globalData[currentDevice];
+            if (!data) return;
+            navigator.clipboard.writeText(data.node_id).then(() => {
+                const el = document.getElementById('device-id-display');
+                el.innerText = '✨ Node ID با موفقیت کپی شد!';
+                setTimeout(() => {
+                    el.innerText = `ID : ${data.node_id}`;
+                }, 1500);
+            });
         }
 
         async function fetchPrices() {
@@ -263,6 +312,13 @@
             currentDevice = devKey;
             document.getElementById('btn-device-1').classList.toggle('active', devKey === 'device_1');
             document.getElementById('btn-device-2').classList.toggle('active', devKey === 'device_2');
+            
+            // Trigger smooth fade animation
+            const container = document.getElementById('channels-container');
+            container.classList.remove('fade-in');
+            void container.offsetWidth; // trigger reflow
+            container.classList.add('fade-in');
+
             renderDashboard();
         }
 
