@@ -116,8 +116,8 @@
         /* Channel Card */
         .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
         .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .channel-info { display: flex; align-items: center; gap: 8px; }
-        .channel-logo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #1e293b; border: 1px solid var(--border-color); }
+        .channel-info { display: flex; align-items: center; gap: 10px; }
+        .channel-logo { width: 34px; height: 34px; border-radius: 9px; object-fit: cover; }
         .channel-name { font-size: 0.95rem; font-weight: bold; color: var(--text-main); }
         .channel-index { color: var(--accent-color); font-size: 0.85rem; font-weight: bold; }
         
@@ -266,11 +266,11 @@
                 html += `
                     <div class="channel-card">
                         <div class="channel-header">
-                            <span class="channel-index">#${index + 1}</span>
                             <div class="channel-info">
-                                <span class="channel-name">${ch.name}</span>
                                 <img src="${ch.logo}" class="channel-logo" alt="logo">
+                                <span class="channel-name">${ch.name}</span>
                             </div>
+                            <span class="channel-index">#${index + 1}</span>
                         </div>
                         <div class="metric-row">
                             <div class="metric-box">
