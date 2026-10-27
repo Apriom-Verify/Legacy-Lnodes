@@ -113,6 +113,9 @@
         .sats-val { font-size: 0.95rem; font-weight: bold; color: var(--success); margin-bottom: 2px; }
         .sub-val { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
 
+        /* Grand Total Card Style (Special accent border) */
+        .grand-total-card { border: 1px solid var(--accent-color); background: linear-gradient(145deg, #111827 0%, #1f293d 100%); }
+
         /* Channel Card */
         .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
         .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
@@ -169,12 +172,12 @@
         <!-- Device ID Display -->
         <div class="device-id-box" id="device-id-display">ID: بارگذاری...</div>
 
-        <!-- Total Revenue Summary Card -->
+        <!-- Total Revenue Summary Card (Current Device) -->
         <div class="summary-card">
-            <div class="summary-title" id="summary-title-text">📊 مجموع کل درآمد دستگاه</div>
+            <div class="summary-title" id="summary-title-text">📊 مجموع کل درآمد این دستگاه</div>
             <div class="rate-box">
                 <span>نرخ دلار (تومان):</span>
-                <input type="number" id="usd-rate-input" value="70000" oninput="renderDevice()">
+                <input type="number" id="usd-rate-input" value="70000" oninput="renderDashboard()">
             </div>
             <div class="summary-grid">
                 <div class="summary-box">
@@ -188,6 +191,25 @@
                     <div class="sats-val" id="total-daily-sats">0 sats</div>
                     <div class="sub-val" id="total-daily-usd">0 $</div>
                     <div class="sub-val" id="total-daily-toman">0 تومان</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grand Total Summary Card (Both Devices Combined) -->
+        <div class="summary-card grand-total-card">
+            <div class="summary-title" style="color: var(--accent-color);">🌟 مجموع کل درآمد هر دو دستگاه (کل شبکه)</div>
+            <div class="summary-grid">
+                <div class="summary-box">
+                    <div class="summary-box-title">مجموع ماهانه کل</div>
+                    <div class="sats-val" id="grand-monthly-sats">0 sats</div>
+                    <div class="sub-val" id="grand-monthly-usd">0 $</div>
+                    <div class="sub-val" id="grand-monthly-toman">0 تومان</div>
+                </div>
+                <div class="summary-box">
+                    <div class="summary-box-title">مجموع روزانه کل</div>
+                    <div class="sats-val" id="grand-daily-sats">0 sats</div>
+                    <div class="sub-val" id="grand-daily-usd">0 $</div>
+                    <div class="sub-val" id="grand-daily-toman">0 تومان</div>
                 </div>
             </div>
         </div>
@@ -220,7 +242,7 @@
             } catch (e) {
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
             }
-            renderDevice();
+            renderDashboard();
         }
 
         async function initDashboard() {
@@ -230,7 +252,7 @@
             try {
                 const res = await fetch('devices_data.json');
                 globalData = await res.json();
-                renderDevice();
+                renderDashboard();
                 setInterval(updateAccruing, 1000);
             } catch (e) {
                 console.error("Error loading data", e);
@@ -241,16 +263,46 @@
             currentDevice = devKey;
             document.getElementById('btn-device-1').classList.toggle('active', devKey === 'device_1');
             document.getElementById('btn-device-2').classList.toggle('active', devKey === 'device_2');
-            renderDevice();
+            renderDashboard();
         }
 
-        function renderDevice() {
-            const data = globalData[currentDevice];
-            if (!data) return;
+        function renderDashboard() {
+            if (!globalData.device_1 || !globalData.device_2) return;
 
+            const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 70000;
+
+            // --- 1. Calculate Grand Totals for Both Devices Combined ---
+            let grandDaily = 0;
+            let grandMonthly = 0;
+
+            ['device_1', 'device_2'].forEach(devKey => {
+                const dev = globalData[devKey];
+                if (dev && dev.channels) {
+                    dev.channels.forEach(ch => {
+                        grandDaily += ch.revenue_per_active_day;
+                        grandMonthly += ch.revenue_30_days;
+                    });
+                }
+            });
+
+            const grandDailyUsd = (grandDaily / 100000000) * btcUsd;
+            const grandDailyToman = grandDailyUsd * usdRate;
+            const grandMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
+            const grandMonthlyToman = grandMonthlyUsd * usdRate;
+
+            document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
+            document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
+            document.getElementById('grand-daily-toman').innerText = `${Math.round(grandDailyToman).toLocaleString()} تومان`;
+
+            document.getElementById('grand-monthly-sats').innerText = `sats ${grandMonthly.toLocaleString()}`;
+            document.getElementById('grand-monthly-usd').innerText = `${grandMonthlyUsd.toFixed(2)} $`;
+            document.getElementById('grand-monthly-toman').innerText = `${Math.round(grandMonthlyToman).toLocaleString()} تومان`;
+
+
+            // --- 2. Render Active Device Data ---
+            const data = globalData[currentDevice];
             document.getElementById('device-id-display').innerText = `ID : ${data.node_id}`;
             document.getElementById('summary-title-text').innerText = `📊 مجموع کل درآمد این دستگاه (${data.channels.length} کانال)`;
-            const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 70000;
 
             let totalDaily = 0;
             let totalMonthly = 0;
@@ -294,7 +346,6 @@
 
             const totalDailyUsd = (totalDaily / 100000000) * btcUsd;
             const totalDailyToman = totalDailyUsd * usdRate;
-
             const totalMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
             const totalMonthlyToman = totalMonthlyUsd * usdRate;
 
