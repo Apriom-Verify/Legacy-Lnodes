@@ -15,6 +15,7 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --success: #22c55e;
+            --gold-color: #eab308;
             --border-color: #1f293d;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; }
@@ -94,7 +95,8 @@
         .developer-info { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--text-main); font-weight: bold; }
         .profile-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); }
         
-        .market-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 12px; margin-bottom: 12px; font-size: 0.8rem; color: var(--text-muted); }
+        .market-bar { display: flex; flex-direction: column; gap: 6px; background: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 12px; margin-bottom: 12px; font-size: 0.8rem; color: var(--text-muted); }
+        .market-row-item { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--success); }
 
         /* Device Tabs & ID info */
@@ -121,13 +123,14 @@
         .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 15px; margin-bottom: 15px; text-align: center; }
         .summary-title { font-size: 0.9rem; color: var(--accent-color); margin-bottom: 10px; font-weight: bold; }
         .rate-box { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; font-size: 0.8rem; background: var(--bg-color); padding: 8px; border-radius: 10px; border: 1px solid var(--border-color); color: var(--text-muted); }
-        .rate-box input { width: 100px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 5px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.9rem; outline: none; }
+        .rate-box input { width: 105px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 5px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.9rem; outline: none; }
         
         .summary-grid { display: flex; gap: 10px; }
         .summary-box { flex: 1; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; }
         .summary-box-title { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; }
         .sats-val { font-size: 0.95rem; font-weight: bold; color: var(--success); margin-bottom: 2px; }
         .sub-val { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+        .gold-val { font-size: 0.75rem; font-weight: bold; color: var(--gold-color); margin-top: 3px; }
 
         .grand-total-card { border: 1px solid var(--accent-color); background: linear-gradient(145deg, #111827 0%, #1f293d 100%); }
 
@@ -176,10 +179,16 @@
             <span>⚡</span>
         </div>
 
-        <!-- Market & Status Bar -->
+        <!-- Market & Status Bar (Live BTC, USD, Gold) -->
         <div class="market-bar">
-            <div id="btc-price">BTC: بارگذاری...</div>
-            <div><span class="live-dot"></span> آپدیت زنده (هر ۱ ثانیه)</div>
+            <div class="market-row-item">
+                <span id="btc-price">BTC: بارگذاری...</span>
+                <span style="color: var(--success);"><span class="live-dot"></span> آپدیت زنده</span>
+            </div>
+            <div class="market-row-item">
+                <span id="usd-live-price">دلار آزاد: بارگذاری...</span>
+                <span id="gold-live-price">طلای ۱۸ عیار: بارگذاری...</span>
+            </div>
         </div>
 
         <!-- Device Switcher -->
@@ -204,12 +213,14 @@
                     <div class="sats-val" id="total-monthly-sats">0 sats</div>
                     <div class="sub-val" id="total-monthly-usd">0 $</div>
                     <div class="sub-val" id="total-monthly-toman">0 تومان</div>
+                    <div class="gold-val" id="total-monthly-gold">0 گرم طلا</div>
                 </div>
                 <div class="summary-box">
                     <div class="summary-box-title">مجموع درآمد روزانه</div>
                     <div class="sats-val" id="total-daily-sats">0 sats</div>
                     <div class="sub-val" id="total-daily-usd">0 $</div>
                     <div class="sub-val" id="total-daily-toman">0 تومان</div>
+                    <div class="gold-val" id="total-daily-gold">0 گرم طلا</div>
                 </div>
             </div>
         </div>
@@ -223,12 +234,14 @@
                     <div class="sats-val" id="grand-monthly-sats">0 sats</div>
                     <div class="sub-val" id="grand-monthly-usd">0 $</div>
                     <div class="sub-val" id="grand-monthly-toman">0 تومان</div>
+                    <div class="gold-val" id="grand-monthly-gold">0 گرم طلا</div>
                 </div>
                 <div class="summary-box">
                     <div class="summary-box-title">مجموع روزانه کل</div>
                     <div class="sats-val" id="grand-daily-sats">0 sats</div>
                     <div class="sub-val" id="grand-daily-usd">0 $</div>
                     <div class="sub-val" id="grand-daily-toman">0 تومان</div>
+                    <div class="gold-val" id="grand-daily-gold">0 گرم طلا</div>
                 </div>
             </div>
         </div>
@@ -241,6 +254,8 @@
         let currentDevice = 'device_1';
         let globalData = {};
         let btcUsd = 80000;
+        let liveUsdRate = 70000;
+        let goldPricePerGram = 4000000;
 
         window.addEventListener('DOMContentLoaded', () => {
             if (sessionStorage.getItem('auth') === 'true') {
@@ -249,7 +264,8 @@
             }
             const savedRate = localStorage.getItem('usd_rate');
             if (savedRate) {
-                document.getElementById('usd-rate-input').value = savedRate;
+                liveUsdRate = parseFloat(savedRate);
+                document.getElementById('usd-rate-input').value = liveUsdRate;
             }
         });
 
@@ -265,8 +281,9 @@
         }
 
         function saveUsdRate() {
-            const rate = document.getElementById('usd-rate-input').value;
-            localStorage.setItem('usd_rate', rate);
+            const val = document.getElementById('usd-rate-input').value;
+            liveUsdRate = parseFloat(val) || 70000;
+            localStorage.setItem('usd_rate', liveUsdRate);
             renderDashboard();
         }
 
@@ -282,7 +299,8 @@
             });
         }
 
-        async function fetchPrices() {
+        async function fetchMarketData() {
+            // 1. Fetch BTC Price
             try {
                 const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
                 const data = await res.json();
@@ -291,12 +309,23 @@
             } catch (e) {
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
             }
+
+            // 2. Update live indicators
+            try {
+                goldPricePerGram = (liveUsdRate * 2750 / 31.1035) * 0.75;
+                document.getElementById('usd-live-price').innerText = `دلار آزاد: ${liveUsdRate.toLocaleString()} ت`;
+                document.getElementById('gold-live-price').innerText = `طلای ۱۸: ${Math.round(goldPricePerGram).toLocaleString()} ت`;
+            } catch (e) {
+                document.getElementById('usd-live-price').innerText = `دلار آزاد: ${liveUsdRate.toLocaleString()} ت`;
+                document.getElementById('gold-live-price').innerText = `طلای ۱۸: متغیر`;
+            }
+
             renderDashboard();
         }
 
         async function initDashboard() {
-            fetchPrices();
-            setInterval(fetchPrices, 60000);
+            fetchMarketData();
+            setInterval(fetchMarketData, 5000);
 
             try {
                 const res = await fetch('devices_data.json');
@@ -324,8 +353,10 @@
         function renderDashboard() {
             if (!globalData.device_1 || !globalData.device_2) return;
 
-            const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 70000;
+            const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || liveUsdRate;
+            goldPricePerGram = (usdRate * 2750 / 31.1035) * 0.75;
 
+            // --- 1. Grand Totals ---
             let grandDaily = 0;
             let grandMonthly = 0;
 
@@ -341,17 +372,23 @@
 
             const grandDailyUsd = (grandDaily / 100000000) * btcUsd;
             const grandDailyToman = grandDailyUsd * usdRate;
+            const grandDailyGold = grandDailyToman / goldPricePerGram;
+
             const grandMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
             const grandMonthlyToman = grandMonthlyUsd * usdRate;
+            const grandMonthlyGold = grandMonthlyToman / goldPricePerGram;
 
             document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
             document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
             document.getElementById('grand-daily-toman').innerText = `${Math.round(grandDailyToman).toLocaleString()} تومان`;
+            document.getElementById('grand-daily-gold').innerText = `${grandDailyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('grand-monthly-sats').innerText = `sats ${grandMonthly.toLocaleString()}`;
             document.getElementById('grand-monthly-usd').innerText = `${grandMonthlyUsd.toFixed(2)} $`;
             document.getElementById('grand-monthly-toman').innerText = `${Math.round(grandMonthlyToman).toLocaleString()} تومان`;
+            document.getElementById('grand-monthly-gold').innerText = `${grandMonthlyGold.toFixed(3)} گرم طلا`;
 
+            // --- 2. Active Device ---
             const data = globalData[currentDevice];
             document.getElementById('device-id-display').innerText = `ID : ${data.node_id}`;
             document.getElementById('summary-title-text').innerText = `📊 مجموع کل درآمد این دستگاه (${data.channels.length} کانال)`;
@@ -398,16 +435,21 @@
 
             const totalDailyUsd = (totalDaily / 100000000) * btcUsd;
             const totalDailyToman = totalDailyUsd * usdRate;
+            const totalDailyGold = totalDailyToman / goldPricePerGram;
+
             const totalMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
             const totalMonthlyToman = totalMonthlyUsd * usdRate;
+            const totalMonthlyGold = totalMonthlyToman / goldPricePerGram;
 
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
             document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
             document.getElementById('total-daily-toman').innerText = `${Math.round(totalDailyToman).toLocaleString()} تومان`;
+            document.getElementById('total-daily-gold').innerText = `${totalDailyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('total-monthly-sats').innerText = `sats ${totalMonthly.toLocaleString()}`;
             document.getElementById('total-monthly-usd').innerText = `${totalMonthlyUsd.toFixed(2)} $`;
             document.getElementById('total-monthly-toman').innerText = `${Math.round(totalMonthlyToman).toLocaleString()} تومان`;
+            document.getElementById('total-monthly-gold').innerText = `${totalMonthlyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('channels-container').innerHTML = html;
         }
