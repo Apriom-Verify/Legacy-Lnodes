@@ -95,8 +95,7 @@
         .developer-info { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--text-main); font-weight: bold; }
         .profile-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); }
         
-        .market-bar { display: flex; flex-direction: column; gap: 6px; background: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 12px; margin-bottom: 12px; font-size: 0.8rem; color: var(--text-muted); }
-        .market-row-item { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .market-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 12px; margin-bottom: 12px; font-size: 0.8rem; color: var(--text-muted); }
         .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--success); }
 
         /* Device Tabs & ID info */
@@ -123,7 +122,7 @@
         .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 15px; margin-bottom: 15px; text-align: center; }
         .summary-title { font-size: 0.9rem; color: var(--accent-color); margin-bottom: 10px; font-weight: bold; }
         .rate-box { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; font-size: 0.8rem; background: var(--bg-color); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-color); color: var(--text-muted); }
-        .rate-box input { width: 130px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 5px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.9rem; outline: none; }
+        .rate-box input { width: 140px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 5px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.9rem; outline: none; }
         
         .summary-grid { display: flex; gap: 10px; }
         .summary-box { flex: 1; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; }
@@ -181,14 +180,8 @@
 
         <!-- Market & Status Bar -->
         <div class="market-bar">
-            <div class="market-row-item">
-                <span id="btc-price">BTC: بارگذاری...</span>
-                <span style="color: var(--success);"><span class="live-dot"></span> آپدیت زنده</span>
-            </div>
-            <div class="market-row-item">
-                <span id="top-usd-display">نرخ دلار تنظیم‌شده</span>
-                <span id="top-gold-display" style="color: var(--gold-color);">منطبق بر سایت صلحی‌وند</span>
-            </div>
+            <div id="btc-price">BTC: بارگذاری...</div>
+            <div><span class="live-dot"></span> نرخ دستی فعال</div>
         </div>
 
         <!-- Device Switcher -->
@@ -204,7 +197,7 @@
         <div class="summary-card">
             <div class="summary-title" id="summary-title-text">📊 مجموع کل درآمد این دستگاه</div>
             
-            <!-- Rate Inputs for USD and Gold -->
+            <!-- Manual Inputs for USD and Gold Rates -->
             <div class="rate-box">
                 <span>نرخ دلار (تومان):</span>
                 <input type="number" id="usd-rate-input" value="70000" oninput="saveRates()">
@@ -220,14 +213,14 @@
                     <div class="sats-val" id="total-monthly-sats">0 sats</div>
                     <div class="sub-val" id="total-monthly-usd">0 $</div>
                     <div class="sub-val" id="total-monthly-toman">0 تومان</div>
-                    <div class="gold-val" id="total-monthly-gold">0 طلا</div>
+                    <div class="gold-val" id="total-monthly-gold">0 گرم طلا</div>
                 </div>
                 <div class="summary-box">
                     <div class="summary-box-title">مجموع درآمد روزانه</div>
                     <div class="sats-val" id="total-daily-sats">0 sats</div>
                     <div class="sub-val" id="total-daily-usd">0 $</div>
                     <div class="sub-val" id="total-daily-toman">0 تومان</div>
-                    <div class="gold-val" id="total-daily-gold">0 طلا</div>
+                    <div class="gold-val" id="total-daily-gold">0 گرم طلا</div>
                 </div>
             </div>
         </div>
@@ -241,14 +234,14 @@
                     <div class="sats-val" id="grand-monthly-sats">0 sats</div>
                     <div class="sub-val" id="grand-monthly-usd">0 $</div>
                     <div class="sub-val" id="grand-monthly-toman">0 تومان</div>
-                    <div class="gold-val" id="grand-monthly-gold">0 طلا</div>
+                    <div class="gold-val" id="grand-monthly-gold">0 گرم طلا</div>
                 </div>
                 <div class="summary-box">
                     <div class="summary-box-title">مجموع روزانه کل</div>
                     <div class="sats-val" id="grand-daily-sats">0 sats</div>
                     <div class="sub-val" id="grand-daily-usd">0 $</div>
                     <div class="sub-val" id="grand-daily-toman">0 تومان</div>
-                    <div class="gold-val" id="grand-daily-gold">0 طلا</div>
+                    <div class="gold-val" id="grand-daily-gold">0 گرم طلا</div>
                 </div>
             </div>
         </div>
@@ -353,9 +346,6 @@
             const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 70000;
             const goldRate = parseFloat(document.getElementById('gold-rate-input').value) || 26146200;
 
-            document.getElementById('top-usd-display').innerText = `دلار: ${usdRate.toLocaleString()} ت`;
-            document.getElementById('top-gold-display').innerText = `قیمت طلا: ${goldRate.toLocaleString()} ت`;
-
             // --- 1. Grand Totals ---
             let grandDaily = 0;
             let grandMonthly = 0;
@@ -381,12 +371,12 @@
             document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
             document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
             document.getElementById('grand-daily-toman').innerText = `${Math.round(grandDailyToman).toLocaleString()} تومان`;
-            document.getElementById('grand-daily-gold').innerText = `${grandDailyGold.toFixed(3)} طلا`;
+            document.getElementById('grand-daily-gold').innerText = `${grandDailyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('grand-monthly-sats').innerText = `sats ${grandMonthly.toLocaleString()}`;
             document.getElementById('grand-monthly-usd').innerText = `${grandMonthlyUsd.toFixed(2)} $`;
             document.getElementById('grand-monthly-toman').innerText = `${Math.round(grandMonthlyToman).toLocaleString()} تومان`;
-            document.getElementById('grand-monthly-gold').innerText = `${grandMonthlyGold.toFixed(3)} طلا`;
+            document.getElementById('grand-monthly-gold').innerText = `${grandMonthlyGold.toFixed(3)} گرم طلا`;
 
             // --- 2. Active Device ---
             const data = globalData[currentDevice];
@@ -444,12 +434,12 @@
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
             document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
             document.getElementById('total-daily-toman').innerText = `${Math.round(totalDailyToman).toLocaleString()} تومان`;
-            document.getElementById('total-daily-gold').innerText = `${totalDailyGold.toFixed(3)} طلا`;
+            document.getElementById('total-daily-gold').innerText = `${totalDailyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('total-monthly-sats').innerText = `sats ${totalMonthly.toLocaleString()}`;
             document.getElementById('total-monthly-usd').innerText = `${totalMonthlyUsd.toFixed(2)} $`;
             document.getElementById('total-monthly-toman').innerText = `${Math.round(totalMonthlyToman).toLocaleString()} تومان`;
-            document.getElementById('total-monthly-gold').innerText = `${totalMonthlyGold.toFixed(3)} طلا`;
+            document.getElementById('total-monthly-gold').innerText = `${totalMonthlyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('channels-container').innerHTML = html;
         }
