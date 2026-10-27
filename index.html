@@ -88,7 +88,7 @@
             margin-bottom: 12px; 
             direction: ltr;
         }
-        .developer-info { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-main); font-weight: bold; }
+        .developer-info { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--text-main); font-weight: bold; }
         .profile-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); }
         
         .market-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 12px; margin-bottom: 12px; font-size: 0.8rem; color: var(--text-muted); }
@@ -113,16 +113,17 @@
         .sats-val { font-size: 0.95rem; font-weight: bold; color: var(--success); margin-bottom: 2px; }
         .sub-val { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
 
-        /* Channel Card */
+        /* Channel Card matching Image 19 */
         .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
         .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .channel-info { display: flex; align-items: center; gap: 8px; }
-        .channel-logo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+        .channel-logo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #1e293b; padding: 2px; border: 1px solid var(--border-color); }
         .channel-name { font-size: 0.95rem; font-weight: bold; color: var(--text-main); }
         .channel-index { color: var(--accent-color); font-size: 0.85rem; font-weight: bold; }
         
         .metric-row { display: flex; gap: 8px; margin-bottom: 8px; }
         .metric-box { flex: 1; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; }
+        .metric-box-full { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; width: 100%; }
         .metric-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 4px; }
         .metric-val { font-size: 0.85rem; font-weight: bold; color: var(--success); }
         .metric-sub { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
@@ -144,12 +145,13 @@
     <div class="container">
         <div class="main-title">⚡ LNODE DASHBOARD</div>
 
-        <!-- Developer Info matching Image 18 -->
+        <!-- Developer Info matching Image 19 -->
         <div class="developer-badge">
             <div class="developer-info">
-                <span>⚡ Developer: Mohammad Ostad Mohammadi</span>
+                <img src="https://raw.githubusercontent.com/Apriom-Verify/Legacy-Lnodes/main/4F64DB90-D9FC-40E7-BC6B-F84677A56885.jpeg" alt="Profile" class="profile-img">
+                <span>Developer: Mohammad Ostad Mohammadi</span>
             </div>
-            <img src="https://raw.githubusercontent.com/Apriom-Verify/Legacy-Lnodes/main/4F64DB90-D9FC-40E7-BC6B-F84677A56885.jpeg" alt="Profile" class="profile-img">
+            <span>⚡</span>
         </div>
 
         <!-- Market & Status Bar -->
@@ -165,11 +167,11 @@
         </div>
 
         <!-- Device ID Display -->
-        <div class="device-id-box" id="device-id-display">Node ID: بارگذاری...</div>
+        <div class="device-id-box" id="device-id-display">ID: بارگذاری...</div>
 
         <!-- Total Revenue Summary Card -->
         <div class="summary-card">
-            <div class="summary-title">📊 مجموع کل درآمد دستگاه</div>
+            <div class="summary-title" id="summary-title-text">📊 مجموع کل درآمد دستگاه</div>
             <div class="rate-box">
                 <span>نرخ دلار (تومان):</span>
                 <input type="number" id="usd-rate-input" value="70000" oninput="renderDevice()">
@@ -247,6 +249,7 @@
             if (!data) return;
 
             document.getElementById('device-id-display').innerText = `ID : ${data.node_id}`;
+            document.getElementById('summary-title-text').innerText = `📊 مجموع کل درآمد این دستگاه (${data.channels.length} کانال)`;
             const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 70000;
 
             let totalDaily = 0;
@@ -281,7 +284,7 @@
                                 <div class="metric-sub">${monthlyUsd.toFixed(2)} $</div>
                             </div>
                         </div>
-                        <div class="metric-box">
+                        <div class="metric-box-full">
                             <div class="metric-label">Claimable Earnings (لحظه‌ای)</div>
                             <div class="metric-val" id="claim-${ch.id}" style="color: var(--success);">sats ${ch.claimable.toLocaleString()} (Accruing)</div>
                         </div>
