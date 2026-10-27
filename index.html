@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legacy Lnodes Dashboard</title>
+    <title>LNODE DASHBOARD</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
             --accent-color: #f59e0b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --success: #22c55e;
-            --border-color: #334155;
+            --border-color: #1f293d;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-main); padding: 15px; display: flex; justify-content: center; }
@@ -21,42 +21,58 @@
         /* Login Screen */
         #login-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: 1000;
+            background: var(--bg-color); display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 20px;
         }
-        .login-box { background: var(--card-bg); padding: 25px; border-radius: 12px; width: 85%; text-align: center; border: 1px solid var(--border-color); }
-        .login-box h2 { margin-bottom: 15px; font-size: 1.2rem; color: var(--accent-color); }
-        .login-box input { width: 100%; padding: 10px; margin-bottom: 15px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; text-align: center; font-size: 1.2rem; letter-spacing: 5px; }
-        .login-box button { width: 100%; padding: 10px; background: var(--accent-color); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; color: #000; }
+        .login-box { background: var(--card-bg); padding: 30px 20px; border-radius: 16px; width: 100%; text-align: center; border: 1px solid var(--accent-color); box-shadow: 0 0 25px rgba(245, 158, 11, 0.15); }
+        .login-logo { width: 60px; height: 60px; background: rgba(245, 158, 11, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; border: 2px solid var(--accent-color); color: var(--accent-color); font-size: 28px; box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
+        .login-box h2 { margin-bottom: 5px; font-size: 1.3rem; color: var(--accent-color); letter-spacing: 1px; }
+        .login-subtitle { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 20px; }
+        .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; text-align: center; font-size: 1.2rem; letter-spacing: 8px; outline: none; }
+        .login-box input:focus { border-color: var(--accent-color); }
+        .login-box button { width: 100%; padding: 12px; background: var(--accent-color); border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: #000; font-size: 0.95rem; transition: 0.2s; }
+        .login-box button:active { transform: scale(0.98); }
 
         /* Header & Profile */
         .header { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); padding: 12px 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid var(--border-color); }
-        .btc-price-box { font-size: 0.85rem; color: var(--accent-color); font-weight: bold; }
-        .usd-price-box { font-size: 0.75rem; color: #38bdf8; margin-top: 3px; }
-        .profile-box { display: flex; align-items: center; gap: 10px; }
-        .profile-img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); }
-        .profile-name { font-size: 0.85rem; font-weight: bold; }
+        .main-title { font-size: 1.1rem; font-weight: bold; color: var(--accent-color); display: flex; align-items: center; gap: 6px; margin-bottom: 12px; text-align: center; justify-content: center; }
+        .developer-badge { display: flex; align-items: center; gap: 10px; background: var(--card-bg); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 10px; margin-bottom: 15px; justify-content: space-between; }
+        .developer-info { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); }
+        .profile-img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); }
+        
+        .market-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 10px; margin-bottom: 15px; font-size: 0.8rem; color: var(--text-muted); }
+        .btc-val { color: var(--accent-color); font-weight: bold; }
+        .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--success); }
 
         /* Device Tabs */
         .device-tabs { display: flex; gap: 10px; margin-bottom: 15px; }
-        .tab-btn { flex: 1; padding: 10px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 0.9rem; text-align: center; transition: 0.3s; }
+        .tab-btn { flex: 1; padding: 10px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 0.85rem; text-align: center; transition: 0.3s; }
         .tab-btn.active { background: var(--accent-color); color: #000; border-color: var(--accent-color); }
 
         /* Summary Card */
-        .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 15px; margin-bottom: 15px; text-align: center; }
-        .summary-title { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
-        .summary-grid { display: flex; justify-content: space-around; font-size: 0.9rem; }
-        .summary-item span { color: var(--success); font-weight: bold; }
+        .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; margin-bottom: 15px; text-align: center; }
+        .summary-title { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .rate-box { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px; font-size: 0.8rem; background: var(--bg-color); padding: 8px; border-radius: 8px; border: 1px solid var(--border-color); }
+        .rate-box input { width: 90px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 4px 8px; border-radius: 6px; text-align: center; font-weight: bold; }
+        
+        .summary-grid { display: flex; gap: 10px; }
+        .summary-box { flex: 1; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; }
+        .summary-box-title { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; }
+        .sats-val { font-size: 0.95rem; font-weight: bold; color: var(--success); margin-bottom: 4px; }
+        .sub-val { font-size: 0.7rem; color: var(--text-muted); }
 
         /* Channel Card */
-        .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; margin-bottom: 12px; }
-        .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .channel-info { display: flex; align-items: center; gap: 10px; }
-        .channel-logo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
-        .channel-name { font-size: 0.95rem; font-weight: bold; }
-        .status-badge { font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; background: rgba(34, 197, 94, 0.15); color: var(--success); }
-        .metric-box { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); }
-        .metric-value { color: var(--text-main); font-weight: bold; }
-        .metric-value.green { color: var(--success); }
+        .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 15px; margin-bottom: 12px; }
+        .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .channel-info { display: flex; align-items: center; gap: 8px; }
+        .channel-logo { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; }
+        .channel-name { font-size: 0.9rem; font-weight: bold; }
+        .status-badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: rgba(34, 197, 94, 0.15); color: var(--success); }
+        
+        .metric-row { display: flex; gap: 8px; margin-bottom: 6px; }
+        .metric-box { flex: 1; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 8px; padding: 8px; text-align: center; }
+        .metric-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 4px; }
+        .metric-val { font-size: 0.82rem; font-weight: bold; color: var(--text-main); }
+        .metric-val.green { color: var(--success); }
     </style>
 </head>
 <body>
@@ -64,23 +80,30 @@
     <!-- Password Login Screen -->
     <div id="login-screen">
         <div class="login-box">
-            <h2>ورود به داشبورد</h2>
+            <div class="login-logo">⚡</div>
+            <h2>LNODE DASHBOARD</h2>
+            <div class="login-subtitle">سیستم مانیتورینگ امن کانال‌های لایتنینگ</div>
             <input type="password" id="pass-input" maxlength="4" placeholder="••••">
-            <button onclick="checkPassword()">ورود</button>
+            <button onclick="checkPassword()">ورود به پنل</button>
         </div>
     </div>
 
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div>
-                <div class="btc-price-box" id="btc-price">BTC: بارگذاری...</div>
-                <div class="usd-price-box" id="usd-price">دلار: بارگذاری...</div>
+        <div class="main-title">⚡ LNODE DASHBOARD</div>
+
+        <!-- Developer Info -->
+        <div class="developer-badge">
+            <div class="developer-info">
+                <span>⚡ Developer:</span>
+                <strong style="color: var(--text-main);">Mohammad Ostad Mohammadi</strong>
             </div>
-            <div class="profile-box">
-                <span class="profile-name">Mohammad</span>
-                <img src="https://avatars.githubusercontent.com/u/104332997?v=4" alt="Profile" class="profile-img">
-            </div>
+            <img src="https://raw.githubusercontent.com/Apriom-Verify/Legacy-Lnodes/main/4F64DB90-D9FC-40E7-BC6B-F84677A56885.jpeg" alt="Profile" class="profile-img">
+        </div>
+
+        <!-- Market & Status Bar -->
+        <div class="market-bar">
+            <div id="btc-price">BTC: بارگذاری...</div>
+            <div><span class="live-dot"></span> آپدیت زنده (هر ۱ ثانیه)</div>
         </div>
 
         <!-- Device Switcher -->
@@ -89,12 +112,26 @@
             <div id="btn-device-2" class="tab-btn" onclick="switchDevice('device_2')">دستگاه دوم (Device 2)</div>
         </div>
 
-        <!-- Total Revenue Summary -->
+        <!-- Total Revenue Summary Card -->
         <div class="summary-card">
             <div class="summary-title">📊 مجموع کل درآمد این دستگاه</div>
+            <div class="rate-box">
+                <span>نرخ دلار (تومان):</span>
+                <input type="number" id="usd-rate-input" value="70000" oninput="renderDevice()">
+            </div>
             <div class="summary-grid">
-                <div class="summary-item">روزانه: <span id="total-daily">0</span> sats</div>
-                <div class="summary-item">ماهانه: <span id="total-monthly">0</span> sats</div>
+                <div class="summary-box">
+                    <div class="summary-box-title">مجموع درآمد ماهانه</div>
+                    <div class="sats-val" id="total-monthly-sats">0 sats</div>
+                    <div class="sub-val" id="total-monthly-usd">0 $</div>
+                    <div class="sub-val" id="total-monthly-toman">0 تومان</div>
+                </div>
+                <div class="summary-box">
+                    <div class="summary-box-title">مجموع درآمد روزانه</div>
+                    <div class="sats-val" id="total-daily-sats">0 sats</div>
+                    <div class="sub-val" id="total-daily-usd">0 $</div>
+                    <div class="sub-val" id="total-daily-toman">0 تومان</div>
+                </div>
             </div>
         </div>
 
@@ -105,8 +142,7 @@
     <script>
         let currentDevice = 'device_1';
         let globalData = {};
-        let btcUsd = 0;
-        let usdIrr = 0;
+        let btcUsd = 80000; // قیمت پیش‌فرض برای محاسبات
 
         function checkPassword() {
             const val = document.getElementById('pass-input').value;
@@ -124,13 +160,10 @@
                 const data = await res.json();
                 btcUsd = data.bpi.USD.rate_float;
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString(undefined, {maximumFractionDigits:0})}`;
-                
-                // قیمت تخمینی دلار آزاد برای نمونه
-                usdIrr = 650000; 
-                document.getElementById('usd-price').innerText = `دلار: ~${(usdIrr/10).toLocaleString()} تومان`;
             } catch (e) {
-                document.getElementById('btc-price').innerText = 'BTC: خطا در دریافت';
+                document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
             }
+            renderDevice();
         }
 
         async function initDashboard() {
@@ -158,41 +191,65 @@
             const data = globalData[currentDevice];
             if (!data) return;
 
+            const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 70000;
+
             let totalDaily = 0;
             let totalMonthly = 0;
             let html = '';
 
-            data.channels.forEach(ch => {
+            data.channels.forEach((ch, index) => {
                 totalDaily += ch.revenue_per_active_day;
                 totalMonthly += ch.revenue_30_days;
+
+                // تبدیل sats به دلار و تومان
+                const dailyUsd = (ch.revenue_per_active_day / 100000000) * btcUsd;
+                const monthlyUsd = (ch.revenue_30_days / 100000000) * btcUsd;
 
                 html += `
                     <div class="channel-card">
                         <div class="channel-header">
                             <div class="channel-info">
+                                <span style="color: var(--accent-color); font-size: 0.8rem; font-weight: bold;">#${index + 1}</span>
                                 <img src="${ch.logo}" class="channel-logo" alt="logo">
                                 <span class="channel-name">${ch.name}</span>
                             </div>
                             <span class="status-badge">${ch.status}</span>
                         </div>
-                        <div class="metric-box">
-                            <span>Revenue per active day</span>
-                            <span class="metric-value">sats ${ch.revenue_per_active_day.toLocaleString()}</span>
+                        <div class="metric-row">
+                            <div class="metric-box">
+                                <div class="metric-label">درآمد روزانه</div>
+                                <div class="metric-val">sats ${ch.revenue_per_active_day.toLocaleString()}</div>
+                                <div class="sub-val" style="font-size:0.65rem; color:var(--text-muted);">${dailyUsd.toFixed(2)} $</div>
+                            </div>
+                            <div class="metric-box">
+                                <div class="metric-label">درآمد ۳۰ روزه</div>
+                                <div class="metric-val">sats ${ch.revenue_30_days.toLocaleString()}</div>
+                                <div class="sub-val" style="font-size:0.65rem; color:var(--text-muted);">${monthlyUsd.toFixed(2)} $</div>
+                            </div>
                         </div>
                         <div class="metric-box">
-                            <span>Revenue per 30 active days</span>
-                            <span class="metric-value">sats ${ch.revenue_30_days.toLocaleString()}</span>
-                        </div>
-                        <div class="metric-box">
-                            <span>Claimable Earnings</span>
-                            <span class="metric-value green" id="claim-${ch.id}">sats ${ch.claimable}</span>
+                            <div class="metric-label">Claimable Earnings (لحظه‌ای)</div>
+                            <div class="metric-val green" id="claim-${ch.id}">sats ${ch.claimable.toLocaleString()} (Accruing)</div>
                         </div>
                     </div>
                 `;
             });
 
-            document.getElementById('total-daily').innerText = totalDaily.toLocaleString();
-            document.getElementById('total-monthly').innerText = totalMonthly.toLocaleString();
+            // محاسبات مجموع
+            const totalDailyUsd = (totalDaily / 100000000) * btcUsd;
+            const totalDailyToman = totalDailyUsd * usdRate;
+
+            const totalMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
+            const totalMonthlyToman = totalMonthlyUsd * usdRate;
+
+            document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
+            document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
+            document.getElementById('total-daily-toman').innerText = `${Math.round(totalDailyToman).toLocaleString()} تومان`;
+
+            document.getElementById('total-monthly-sats').innerText = `sats ${totalMonthly.toLocaleString()}`;
+            document.getElementById('total-monthly-usd').innerText = `${totalMonthlyUsd.toFixed(2)} $`;
+            document.getElementById('total-monthly-toman').innerText = `${Math.round(totalMonthlyToman).toLocaleString()} تومان`;
+
             document.getElementById('channels-container').innerHTML = html;
         }
 
