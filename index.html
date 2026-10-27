@@ -113,11 +113,11 @@
         .sats-val { font-size: 0.95rem; font-weight: bold; color: var(--success); margin-bottom: 2px; }
         .sub-val { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
 
-        /* Channel Card matching Image 19 */
+        /* Channel Card */
         .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
         .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .channel-info { display: flex; align-items: center; gap: 8px; }
-        .channel-logo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #1e293b; padding: 2px; border: 1px solid var(--border-color); }
+        .channel-logo { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #1e293b; border: 1px solid var(--border-color); }
         .channel-name { font-size: 0.95rem; font-weight: bold; color: var(--text-main); }
         .channel-index { color: var(--accent-color); font-size: 0.85rem; font-weight: bold; }
         
@@ -145,7 +145,7 @@
     <div class="container">
         <div class="main-title">⚡ LNODE DASHBOARD</div>
 
-        <!-- Developer Info matching Image 19 -->
+        <!-- Developer Info -->
         <div class="developer-badge">
             <div class="developer-info">
                 <img src="https://raw.githubusercontent.com/Apriom-Verify/Legacy-Lnodes/main/4F64DB90-D9FC-40E7-BC6B-F84677A56885.jpeg" alt="Profile" class="profile-img">
@@ -269,7 +269,7 @@
                             <span class="channel-index">#${index + 1}</span>
                             <div class="channel-info">
                                 <span class="channel-name">${ch.name}</span>
-                                <img src="${ch.logo}" class="channel-logo" alt="logo" onerror="this.src='https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035'">
+                                <img src="${ch.logo}" class="channel-logo" alt="logo">
                             </div>
                         </div>
                         <div class="metric-row">
