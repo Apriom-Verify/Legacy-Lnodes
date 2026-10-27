@@ -181,7 +181,7 @@
         <!-- Market & Status Bar -->
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
-            <div><span class="live-dot"></span> نرخ دستی فعال</div>
+            <div><span class="live-dot"></span> تنظیم دستی نرخ‌ها</div>
         </div>
 
         <!-- Device Switcher -->
@@ -200,11 +200,11 @@
             <!-- Manual Inputs for USD and Gold Rates -->
             <div class="rate-box">
                 <span>نرخ دلار (تومان):</span>
-                <input type="number" id="usd-rate-input" value="70000" oninput="saveRates()">
+                <input type="number" id="usd-rate-input" value="0" placeholder="0" oninput="saveRates()">
             </div>
             <div class="rate-box">
                 <span>قیمت طلا (تومان):</span>
-                <input type="number" id="gold-rate-input" value="26146200" oninput="saveRates()">
+                <input type="number" id="gold-rate-input" value="0" placeholder="0" oninput="saveRates()">
             </div>
 
             <div class="summary-grid">
@@ -261,11 +261,11 @@
                 initDashboard();
             }
             const savedUsd = localStorage.getItem('usd_rate');
-            if (savedUsd) {
+            if (savedUsd !== null) {
                 document.getElementById('usd-rate-input').value = savedUsd;
             }
             const savedGold = localStorage.getItem('gold_rate');
-            if (savedGold) {
+            if (savedGold !== null) {
                 document.getElementById('gold-rate-input').value = savedGold;
             }
         });
@@ -343,8 +343,8 @@
         function renderDashboard() {
             if (!globalData.device_1 || !globalData.device_2) return;
 
-            const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 70000;
-            const goldRate = parseFloat(document.getElementById('gold-rate-input').value) || 26146200;
+            const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 0;
+            const goldRate = parseFloat(document.getElementById('gold-rate-input').value) || 0;
 
             // --- 1. Grand Totals ---
             let grandDaily = 0;
@@ -361,12 +361,12 @@
             });
 
             const grandDailyUsd = (grandDaily / 100000000) * btcUsd;
-            const grandDailyToman = grandDailyUsd * usdRate;
-            const grandDailyGold = grandDailyToman / goldRate;
+            const grandDailyToman = usdRate > 0 ? grandDailyUsd * usdRate : 0;
+            const grandDailyGold = goldRate > 0 ? grandDailyToman / goldRate : 0;
 
             const grandMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
-            const grandMonthlyToman = grandMonthlyUsd * usdRate;
-            const grandMonthlyGold = grandMonthlyToman / goldRate;
+            const grandMonthlyToman = usdRate > 0 ? grandMonthlyUsd * usdRate : 0;
+            const grandMonthlyGold = goldRate > 0 ? grandMonthlyToman / goldRate : 0;
 
             document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
             document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
@@ -424,12 +424,12 @@
             });
 
             const totalDailyUsd = (totalDaily / 100000000) * btcUsd;
-            const totalDailyToman = totalDailyUsd * usdRate;
-            const totalDailyGold = totalDailyToman / goldRate;
+            const totalDailyToman = usdRate > 0 ? totalDailyUsd * usdRate : 0;
+            const totalDailyGold = goldRate > 0 ? totalDailyToman / goldRate : 0;
 
             const totalMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
-            const totalMonthlyToman = totalMonthlyUsd * usdRate;
-            const totalMonthlyGold = totalMonthlyToman / goldRate;
+            const totalMonthlyToman = usdRate > 0 ? totalMonthlyUsd * usdRate : 0;
+            const totalMonthlyGold = goldRate > 0 ? totalMonthlyToman / goldRate : 0;
 
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
             document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
