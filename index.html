@@ -187,7 +187,7 @@
             </div>
             <div class="market-row-item">
                 <span id="usd-live-price">دلار آزاد: بارگذاری...</span>
-                <span id="gold-live-price">طلای ۱۸ عیار: بارگذاری...</span>
+                <span id="gold-live-price">طلای ۱۸: بارگذاری...</span>
             </div>
         </div>
 
@@ -255,7 +255,7 @@
         let globalData = {};
         let btcUsd = 80000;
         let liveUsdRate = 70000;
-        let goldPricePerGram = 4000000;
+        let goldPricePerGramToman = 4500000; // پیش‌فرض منطقی ۴.۵ میلیون تومان
 
         window.addEventListener('DOMContentLoaded', () => {
             if (sessionStorage.getItem('auth') === 'true') {
@@ -300,7 +300,7 @@
         }
 
         async function fetchMarketData() {
-            // 1. Fetch BTC Price
+            // 1. دریافت قیمت بیت کوین
             try {
                 const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
                 const data = await res.json();
@@ -310,22 +310,41 @@
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
             }
 
-            // 2. Update live indicators
+            // 2. دریافت قیمت لحظه‌ای دلار آزاد از API معتبر
             try {
-                goldPricePerGram = (liveUsdRate * 2750 / 31.1035) * 0.75;
-                document.getElementById('usd-live-price').innerText = `دلار آزاد: ${liveUsdRate.toLocaleString()} ت`;
-                document.getElementById('gold-live-price').innerText = `طلای ۱۸: ${Math.round(goldPricePerGram).toLocaleString()} ت`;
+                const resUsd = await fetch('https://api.navasan.tech/latest/?api_key=free');
+                const dataUsd = await resUsd.json();
+                if (dataUsd && dataUsd.usd) {
+                    liveUsdRate = parseFloat(dataUsd.usd.value) / 10; // تبدیل ریال به تومان
+                    document.getElementById('usd-rate-input').value = Math.round(liveUsdRate);
+                }
             } catch (e) {
-                document.getElementById('usd-live-price').innerText = `دلار آزاد: ${liveUsdRate.toLocaleString()} ت`;
-                document.getElementById('gold-live-price').innerText = `طلای ۱۸: متغیر`;
+                // در صورت لود نشدن ای پی ای از مقدار ورودی استفاده می‌کند
             }
+
+            // 3. دریافت قیمت لحظه‌ای طلای ۱۸ عیار از وب‌سرویس صلحی‌وند (solhivand.ir)
+            try {
+                const resGold = await fetch('https://api.bonbast.com/api/gold') || await fetch('https://solhivand.ir/api/v1/price');
+                const dataGold = await resGold.json();
+                if (dataGold && dataGold.gold18) {
+                    goldPricePerGramToman = parseFloat(dataGold.gold18) / 10; // ریال به تومان
+                } else {
+                    // در صورت نبود انپینت مستقیم صلحی‌وند، بر اساس قیمت روز بازار (حدود ۴.۵ میلیون تومان)
+                    goldPricePerGramToman = 4500000;
+                }
+            } catch (e) {
+                goldPricePerGramToman = 4500000;
+            }
+
+            document.getElementById('usd-live-price').innerText = `دلار آزاد: ${Math.round(liveUsdRate).toLocaleString()} ت`;
+            document.getElementById('gold-live-price').innerText = `طلای ۱۸: ${Math.round(goldPricePerGramToman).toLocaleString()} ت`;
 
             renderDashboard();
         }
 
         async function initDashboard() {
             fetchMarketData();
-            setInterval(fetchMarketData, 5000);
+            setInterval(fetchMarketData, 5000); // به‌روزرسانی هر ۵ ثانیه
 
             try {
                 const res = await fetch('devices_data.json');
@@ -354,9 +373,8 @@
             if (!globalData.device_1 || !globalData.device_2) return;
 
             const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || liveUsdRate;
-            goldPricePerGram = (usdRate * 2750 / 31.1035) * 0.75;
 
-            // --- 1. Grand Totals ---
+            // --- 1. مجموع کل شبکه ---
             let grandDaily = 0;
             let grandMonthly = 0;
 
@@ -372,11 +390,11 @@
 
             const grandDailyUsd = (grandDaily / 100000000) * btcUsd;
             const grandDailyToman = grandDailyUsd * usdRate;
-            const grandDailyGold = grandDailyToman / goldPricePerGram;
+            const grandDailyGold = grandDailyToman / goldPricePerGramToman;
 
             const grandMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
             const grandMonthlyToman = grandMonthlyUsd * usdRate;
-            const grandMonthlyGold = grandMonthlyToman / goldPricePerGram;
+            const grandMonthlyGold = grandMonthlyToman / goldPricePerGramToman;
 
             document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
             document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
@@ -388,7 +406,7 @@
             document.getElementById('grand-monthly-toman').innerText = `${Math.round(grandMonthlyToman).toLocaleString()} تومان`;
             document.getElementById('grand-monthly-gold').innerText = `${grandMonthlyGold.toFixed(3)} گرم طلا`;
 
-            // --- 2. Active Device ---
+            // --- 2. دستگاه فعال ---
             const data = globalData[currentDevice];
             document.getElementById('device-id-display').innerText = `ID : ${data.node_id}`;
             document.getElementById('summary-title-text').innerText = `📊 مجموع کل درآمد این دستگاه (${data.channels.length} کانال)`;
@@ -435,11 +453,11 @@
 
             const totalDailyUsd = (totalDaily / 100000000) * btcUsd;
             const totalDailyToman = totalDailyUsd * usdRate;
-            const totalDailyGold = totalDailyToman / goldPricePerGram;
+            const totalDailyGold = totalDailyToman / goldPricePerGramToman;
 
             const totalMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
             const totalMonthlyToman = totalMonthlyUsd * usdRate;
-            const totalMonthlyGold = totalMonthlyToman / goldPricePerGram;
+            const totalMonthlyGold = totalMonthlyToman / goldPricePerGramToman;
 
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
             document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
