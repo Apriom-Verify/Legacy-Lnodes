@@ -1,0 +1,15 @@
+{
+    "device_1": [
+        { "name": "Open Node", "status": "On", "dailySats": 1738, "monthlySats": 52153, "claimable": 108, "accruing": 18 },
+        { "name": "Wallet Of Satoshi", "status": "On", "dailySats": 1049, "monthlySats": 31480, "claimable": 66, "accruing": 11 },
+        { "name": "WX Network", "status": "On", "dailySats": 2008, "monthlySats": 60248, "claimable": 0, "accruing": 25 },
+        { "name": "Acinq.1ml", "status": "On", "dailySats": 628, "monthlySats": 18846, "claimable": 39, "accruing": 6 },
+        { "name": "BTC Pay Server", "status": "On", "dailySats": 1879, "monthlySats": 56380, "claimable": 117, "accruing": 20 }
+    ],
+    "device_2": [
+        { "name": "Wallet Of Satoshi", "status": "On", "dailySats": 1239, "monthlySats": 37169, "claimable": 0, "accruing": 15 },
+        { "name": "WX Network", "status": "On", "dailySats": 2008, "monthlySats": 60248, "claimable": 0, "accruing": 25 },
+        { "name": "Acinq.1ml", "status": "On", "dailySats": 677, "monthlySats": 20305, "claimable": 0, "accruing": 8 },
+        { "name": "BTC Pay Server", "status": "On", "dailySats": 1995, "monthlySats": 59862, "claimable": 0, "accruing": 25 }
+    ]
+}
