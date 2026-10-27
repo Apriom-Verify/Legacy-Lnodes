@@ -5,7 +5,7 @@
       {
         "id": 1,
         "name": "Wallet Of Satoshi",
-        "logo": "https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035",
+        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%23f59e0b'/><text x='20' y='25' font-size='13' font-weight='bold' fill='%23000' text-anchor='middle'>WS</text></svg>",
         "status": "On",
         "revenue_per_active_day": 1239,
         "revenue_30_days": 37169,
@@ -14,7 +14,7 @@
       {
         "id": 2,
         "name": "WX Network",
-        "logo": "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=035",
+        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%233b82f6'/><text x='20' y='25' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'>WX</text></svg>",
         "status": "On",
         "revenue_per_active_day": 2008,
         "revenue_30_days": 60248,
@@ -23,7 +23,7 @@
       {
         "id": 3,
         "name": "Acinq.1ml",
-        "logo": "https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035",
+        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%2310b981'/><text x='20' y='25' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'>AC</text></svg>",
         "status": "On",
         "revenue_per_active_day": 1500,
         "revenue_30_days": 45000,
@@ -32,7 +32,7 @@
       {
         "id": 4,
         "name": "BTC Pay Server",
-        "logo": "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=035",
+        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%23f97316'/><text x='20' y='25' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'>BP</text></svg>",
         "status": "On",
         "revenue_per_active_day": 2100,
         "revenue_30_days": 63000,
@@ -46,7 +46,7 @@
       {
         "id": 5,
         "name": "Open Node",
-        "logo": "https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035",
+        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%238b5cf6'/><text x='20' y='25' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'>ON</text></svg>",
         "status": "On",
         "revenue_per_active_day": 1800,
         "revenue_30_days": 54000,
@@ -55,7 +55,7 @@
       {
         "id": 6,
         "name": "Wallet Of Satoshi",
-        "logo": "https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035",
+        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%23f59e0b'/><text x='20' y='25' font-size='13' font-weight='bold' fill='%23000' text-anchor='middle'>WS</text></svg>",
         "status": "On",
         "revenue_per_active_day": 1239,
         "revenue_30_days": 37169,
@@ -64,7 +64,7 @@
       {
         "id": 7,
         "name": "WX Network",
-        "logo": "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=035",
+        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%233b82f6'/><text x='20' y='25' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'>WX</text></svg>",
         "status": "On",
         "revenue_per_active_day": 2008,
         "revenue_30_days": 60248,
@@ -73,7 +73,7 @@
       {
         "id": 8,
         "name": "Acinq.1ml",
-        "logo": "https://cryptologos.cc/logos/lightning-network-ln-logo.png?v=035",
+        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%2310b981'/><text x='20' y='25' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'>AC</text></svg>",
         "status": "On",
         "revenue_per_active_day": 1500,
         "revenue_30_days": 45000,
@@ -82,7 +82,7 @@
       {
         "id": 9,
         "name": "BTC Pay Server",
-        "logo": "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=035",
+        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><circle cx='20' cy='20' r='20' fill='%23f97316'/><text x='20' y='25' font-size='13' font-weight='bold' fill='%23fff' text-anchor='middle'>BP</text></svg>",
         "status": "On",
         "revenue_per_active_day": 2400,
         "revenue_30_days": 72000,
