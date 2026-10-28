@@ -4,6 +4,15 @@
     "channels": [
       {
         "id": "ch1",
+        "name": "Open Node",
+        "url": "https://www.opennode.com",
+        "badge": "Balanced",
+        "price": 759320,
+        "revenue_30_days": 53970,
+        "revenue_per_active_day": 1799
+      },
+      {
+        "id": "ch2",
         "name": "Wallet Of Satoshi",
         "url": "https://www.walletofsatoshi.com",
         "badge": "Balanced",
@@ -12,20 +21,11 @@
         "revenue_per_active_day": 3226
       },
       {
-        "id": "ch2",
-        "name": "Open Node",
-        "url": "https://www.opennode.com",
-        "badge": "High Yield",
-        "price": 472616,
-        "revenue_30_days": 33780,
-        "revenue_per_active_day": 3226
-      },
-      {
         "id": "ch3",
         "name": "WX Network",
         "url": "https://wx.network",
         "badge": "Balanced",
-        "price": 125054,
+        "price": 125000,
         "revenue_30_days": 27000,
         "revenue_per_active_day": 900
       },
@@ -34,7 +34,7 @@
         "name": "Acing.1ml",
         "url": "https://1ml.com",
         "badge": "High Yield",
-        "price": 350030,
+        "price": 350000,
         "revenue_30_days": 60000,
         "revenue_per_active_day": 2000
       }
@@ -57,18 +57,18 @@
         "name": "Wallet Of Satoshi",
         "url": "https://www.walletofsatoshi.com",
         "badge": "Balanced",
-        "price": 246808,
-        "revenue_30_days": 23190,
-        "revenue_per_active_day": 773
+        "price": 472650,
+        "revenue_30_days": 33780,
+        "revenue_per_active_day": 3226
       },
       {
         "id": "ch7",
         "name": "Open Node",
         "url": "https://www.opennode.com",
         "badge": "Balanced",
-        "price": 300000,
-        "revenue_30_days": 36000,
-        "revenue_per_active_day": 1200
+        "price": 759320,
+        "revenue_30_days": 53970,
+        "revenue_per_active_day": 1799
       },
       {
         "id": "ch8",
