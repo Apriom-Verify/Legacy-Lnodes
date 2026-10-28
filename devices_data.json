@@ -6,33 +6,37 @@
         "id": "ch1",
         "name": "Wallet Of Satoshi",
         "url": "https://www.walletofsatoshi.com",
-        "revenue_per_active_day": 1250,
-        "revenue_30_days": 37500,
-        "claimable": 498
+        "badge": "Balanced",
+        "price": 246825,
+        "revenue_30_days": 23190,
+        "revenue_per_active_day": 773
       },
       {
         "id": "ch2",
         "name": "Open Node",
         "url": "https://www.opennode.com",
-        "revenue_per_active_day": 1500,
-        "revenue_30_days": 45000,
-        "claimable": 648
+        "badge": "High Yield",
+        "price": 1434228,
+        "revenue_30_days": 147930,
+        "revenue_per_active_day": 4931
       },
       {
         "id": "ch3",
         "name": "WX Network",
         "url": "https://wx.network",
-        "revenue_per_active_day": 900,
+        "badge": "Balanced",
+        "price": 125000,
         "revenue_30_days": 27000,
-        "claimable": 348
+        "revenue_per_active_day": 900
       },
       {
         "id": "ch4",
         "name": "Acing.1ml",
         "url": "https://1ml.com",
-        "revenue_per_active_day": 2000,
+        "badge": "High Yield",
+        "price": 350000,
         "revenue_30_days": 60000,
-        "claimable": 898
+        "revenue_per_active_day": 2000
       }
     ]
   },
@@ -43,41 +47,46 @@
         "id": "ch5",
         "name": "BTC Pay Server",
         "url": "https://btcpayserver.org",
-        "revenue_per_active_day": 1100,
+        "badge": "High Yield",
+        "price": 450000,
         "revenue_30_days": 33000,
-        "claimable": 437
+        "revenue_per_active_day": 1100
       },
       {
         "id": "ch6",
         "name": "Wallet Of Satoshi",
         "url": "https://www.walletofsatoshi.com",
-        "revenue_per_active_day": 1000,
+        "badge": "Balanced",
+        "price": 200000,
         "revenue_30_days": 30000,
-        "claimable": 220
+        "revenue_per_active_day": 1000
       },
       {
         "id": "ch7",
         "name": "Open Node",
         "url": "https://www.opennode.com",
-        "revenue_per_active_day": 1200,
+        "badge": "Balanced",
+        "price": 300000,
         "revenue_30_days": 36000,
-        "claimable": 330
+        "revenue_per_active_day": 1200
       },
       {
         "id": "ch8",
         "name": "WX Network",
         "url": "https://wx.network",
-        "revenue_per_active_day": 850,
+        "badge": "Low Risk",
+        "price": 180000,
         "revenue_30_days": 25500,
-        "claimable": 210
+        "revenue_per_active_day": 850
       },
       {
         "id": "ch9",
         "name": "Acing.1ml",
         "url": "https://1ml.com",
-        "revenue_per_active_day": 1800,
+        "badge": "High Yield",
+        "price": 500000,
         "revenue_30_days": 54000,
-        "claimable": 520
+        "revenue_per_active_day": 1800
       }
     ]
   }
