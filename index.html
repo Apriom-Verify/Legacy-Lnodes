@@ -233,15 +233,23 @@
         .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .channel-info { display: flex; align-items: center; gap: 10px; }
         
-        .channel-logo { 
-            width: 40px; 
-            height: 40px; 
-            border-radius: 10px; 
-            object-fit: contain; 
-            padding: 8px;
-            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-            box-shadow: 0 4px 10px rgba(0, 210, 255, 0.3);
-            border: 1px solid var(--border-color);
+        /* استایل دقیقاً مشابه نمونه تصاویر ارسالی شما (مربع گرد با گرادانت آبی) */
+        .channel-icon-box { 
+            width: 44px; 
+            height: 44px; 
+            border-radius: 12px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            box-shadow: 0 4px 14px rgba(0, 114, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            flex-shrink: 0;
+        }
+        .channel-icon-box svg {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
         }
 
         .channel-name { font-size: 1rem; font-weight: bold; color: var(--text-main); }
@@ -364,6 +372,15 @@
         let xauUsd = 4057.36;
         let xagUsd = 54.31;
         let goldPerGramToman = 0;
+
+        // نقشه آیکون‌های وکتور اختصاصی (مطابق نمونه‌های شما)
+        const iconSVGMap = {
+            "Open Node": `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#ffffff" stroke-width="2"/><line x1="8" y1="9" x2="16" y2="9" stroke="#ffffff" stroke-width="2"/><line x1="7" y1="12" x2="17" y2="12" stroke="#ffffff" stroke-width="2"/><line x1="8" y1="15" x2="16" y2="15" stroke="#ffffff" stroke-width="2"/><line x1="12" y1="6" x2="12" y2="18" stroke="#ffffff" stroke-width="2"/></svg>`,
+            "Wallet Of Satoshi": `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffb703"/></svg>`,
+            "WX Network": `<svg viewBox="0 0 24 24"><path d="M6 4h12l-6 8 6 8H6l6-8-6-8z" fill="#ffffff"/></svg>`,
+            "Acing.1ml": `<svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(90 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(150 12 12)"/></svg>`,
+            "BTC Pay Server": `<svg viewBox="0 0 24 24"><path d="M7 4h6a4 4 0 0 1 0 8H7V4zm0 8h7a4 4 0 0 1 0 8H7v-8z" fill="none" stroke="#ffffff" stroke-width="2.2"/><line x1="10" y1="2" x2="10" y2="22" stroke="#ffffff" stroke-width="2"/></svg>`
+        };
 
         window.addEventListener('DOMContentLoaded', () => {
             if (sessionStorage.getItem('auth') === 'true') {
@@ -511,7 +528,7 @@
 
             const grandMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
             const grandMonthlyToman = usdRate > 0 ? grandMonthlyUsd * usdRate : 0;
-            const grandMonthlyGold = goldPerGramToman > 0 ? grandMonthlyToman / goldPerGramToman : 0;
+            const grandMonthlyGold = goldPerGramToman > 0 ? grandMonthlyGold / goldPerGramToman : 0;
 
             document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
             document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
@@ -534,7 +551,7 @@
             let totalMonthly = 0;
             let html = '';
 
-            // 1. رندر کردن کانال‌های فعال و اعمال رویداد کلیک مستقیم برای رفتن به سایت
+            // 1. رندر کردن کانال‌های فعال همراه با آیکون‌های وکتور اختصاصی
             if (data.channels) {
                 data.channels.forEach((ch, index) => {
                     totalDaily += ch.revenue_per_active_day;
@@ -543,12 +560,17 @@
                     const dailyUsd = (ch.revenue_per_active_day / 100000000) * btcUsd;
                     const monthlyUsd = (ch.revenue_30_days / 100000000) * btcUsd;
                     const channelUrl = ch.url || 'https://lightning.network';
+                    
+                    // دریافت آیکون SVG اختصاصی
+                    const iconSVG = iconSVGMap[ch.name] || `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg>`;
 
                     html += `
                         <div class="channel-card" onclick="window.open('${channelUrl}', '_blank')">
                             <div class="channel-header">
                                 <div class="channel-info">
-                                    <img src="${ch.logo}" class="channel-logo" alt="logo" onerror="this.src='IMG_0689.jpeg'">
+                                    <div class="channel-icon-box">
+                                        ${iconSVG}
+                                    </div>
                                     <span class="channel-name">${ch.name}</span>
                                 </div>
                                 <span class="channel-index">#${index + 1}</span>
