@@ -184,12 +184,12 @@
             <span>⚡</span>
         </div>
 
-        <!-- Market & Status Bar (Live BTC every 30s) -->
+        <!-- Market & Status Bar -->
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
-            <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: $4,057.36</div>
-            <div id="silver-spot-price" style="color: var(--silver-color);">انس نقره: $54.31</div>
-            <div><span class="live-dot"></span> بیت‌کوین زنده (۳۰ ثانیه)</div>
+            <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: بارگذاری...</div>
+            <div id="silver-spot-price" style="color: var(--silver-color);">انس نقره: بارگذاری...</div>
+            <div><span class="live-dot"></span> آپدیت هوشمند</div>
         </div>
 
         <!-- Device Switcher -->
@@ -304,6 +304,7 @@
             });
         }
 
+        // 1. آپدیت لحظه‌ای بیت‌کوین هر ۳۰ ثانیه
         async function fetchBtcPrice() {
             try {
                 const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
@@ -316,9 +317,38 @@
             renderDashboard();
         }
 
+        // 2. آپدیت انس طلا و نقره جهانی هر ۳۰ دقیقه یک‌بار (بدون سنگین شدن سایت)
+        async function fetchGlobalMetals() {
+            try {
+                const resGold = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAU-USD-SPOT');
+                const goldData = await resGold.json();
+                if (goldData && goldData.symbols && goldData.symbols[0]) {
+                    xauUsd = parseFloat(goldData.symbols[0].price);
+                }
+            } catch (e) {}
+
+            try {
+                const resSilver = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAG-USD-SPOT');
+                const silverData = await resSilver.json();
+                if (silverData && silverData.symbols && silverData.symbols[0]) {
+                    xagUsd = parseFloat(silverData.symbols[0].price);
+                }
+            } catch (e) {}
+
+            document.getElementById('gold-spot-price').innerText = `انس طلا: $${xauUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('silver-spot-price').innerText = `انس نقره: $${xagUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            renderDashboard();
+        }
+
         async function initDashboard() {
+            // بارگذاری اولیه بازارها
             fetchBtcPrice();
-            setInterval(fetchBtcPrice, 30000); // به‌روزرسانی اتوماتیک بیت‌کوین هر ۳۰ ثانیه
+            fetchGlobalMetals();
+
+            // تنظیم تایمرها: بیت‌کوین هر ۳۰ ثانیه، انس طلا و نقره هر ۳۰ دقیقه (۱۸۰۰۰۰۰ میلی‌ثانیه)
+            setInterval(fetchBtcPrice, 30000);
+            setInterval(fetchGlobalMetals, 1800000);
 
             try {
                 const res = await fetch('devices_data.json');
@@ -440,7 +470,7 @@
 
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
             document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
-            document.getElementById('total-daily-toman').innerText = `${Math.round(totalDailyToman).toLocaleString()} تومان`;
+            document.getElementById('total-daily-toman').innerText = `${Math.round(totalMonthlyToman).toLocaleString()} تومان`;
             document.getElementById('total-daily-gold').innerText = `${totalDailyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('total-monthly-sats').innerText = `sats ${totalMonthly.toLocaleString()}`;
