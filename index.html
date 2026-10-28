@@ -264,14 +264,6 @@
             font-size: 1.1rem;
         }
 
-        .detail-link {
-            color: #60a5fa;
-            font-size: 0.85rem;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .detail-link:hover { text-decoration: underline; }
-
         .data-row {
             display: flex;
             justify-content: space-between;
@@ -515,7 +507,7 @@
                 const res = await fetch('devices_data.json');
                 globalData = await res.json();
                 renderDashboard();
-                // آپدیت زنده و همراه با تغییر رنگ لحظه‌ای (سبز و قرمز) هر ۱.۸ ثانیه
+                // نوسان زنده قیمت‌ها همراه با تغییر رنگ لحظه‌ای (سبز و قرمز)
                 setInterval(simulateLiveFluctuation, 1800);
             } catch (e) {
                 console.error("Error loading data", e);
@@ -528,7 +520,7 @@
                 const dev = globalData[devKey];
                 if (dev && dev.channels) {
                     dev.channels.forEach(ch => {
-                        const delta = Math.floor(Math.random() * 31) - 15; // نوسان بین -15 تا +15
+                        const delta = Math.floor(Math.random() * 31) - 15;
                         ch.oldPrice = ch.price;
                         ch.price = Math.max(1000, ch.price + delta);
                         ch.trend = ch.price >= ch.oldPrice ? 'up' : 'down';
@@ -610,7 +602,7 @@
                     const channelUrl = ch.url || 'https://lightning.network';
                     const iconSVG = iconSVGMap[ch.name] || `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg>`;
 
-                    // تعیین رنگ زنده بر اساس جهت تغییر قیمت (سبز برای افزایش، قرمز برای کاهش)
+                    // رنگ زنده برای قیمت (سبز هنگام افزایش، قرمز هنگام کاهش)
                     const priceColor = ch.trend === 'down' ? '#f87171' : '#34d399';
 
                     html += `
@@ -622,10 +614,7 @@
                                     </div>
                                     <span class="channel-name">${ch.name}</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <div class="channel-badge">${ch.badge || 'High Yield'}</div>
-                                    <a href="${channelUrl}" target="_blank" class="detail-link" onclick="event.stopPropagation();">Detail</a>
-                                </div>
+                                <div class="channel-badge">${ch.badge || 'High Yield'}</div>
                             </div>
                             
                             <div class="data-row">
