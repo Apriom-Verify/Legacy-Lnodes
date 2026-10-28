@@ -232,7 +232,18 @@
         
         .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .channel-info { display: flex; align-items: center; gap: 10px; }
-        .channel-logo { width: 36px; height: 36px; border-radius: 9px; object-fit: cover; border: 1px solid var(--border-color); background: #1f293d; }
+        
+        .channel-logo { 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 10px; 
+            object-fit: contain; 
+            padding: 8px;
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            box-shadow: 0 4px 10px rgba(0, 210, 255, 0.3);
+            border: 1px solid var(--border-color);
+        }
+
         .channel-name { font-size: 1rem; font-weight: bold; color: var(--text-main); }
         .channel-index { color: var(--accent-color); font-size: 0.9rem; font-weight: bold; }
         
