@@ -16,7 +16,6 @@
             --text-muted: #94a3b8;
             --success: #22c55e;
             --gold-color: #eab308;
-            --silver-color: #94a3b8;
             --border-color: rgba(99, 102, 241, 0.25);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; }
@@ -141,7 +140,7 @@
         .developer-info { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: bold; }
         .profile-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
         
-        .market-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 14px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap; gap: 10px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
+        .market-bar { display: flex; justify-content: space-around; align-items: center; background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 14px; margin-bottom: 15px; font-size: 0.9rem; color: var(--text-muted); flex-wrap: wrap; gap: 10px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
         .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--success); }
 
         /* Device Tabs & ID info */
@@ -277,7 +276,7 @@
     </div>
 
     <div class="container">
-        <!-- Date & Time Bar (Windows Style: Day Name, Date, Time) -->
+        <!-- Date & Time Bar -->
         <div class="datetime-bar">
             <span id="current-day-name">بارگذاری...</span>
             <span id="current-date">بارگذاری...</span>
@@ -295,12 +294,11 @@
             <span>⚡</span>
         </div>
 
-        <!-- Market & Status Bar -->
+        <!-- Market & Status Bar (Only BTC & Gold Spot) -->
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
             <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: بارگذاری...</div>
-            <div id="silver-spot-price" style="color: var(--silver-color);">انس نقره: بارگذاری...</div>
-            <div><span class="live-dot"></span> آپدیت زنده</div>
+            <div><span class="live-dot"></span> آپدیت هوشمند</div>
         </div>
 
         <!-- Device Switcher -->
@@ -371,7 +369,6 @@
         let globalData = {};
         let btcUsd = 80000;
         let xauUsd = 4057.36;
-        let xagUsd = 54.31;
         let goldPerGramToman = 0;
 
         const iconSVGMap = {
@@ -397,7 +394,6 @@
 
         function updateDateTime() {
             const now = new Date();
-            // فرمت مشابه ویندوز (مثلا: چهارشنبه، ۶ آبان ۱۴۰۴)
             const optionsWeekday = { weekday: 'long', calendar: 'persian' };
             const optionsDate = { year: 'numeric', month: 'numeric', day: 'numeric', calendar: 'persian' };
             const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
@@ -448,35 +444,39 @@
             renderDashboard();
         }
 
-        async function fetchGlobalMetals() {
-            try {
-                const resGold = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAU-USD-SPOT');
-                const goldData = await resGold.json();
-                if (goldData && goldData.symbols && goldData.symbols[0]) {
-                    xauUsd = parseFloat(goldData.symbols[0].price);
-                }
-            } catch (e) {}
+        // سیستم هوشمند دریافت انس طلا هر ۱۵ دقیقه واقعی با ذخیره در حافظه مرورگر
+        async function fetchGoldPrice() {
+            const nowTime = new Date().getTime();
+            const savedGoldTime = localStorage.getItem('last_gold_fetch');
+            const savedGoldPrice = localStorage.getItem('cached_gold_price');
 
-            try {
-                const resSilver = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAG-USD-SPOT');
-                const silverData = await resSilver.json();
-                if (silverData && silverData.symbols && silverData.symbols[0]) {
-                    xagUsd = parseFloat(silverData.symbols[0].price);
+            // اگر ۱۵ دقیقه (۹۰۰۰۰۰ میلی‌ثانیه) نگذشته باشد و قیمت ذخیره شده وجود داشته باشد، از آن استفاده می‌کند
+            if (savedGoldTime && savedGoldPrice && (nowTime - parseInt(savedGoldTime) < 900000)) {
+                xauUsd = parseFloat(savedGoldPrice);
+            } else {
+                try {
+                    const resGold = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAU-USD-SPOT');
+                    const goldData = await resGold.json();
+                    if (goldData && goldData.symbols && goldData.symbols[0]) {
+                        xauUsd = parseFloat(goldData.symbols[0].price);
+                        localStorage.setItem('cached_gold_price', xauUsd);
+                        localStorage.setItem('last_gold_fetch', nowTime);
+                    }
+                } catch (e) {
+                    if (savedGoldPrice) xauUsd = parseFloat(savedGoldPrice);
                 }
-            } catch (e) {}
+            }
 
             document.getElementById('gold-spot-price').innerText = `انس طلا: $${xauUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            document.getElementById('silver-spot-price').innerText = `انس نقره: $${xagUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
-            
             renderDashboard();
         }
 
         async function initDashboard() {
             fetchBtcPrice();
-            fetchGlobalMetals();
+            fetchGoldPrice();
 
-            setInterval(fetchBtcPrice, 30000);
-            setInterval(fetchGlobalMetals, 1800000);
+            setInterval(fetchBtcPrice, 30000); // آپدیت بیت‌کوین هر ۳۰ ثانیه
+            setInterval(fetchGoldPrice, 60000);  // بررسی زمان هر ۱ دقیقه برای اجرای دقیق در بازه ۱۵ دقیقه‌ای
 
             try {
                 const res = await fetch('devices_data.json');
