@@ -1,6 +1,6 @@
 {
   "device_1": {
-    "node_id": "950B-3100-99",
+    "node_id": "9508310099",
     "channels": [
       {
         "id": "ch1",
@@ -37,7 +37,7 @@
     ]
   },
   "device_2": {
-    "node_id": "840A-1100-88",
+    "node_id": "8225851045",
     "channels": [
       {
         "id": "ch5",
