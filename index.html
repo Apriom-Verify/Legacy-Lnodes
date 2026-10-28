@@ -260,8 +260,8 @@
         let currentDevice = 'device_1';
         let globalData = {};
         let btcUsd = 80000;
-        let xauUsd = 2750; // قیمت پیش‌فرض انس طلا
-        let xagUsd = 32;   // قیمت پیش‌فرض انس نقره
+        let xauUsd = 4057.36; // قیمت به‌روز انس طلا
+        let xagUsd = 54.31;   // قیمت به‌روز انس نقره
         let goldPerGramToman = 0;
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -323,7 +323,7 @@
                     xauUsd = parseFloat(metalData.symbols[0].price);
                 }
             } catch (e) {
-                // مقدار پیش‌فرض در صورت عدم دسترسی
+                // استفاده از مقدار به‌روز در صورت عدم دسترسی
             }
 
             document.getElementById('gold-spot-price').innerText = `انس طلا (XAU): $${xauUsd.toLocaleString()}`;
