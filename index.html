@@ -188,7 +188,7 @@
         /* Channel Grid */
         #channels-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
 
-        /* Channel Card & Link */
+        /* Channel Card & Link Styling */
         .channel-card { 
             background: var(--card-bg); 
             backdrop-filter: blur(10px); 
@@ -213,7 +213,7 @@
         /* Coming Soon Card Style */
         .channel-card.coming-soon {
             background: rgba(11, 15, 25, 0.35);
-            border: 1px dashed rgba(148, 163, 184, 0.2);
+            border: 1px dashed rgba(148, 163, 184, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -226,7 +226,7 @@
         }
         .channel-card.coming-soon:hover {
             transform: none;
-            border-color: rgba(148, 163, 184, 0.2);
+            border-color: rgba(148, 163, 184, 0.25);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         
@@ -500,7 +500,7 @@
 
             const grandMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
             const grandMonthlyToman = usdRate > 0 ? grandMonthlyUsd * usdRate : 0;
-            const grandMonthlyGold = goldPerGramToman > 0 ? grandMonthlyGold / goldPerGramToman : 0;
+            const grandMonthlyGold = goldPerGramToman > 0 ? grandMonthlyToman / goldPerGramToman : 0;
 
             document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
             document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
@@ -523,7 +523,7 @@
             let totalMonthly = 0;
             let html = '';
 
-            // 1. رندر کردن کانال‌های فعال
+            // 1. رندر کردن کانال‌های فعال و اعمال رویداد کلیک مستقیم برای رفتن به سایت
             if (data.channels) {
                 data.channels.forEach((ch, index) => {
                     totalDaily += ch.revenue_per_active_day;
@@ -563,8 +563,9 @@
                 });
             }
 
-            // 2. تکمیل ظرفیت شبکه تا ۱۰ جایگاه با برچسب Coming Soon
-            const remainingSlots = 10 - activeChannelsCount;
+            // 2. تکمیل ظرفیت شبکه تا دقیقاً ۱۰ جایگاه با کارت Coming Soon
+            const totalSlots = 10;
+            const remainingSlots = totalSlots - activeChannelsCount;
             for (let i = 0; i < remainingSlots; i++) {
                 const slotIndex = activeChannelsCount + i + 1;
                 html += `
@@ -580,7 +581,7 @@
 
             const totalMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
             const totalMonthlyToman = usdRate > 0 ? totalMonthlyUsd * usdRate : 0;
-            const totalMonthlyGold = goldPerGramToman > 0 ? totalMonthlyGold / goldPerGramToman : 0;
+            const totalMonthlyGold = goldPerGramToman > 0 ? totalMonthlyToman / goldPerGramToman : 0;
 
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
             document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
