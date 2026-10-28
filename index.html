@@ -260,8 +260,8 @@
         let currentDevice = 'device_1';
         let globalData = {};
         let btcUsd = 80000;
-        let xauUsd = 4057; // مقدار پیش‌فرض اولیه
-        let xagUsd = 54.31; // مقدار پیش‌فرض اولیه
+        let xauUsd = 4057.36;
+        let xagUsd = 54.31;
         let goldPerGramToman = 0;
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -287,7 +287,7 @@
         }
 
         function saveUsdRate() {
-            const usdRate = document.getElementById('usd-rate-input'].value;
+            const usdRate = document.getElementById('usd-rate-input').value;
             localStorage.setItem('usd_rate', usdRate);
             renderDashboard();
         }
@@ -305,27 +305,35 @@
         }
 
         async function fetchMarketData() {
-            // 1. دریافت قیمت بیت کوین
+            // 1. دریافت قیمت بیت‌کوین (با سیستم Timeout ایمن برای جلوگیری از فریز شدن)
             try {
-                const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 4000);
+                const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json', { signal: controller.signal });
+                clearTimeout(timeoutId);
                 const data = await res.json();
                 btcUsd = data.bpi.USD.rate_float;
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString(undefined, {maximumFractionDigits:0})}`;
-            } catch (e) {
-                document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
-            }
+            } catch (e) {}
 
-            // 2. دریافت قیمت لحظه‌ای انس طلا و نقره به صورت خودکار هر ۳۰ ثانیه
+            // 2. دریافت قیمت لحظه‌ای انس طلا به صورت خودکار هر ۳۰ ثانیه
             try {
-                const resGold = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAU-USD-SPOT');
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 4000);
+                const resGold = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAU-USD-SPOT', { signal: controller.signal });
+                clearTimeout(timeoutId);
                 const goldData = await resGold.json();
                 if (goldData && goldData.symbols && goldData.symbols[0]) {
                     xauUsd = parseFloat(goldData.symbols[0].price);
                 }
             } catch (e) {}
 
+            // 3. دریافت قیمت لحظه‌ای انس نقره به صورت خودکار هر ۳۰ ثانیه
             try {
-                const resSilver = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAG-USD-SPOT');
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 4000);
+                const resSilver = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAG-USD-SPOT', { signal: controller.signal });
+                clearTimeout(timeoutId);
                 const silverData = await resSilver.json();
                 if (silverData && silverData.symbols && silverData.symbols[0]) {
                     xagUsd = parseFloat(silverData.symbols[0].price);
@@ -340,7 +348,7 @@
 
         async function initDashboard() {
             fetchMarketData();
-            setInterval(fetchMarketData, 30000); // هر ۳۰ ثانیه آپدیت اتوماتیک
+            setInterval(fetchMarketData, 30000); // اجرای خودکار هر ۳۰ ثانیه برای تمام بازارها
 
             try {
                 const res = await fetch('devices_data.json');
@@ -370,7 +378,6 @@
 
             const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 0;
             if (usdRate > 0) {
-                // محاسبه اتوماتیک قیمت هر گرم طلای ۱۸ عیار بر اساس انس جهانی زنده و دلار کاربر
                 goldPerGramToman = (xauUsd / 31.1035) * 0.75 * usdRate;
             } else {
                 goldPerGramToman = 0;
