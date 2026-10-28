@@ -19,8 +19,10 @@
             --border-color: #1f293d;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); padding: 15px; display: flex; justify-content: center; }
-        .container { width: 100%; max-width: 480px; }
+        body { background-color: var(--bg-color); color: var(--text-main); padding: 20px; display: flex; justify-content: center; }
+        
+        /* تغییر اندازه کانتینر برای نمایش زیبا در کامپیوتر و موبایل */
+        .container { width: 100%; max-width: 900px; }
         
         /* Login Screen */
         #login-screen {
@@ -29,9 +31,10 @@
         }
         .login-box { 
             background: var(--card-bg); 
-            padding: 35px 20px; 
+            padding: 40px 30px; 
             border-radius: 20px; 
             width: 100%; 
+            max-width: 420px;
             text-align: center; 
             border: 1px solid var(--accent-color); 
             box-shadow: 0 0 30px rgba(245, 158, 11, 0.2); 
@@ -79,7 +82,7 @@
         }
 
         /* Header & Profile */
-        .main-title { font-size: 1.15rem; font-weight: bold; color: var(--accent-color); display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 12px; }
+        .main-title { font-size: 1.3rem; font-weight: bold; color: var(--accent-color); display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 15px; }
         
         .developer-badge { 
             display: flex; 
@@ -87,30 +90,30 @@
             justify-content: space-between; 
             background: var(--card-bg); 
             border: 1px solid var(--border-color); 
-            padding: 10px 15px; 
+            padding: 12px 20px; 
             border-radius: 12px; 
-            margin-bottom: 12px; 
+            margin-bottom: 15px; 
             direction: ltr;
         }
-        .developer-info { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: var(--text-main); font-weight: bold; }
-        .profile-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); }
+        .developer-info { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: bold; }
+        .profile-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); }
         
-        .market-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 12px; margin-bottom: 12px; font-size: 0.8rem; color: var(--text-muted); }
+        .market-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 12px; margin-bottom: 15px; font-size: 0.9rem; color: var(--text-muted); }
         .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--success); }
 
         /* Device Tabs & ID info */
-        .device-tabs { display: flex; gap: 10px; margin-bottom: 8px; }
-        .tab-btn { flex: 1; padding: 10px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 0.85rem; text-align: center; transition: 0.3s; }
+        .device-tabs { display: flex; gap: 12px; margin-bottom: 10px; }
+        .tab-btn { flex: 1; padding: 12px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 0.95rem; text-align: center; transition: 0.3s; }
         .tab-btn.active { background: var(--accent-color); color: #000; border-color: var(--accent-color); }
         
         .device-id-box { 
             background: var(--card-bg); 
             border: 1px solid var(--border-color); 
-            padding: 9px; 
+            padding: 12px; 
             border-radius: 10px; 
-            margin-bottom: 12px; 
+            margin-bottom: 15px; 
             text-align: center; 
-            font-size: 0.8rem; 
+            font-size: 0.9rem; 
             color: var(--accent-color); 
             font-weight: bold; 
             cursor: pointer; 
@@ -119,17 +122,18 @@
         .device-id-box:active { background: #1f293d; transform: scale(0.99); }
 
         /* Summary Card */
-        .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 15px; margin-bottom: 15px; text-align: center; }
-        .summary-title { font-size: 0.9rem; color: var(--accent-color); margin-bottom: 10px; font-weight: bold; }
-        .rate-box { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; font-size: 0.8rem; background: var(--bg-color); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-color); color: var(--text-muted); }
-        .rate-box input { width: 140px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 5px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.9rem; outline: none; }
+        .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; margin-bottom: 15px; text-align: center; }
+        .summary-title { font-size: 1rem; color: var(--accent-color); margin-bottom: 12px; font-weight: bold; }
+        .rate-box-container { display: flex; gap: 15px; justify-content: center; margin-bottom: 15px; flex-wrap: wrap; }
+        .rate-box { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.85rem; background: var(--bg-color); padding: 8px 15px; border-radius: 10px; border: 1px solid var(--border-color); color: var(--text-muted); flex: 1; min-width: 220px; }
+        .rate-box input { width: 130px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--accent-color); padding: 6px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.95rem; outline: none; }
         
-        .summary-grid { display: flex; gap: 10px; }
-        .summary-box { flex: 1; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; }
-        .summary-box-title { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; }
-        .sats-val { font-size: 0.95rem; font-weight: bold; color: var(--success); margin-bottom: 2px; }
-        .sub-val { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
-        .gold-val { font-size: 0.75rem; font-weight: bold; color: var(--gold-color); margin-top: 3px; }
+        .summary-grid { display: flex; gap: 15px; flex-wrap: wrap; }
+        .summary-box { flex: 1; min-width: 200px; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 15px; text-align: center; }
+        .summary-box-title { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+        .sats-val { font-size: 1.1rem; font-weight: bold; color: var(--success); margin-bottom: 4px; }
+        .sub-val { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+        .gold-val { font-size: 0.8rem; font-weight: bold; color: var(--gold-color); margin-top: 4px; }
 
         .grand-total-card { border: 1px solid var(--accent-color); background: linear-gradient(145deg, #111827 0%, #1f293d 100%); }
 
@@ -137,20 +141,23 @@
         .fade-in { animation: fadeIn 0.35s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* Channel Grid for Desktop */
+        #channels-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+
         /* Channel Card */
-        .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
-        .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+        .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .channel-info { display: flex; align-items: center; gap: 10px; }
-        .channel-logo { width: 34px; height: 34px; border-radius: 9px; object-fit: cover; }
-        .channel-name { font-size: 0.95rem; font-weight: bold; color: var(--text-main); }
-        .channel-index { color: var(--accent-color); font-size: 0.85rem; font-weight: bold; }
+        .channel-logo { width: 36px; height: 36px; border-radius: 9px; object-fit: cover; }
+        .channel-name { font-size: 1rem; font-weight: bold; color: var(--text-main); }
+        .channel-index { color: var(--accent-color); font-size: 0.9rem; font-weight: bold; }
         
-        .metric-row { display: flex; gap: 8px; margin-bottom: 8px; }
-        .metric-box { flex: 1; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; }
-        .metric-box-full { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; width: 100%; }
-        .metric-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 4px; }
-        .metric-val { font-size: 0.85rem; font-weight: bold; color: var(--success); }
-        .metric-sub { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+        .metric-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .metric-box { flex: 1; background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; text-align: center; }
+        .metric-box-full { background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; text-align: center; width: 100%; }
+        .metric-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 5px; }
+        .metric-val { font-size: 0.95rem; font-weight: bold; color: var(--success); }
+        .metric-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
     </style>
 </head>
 <body>
@@ -198,13 +205,15 @@
             <div class="summary-title" id="summary-title-text">📊 مجموع کل درآمد این دستگاه</div>
             
             <!-- Manual Inputs for USD and Gold Rates -->
-            <div class="rate-box">
-                <span>نرخ دلار (تومان):</span>
-                <input type="number" id="usd-rate-input" value="0" placeholder="0" oninput="saveRates()">
-            </div>
-            <div class="rate-box">
-                <span>قیمت طلا (تومان):</span>
-                <input type="number" id="gold-rate-input" value="0" placeholder="0" oninput="saveRates()">
+            <div class="rate-box-container">
+                <div class="rate-box">
+                    <span>نرخ دلار (تومان):</span>
+                    <input type="number" id="usd-rate-input" value="0" placeholder="0" oninput="saveRates()">
+                </div>
+                <div class="rate-box">
+                    <span>قیمت طلا (تومان):</span>
+                    <input type="number" id="gold-rate-input" value="0" placeholder="0" oninput="saveRates()">
+                </div>
             </div>
 
             <div class="summary-grid">
