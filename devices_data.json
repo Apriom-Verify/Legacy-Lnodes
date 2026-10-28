@@ -5,38 +5,34 @@
       {
         "id": "ch1",
         "name": "Wallet Of Satoshi",
-        "logo": "https://api.iconify.design/ion:flash.svg?color=%23ffffff",
         "url": "https://www.walletofsatoshi.com",
         "revenue_per_active_day": 1250,
         "revenue_30_days": 37500,
-        "claimable": 474
+        "claimable": 498
       },
       {
         "id": "ch2",
         "name": "Open Node",
-        "logo": "https://api.iconify.design/fluent:stack-24-filled.svg?color=%23ffffff",
         "url": "https://www.opennode.com",
         "revenue_per_active_day": 1500,
         "revenue_30_days": 45000,
-        "claimable": 624
+        "claimable": 648
       },
       {
         "id": "ch3",
         "name": "WX Network",
-        "logo": "https://api.iconify.design/ph:hourglass-high-bold.svg?color=%23ffffff",
         "url": "https://wx.network",
         "revenue_per_active_day": 900,
         "revenue_30_days": 27000,
-        "claimable": 324
+        "claimable": 348
       },
       {
         "id": "ch4",
         "name": "Acing.1ml",
-        "logo": "https://api.iconify.design/fluent-emoji-high-contrast:atom-symbol.svg?color=%23ffffff",
         "url": "https://1ml.com",
         "revenue_per_active_day": 2000,
         "revenue_30_days": 60000,
-        "claimable": 874
+        "claimable": 898
       }
     ]
   },
@@ -46,7 +42,6 @@
       {
         "id": "ch5",
         "name": "BTC Pay Server",
-        "logo": "https://api.iconify.design/tabler:letter-b.svg?color=%23ffffff",
         "url": "https://btcpayserver.org",
         "revenue_per_active_day": 1100,
         "revenue_30_days": 33000,
@@ -55,7 +50,6 @@
       {
         "id": "ch6",
         "name": "Wallet Of Satoshi",
-        "logo": "https://api.iconify.design/ion:flash.svg?color=%23ffffff",
         "url": "https://www.walletofsatoshi.com",
         "revenue_per_active_day": 1000,
         "revenue_30_days": 30000,
@@ -64,7 +58,6 @@
       {
         "id": "ch7",
         "name": "Open Node",
-        "logo": "https://api.iconify.design/fluent:stack-24-filled.svg?color=%23ffffff",
         "url": "https://www.opennode.com",
         "revenue_per_active_day": 1200,
         "revenue_30_days": 36000,
@@ -73,7 +66,6 @@
       {
         "id": "ch8",
         "name": "WX Network",
-        "logo": "https://api.iconify.design/ph:hourglass-high-bold.svg?color=%23ffffff",
         "url": "https://wx.network",
         "revenue_per_active_day": 850,
         "revenue_30_days": 25500,
@@ -82,7 +74,6 @@
       {
         "id": "ch9",
         "name": "Acing.1ml",
-        "logo": "https://api.iconify.design/fluent-emoji-high-contrast:atom-symbol.svg?color=%23ffffff",
         "url": "https://1ml.com",
         "revenue_per_active_day": 1800,
         "revenue_30_days": 54000,
