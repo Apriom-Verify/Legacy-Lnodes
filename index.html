@@ -16,12 +16,11 @@
             --text-muted: #94a3b8;
             --success: #22c55e;
             --gold-color: #eab308;
+            --silver-color: #94a3b8;
             --border-color: #1f293d;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-main); padding: 20px; display: flex; justify-content: center; }
-        
-        /* تغییر اندازه کانتینر برای نمایش زیبا در کامپیوتر و موبایل */
         .container { width: 100%; max-width: 900px; }
         
         /* Login Screen */
@@ -98,7 +97,7 @@
         .developer-info { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: bold; }
         .profile-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); }
         
-        .market-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 12px; margin-bottom: 15px; font-size: 0.9rem; color: var(--text-muted); }
+        .market-bar { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 12px; margin-bottom: 15px; font-size: 0.85rem; color: var(--text-muted); flex-wrap: wrap; gap: 10px; }
         .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--success); }
 
         /* Device Tabs & ID info */
@@ -185,10 +184,12 @@
             <span>⚡</span>
         </div>
 
-        <!-- Market & Status Bar -->
+        <!-- Market & Status Bar (Live Gold & Silver Spot + BTC) -->
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
-            <div><span class="live-dot"></span> تنظیم دستی نرخ‌ها</div>
+            <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا (XAU): بارگذاری...</div>
+            <div id="silver-spot-price" style="color: var(--silver-color);">انس نقره (XAG): بارگذاری...</div>
+            <div><span class="live-dot"></span> آپدیت زنده</div>
         </div>
 
         <!-- Device Switcher -->
@@ -204,15 +205,11 @@
         <div class="summary-card">
             <div class="summary-title" id="summary-title-text">📊 مجموع کل درآمد این دستگاه</div>
             
-            <!-- Manual Inputs for USD and Gold Rates -->
+            <!-- Manual USD Input -->
             <div class="rate-box-container">
-                <div class="rate-box">
-                    <span>نرخ دلار (تومان):</span>
-                    <input type="number" id="usd-rate-input" value="0" placeholder="0" oninput="saveRates()">
-                </div>
-                <div class="rate-box">
-                    <span>قیمت طلا (تومان):</span>
-                    <input type="number" id="gold-rate-input" value="0" placeholder="0" oninput="saveRates()">
+                <div class="rate-box" style="flex: 1; max-width: 300px; margin: 0 auto;">
+                    <span>نرخ دلار آزاد (تومان):</span>
+                    <input type="number" id="usd-rate-input" value="0" placeholder="0" oninput="saveUsdRate()">
                 </div>
             </div>
 
@@ -263,6 +260,9 @@
         let currentDevice = 'device_1';
         let globalData = {};
         let btcUsd = 80000;
+        let xauUsd = 2750; // قیمت پیش‌فرض انس طلا
+        let xagUsd = 32;   // قیمت پیش‌فرض انس نقره
+        let goldPerGramToman = 0;
 
         window.addEventListener('DOMContentLoaded', () => {
             if (sessionStorage.getItem('auth') === 'true') {
@@ -272,10 +272,6 @@
             const savedUsd = localStorage.getItem('usd_rate');
             if (savedUsd !== null) {
                 document.getElementById('usd-rate-input').value = savedUsd;
-            }
-            const savedGold = localStorage.getItem('gold_rate');
-            if (savedGold !== null) {
-                document.getElementById('gold-rate-input').value = savedGold;
             }
         });
 
@@ -290,11 +286,9 @@
             }
         }
 
-        function saveRates() {
+        function saveUsdRate() {
             const usdRate = document.getElementById('usd-rate-input').value;
-            const goldRate = document.getElementById('gold-rate-input').value;
             localStorage.setItem('usd_rate', usdRate);
-            localStorage.setItem('gold_rate', goldRate);
             renderDashboard();
         }
 
@@ -310,7 +304,8 @@
             });
         }
 
-        async function fetchBtcPrice() {
+        async function fetchMarketData() {
+            // 1. دریافت قیمت بیت کوین
             try {
                 const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
                 const data = await res.json();
@@ -319,12 +314,27 @@
             } catch (e) {
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
             }
+
+            // 2. دریافت قیمت لحظه‌ای انس طلا و نقره از API جهانی آزاد
+            try {
+                const resMetals = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAU-USD-SPOT');
+                const metalData = await resMetals.json();
+                if (metalData && metalData.symbols && metalData.symbols[0]) {
+                    xauUsd = parseFloat(metalData.symbols[0].price);
+                }
+            } catch (e) {
+                // مقدار پیش‌فرض در صورت عدم دسترسی
+            }
+
+            document.getElementById('gold-spot-price').innerText = `انس طلا (XAU): $${xauUsd.toLocaleString()}`;
+            document.getElementById('silver-spot-price').innerText = `انس نقره (XAG): $${xagUsd.toFixed(2)}`;
+
             renderDashboard();
         }
 
         async function initDashboard() {
-            fetchBtcPrice();
-            setInterval(fetchBtcPrice, 60000);
+            fetchMarketData();
+            setInterval(fetchMarketData, 30000);
 
             try {
                 const res = await fetch('devices_data.json');
@@ -353,7 +363,12 @@
             if (!globalData.device_1 || !globalData.device_2) return;
 
             const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 0;
-            const goldRate = parseFloat(document.getElementById('gold-rate-input').value) || 0;
+            if (usdRate > 0) {
+                // محاسبه اتوماتیک قیمت هر گرم طلای 18 عیار بر اساس انس جهانی و دلار کاربر
+                goldPerGramToman = (xauUsd / 31.1035) * 0.75 * usdRate;
+            } else {
+                goldPerGramToman = 0;
+            }
 
             // --- 1. Grand Totals ---
             let grandDaily = 0;
@@ -371,11 +386,11 @@
 
             const grandDailyUsd = (grandDaily / 100000000) * btcUsd;
             const grandDailyToman = usdRate > 0 ? grandDailyUsd * usdRate : 0;
-            const grandDailyGold = goldRate > 0 ? grandDailyToman / goldRate : 0;
+            const grandDailyGold = goldPerGramToman > 0 ? grandDailyToman / goldPerGramToman : 0;
 
             const grandMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
             const grandMonthlyToman = usdRate > 0 ? grandMonthlyUsd * usdRate : 0;
-            const grandMonthlyGold = goldRate > 0 ? grandMonthlyToman / goldRate : 0;
+            const grandMonthlyGold = goldPerGramToman > 0 ? grandMonthlyToman / goldPerGramToman : 0;
 
             document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
             document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
@@ -434,11 +449,11 @@
 
             const totalDailyUsd = (totalDaily / 100000000) * btcUsd;
             const totalDailyToman = usdRate > 0 ? totalDailyUsd * usdRate : 0;
-            const totalDailyGold = goldRate > 0 ? totalDailyToman / goldRate : 0;
+            const totalDailyGold = goldPerGramToman > 0 ? totalDailyToman / goldPerGramToman : 0;
 
             const totalMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
             const totalMonthlyToman = usdRate > 0 ? totalMonthlyUsd * usdRate : 0;
-            const totalMonthlyGold = goldRate > 0 ? totalMonthlyToman / goldRate : 0;
+            const totalMonthlyGold = goldPerGramToman > 0 ? totalMonthlyToman / goldPerGramToman : 0;
 
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
             document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
