@@ -1,92 +1,65 @@
 {
   "device_1": {
-    "node_id": "9508-3100-99",
+    "node_id": "950B-3100-99",
     "channels": [
       {
-        "id": 1,
+        "id": "ch1",
         "name": "Wallet Of Satoshi",
-        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><defs><linearGradient id='g' x1='0%य' y1='0%य' x2='100%य' y2='100%य'><stop offset='0%य' stop-color='%2338bdf8'/><stop offset='100%य' stop-color='%238b5cf6'/></linearGradient></defs><rect width='50' height='50' rx='12' fill='url(%23g)'/><path d='M27 10L16 27h7l-3 13 14-19h-8z' fill='%23fbbf24'/></svg>",
-        "status": "On",
-        "revenue_per_active_day": 1239,
-        "revenue_30_days": 37169,
-        "claimable": 0
+        "logo": "آدرس_لینک_لوگو",
+        "url": "https://www.walletofsatoshi.com",
+        "revenue_per_active_day": 1250,
+        "revenue_30_days": 37500,
+        "claimable": 450
       },
       {
-        "id": 2,
-        "name": "WX Network",
-        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><defs><linearGradient id='g' x1='0%य' y1='0%य' x2='100%य' y2='100%य'><stop offset='0%य' stop-color='%2338bdf8'/><stop offset='100%य' stop-color='%238b5cf6'/></linearGradient></defs><rect width='50' height='50' rx='12' fill='url(%23g)'/><polygon points='16,14 34,14 25,25' fill='%23ffffff'/><polygon points='16,36 34,36 25,25' fill='%23ffffff'/></svg>",
-        "status": "On",
-        "revenue_per_active_day": 2008,
-        "revenue_30_days": 60248,
-        "claimable": 15
-      },
-      {
-        "id": 3,
-        "name": "Acinq.1ml",
-        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><defs><linearGradient id='g' x1='0%य' y1='0%य' x2='100%य' y2='100%य'><stop offset='0%य' stop-color='%2338bdf8'/><stop offset='100%य' stop-color='%238b5cf6'/></linearGradient></defs><rect width='50' height='50' rx='12' fill='url(%23g)'/><ellipse cx='25' cy='25' rx='16' ry='7' fill='none' stroke='%23ffffff' stroke-width='2.5' transform='rotate(30 25 25)'/><ellipse cx='25' cy='25' rx='16' ry='7' fill='none' stroke='%23ffffff' stroke-width='2.5' transform='rotate(-30 25 25)'/><circle cx='25' cy='25' r='3.5' fill='%23ffffff'/></svg>",
-        "status": "On",
+        "id": "ch2",
+        "name": "Open Node",
+        "logo": "آدرس_لینک_لوگو",
+        "url": "https://www.opennode.com",
         "revenue_per_active_day": 1500,
         "revenue_30_days": 45000,
-        "claimable": 5
+        "claimable": 600
       },
       {
-        "id": 4,
+        "id": "ch3",
+        "name": "WX Network",
+        "logo": "آدرس_لینک_لوگو",
+        "url": "https://wx.network",
+        "revenue_per_active_day": 900,
+        "revenue_30_days": 27000,
+        "claimable": 300
+      },
+      {
+        "id": "ch4",
+        "name": "Acing.1ml",
+        "logo": "آدرس_لینک_لوگو",
+        "url": "https://1ml.com",
+        "revenue_per_active_day": 2000,
+        "revenue_30_days": 60000,
+        "claimable": 850
+      },
+      {
+        "id": "ch5",
         "name": "BTC Pay Server",
-        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><defs><linearGradient id='g' x1='0%य' y1='0%य' x2='100%य' y2='100%य'><stop offset='0%य' stop-color='%2338bdf8'/><stop offset='100%य' stop-color='%238b5cf6'/></linearGradient></defs><rect width='50' height='50' rx='12' fill='url(%23g)'/><path d='M17 13h9c4 0 7 2 7 6s-3 6-7 6h-9zm0 12h10c4 0 7 2 7 6s-3 6-7 6H17z' fill='none'/><path d='M15 11h11c4.5 0 8 3 8 7.5 0 3-2 5.5-5 6.5 3.5 1 5.5 3.5 5.5 7 0 4.5-3.5 8-8 8H15V11zm6 9h4c1.5 0 2.5-1 2.5-2.5s-1-2.5-2.5-2.5h-4v5zm0 11h4.5c1.5 0 2.5-1 2.5-2.5S27 27 25.5 27H21v5z' fill='%23ffffff'/></svg>",
-        "status": "On",
-        "revenue_per_active_day": 2100,
-        "revenue_30_days": 63000,
-        "claimable": 10
+        "logo": "آدرس_لینک_لوگو",
+        "url": "https://btcpayserver.org",
+        "revenue_per_active_day": 1100,
+        "revenue_30_days": 33000,
+        "claimable": 400
       }
     ]
   },
   "device_2": {
-    "node_id": "8225-8510-45",
+    "node_id": "دوم_ID_دستگاه",
     "channels": [
       {
-        "id": 5,
-        "name": "Open Node",
-        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><defs><linearGradient id='g' x1='0%य' y1='0%य' x2='100%य' y2='100%य'><stop offset='0%य' stop-color='%2338bdf8'/><stop offset='100%य' stop-color='%238b5cf6'/></linearGradient></defs><rect width='50' height='50' rx='12' fill='url(%23g)'/><circle cx='25' cy='25' r='14' fill='none' stroke='%23ffffff' stroke-width='2.5'/><line x1='25' y1='11' x2='25' y2='39' stroke='%23ffffff' stroke-width='2.5'/><rect x='18' y='17' width='14' height='4' rx='2' fill='%23ffffff'/><rect x='18' y='29' width='14' height='4' rx='2' fill='%23ffffff'/></svg>",
-        "status": "On",
-        "revenue_per_active_day": 1800,
-        "revenue_30_days": 54000,
-        "claimable": 8
-      },
-      {
-        "id": 6,
-        "name": "Wallet Of Satoshi",
-        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><defs><linearGradient id='g' x1='0%य' y1='0%य' x2='100%य' y2='100%य'><stop offset='0%य' stop-color='%2338bdf8'/><stop offset='100%य' stop-color='%238b5cf6'/></linearGradient></defs><rect width='50' height='50' rx='12' fill='url(%23g)'/><path d='M27 10L16 27h7l-3 13 14-19h-8z' fill='%23fbbf24'/></svg>",
-        "status": "On",
-        "revenue_per_active_day": 1239,
-        "revenue_30_days": 37169,
-        "claimable": 12
-      },
-      {
-        "id": 7,
-        "name": "WX Network",
-        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><defs><linearGradient id='g' x1='0%य' y1='0%य' x2='100%य' y2='100%य'><stop offset='0%य' stop-color='%2338bdf8'/><stop offset='100%य' stop-color='%238b5cf6'/></linearGradient></defs><rect width='50' height='50' rx='12' fill='url(%23g)'/><polygon points='16,14 34,14 25,25' fill='%23ffffff'/><polygon points='16,36 34,36 25,25' fill='%23ffffff'/></svg>",
-        "status": "On",
-        "revenue_per_active_day": 2008,
-        "revenue_30_days": 60248,
-        "claimable": 20
-      },
-      {
-        "id": 8,
-        "name": "Acinq.1ml",
-        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><defs><linearGradient id='g' x1='0%य' y1='0%य' x2='100%य' y2='100%य'><stop offset='0%य' stop-color='%2338bdf8'/><stop offset='100%य' stop-color='%238b5cf6'/></linearGradient></defs><rect width='50' height='50' rx='12' fill='url(%23g)'/><ellipse cx='25' cy='25' rx='16' ry='7' fill='none' stroke='%23ffffff' stroke-width='2.5' transform='rotate(30 25 25)'/><ellipse cx='25' cy='25' rx='16' ry='7' fill='none' stroke='%23ffffff' stroke-width='2.5' transform='rotate(-30 25 25)'/><circle cx='25' cy='25' r='3.5' fill='%23ffffff'/></svg>",
-        "status": "On",
-        "revenue_per_active_day": 1500,
-        "revenue_30_days": 45000,
-        "claimable": 14
-      },
-      {
-        "id": 9,
-        "name": "BTC Pay Server",
-        "logo": "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><defs><linearGradient id='g' x1='0%य' y1='0%य' x2='100%य' y2='100%य'><stop offset='0%य' stop-color='%2338bdf8'/><stop offset='100%य' stop-color='%238b5cf6'/></linearGradient></defs><rect width='50' height='50' rx='12' fill='url(%23g)'/><path d='M15 11h11c4.5 0 8 3 8 7.5 0 3-2 5.5-5 6.5 3.5 1 5.5 3.5 5.5 7 0 4.5-3.5 8-8 8H15V11zm6 9h4c1.5 0 2.5-1 2.5-2.5s-1-2.5-2.5-2.5h-4v5zm0 11h4.5c1.5 0 2.5-1 2.5-2.5S27 27 25.5 27H21v5z' fill='%23ffffff'/></svg>",
-        "status": "On",
-        "revenue_per_active_day": 2400,
-        "revenue_30_days": 72000,
-        "claimable": 45
+        "id": "ch6",
+        "name": "نام کانال",
+        "logo": "آدرس_لینک_لوگو",
+        "url": "https://example.com",
+        "revenue_per_active_day": 1000,
+        "revenue_30_days": 30000,
+        "claimable": 200
       }
     ]
   }
