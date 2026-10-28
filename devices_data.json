@@ -4,12 +4,12 @@
     "channels": [
       {
         "id": "ch1",
-        "name": "WX Network",
-        "url": "https://wx.network",
-        "badge": "Balanced",
-        "price": 790708,
-        "revenue_30_days": 58740,
-        "revenue_per_active_day": 1958
+        "name": "Acinq.1ml",
+        "url": "https://1ml.com",
+        "badge": "High Yield",
+        "price": 205730,
+        "revenue_30_days": 18510,
+        "revenue_per_active_day": 617
       },
       {
         "id": "ch2",
@@ -31,12 +31,12 @@
       },
       {
         "id": "ch4",
-        "name": "Acing.1ml",
-        "url": "https://1ml.com",
-        "badge": "High Yield",
-        "price": 350000,
-        "revenue_30_days": 60000,
-        "revenue_per_active_day": 2000
+        "name": "WX Network",
+        "url": "https://wx.network",
+        "badge": "Balanced",
+        "price": 790708,
+        "revenue_30_days": 58740,
+        "revenue_per_active_day": 1958
       }
     ]
   },
@@ -81,12 +81,12 @@
       },
       {
         "id": "ch9",
-        "name": "Acing.1ml",
+        "name": "Acinq.1ml",
         "url": "https://1ml.com",
         "badge": "High Yield",
-        "price": 500000,
-        "revenue_30_days": 54000,
-        "revenue_per_active_day": 1800
+        "price": 205730,
+        "revenue_30_days": 18510,
+        "revenue_per_active_day": 617
       }
     ]
   }
