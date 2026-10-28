@@ -325,7 +325,7 @@
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
             <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: بارگذاری...</div>
-            <div><span class="live-dot"></span> آپدیت فوق‌العاده سریع (0.5s)</div>
+            <div><span class="live-dot"></span> آپدیت زنده (Live)</div>
         </div>
 
         <!-- Device Switcher -->
@@ -507,8 +507,8 @@
                 const res = await fetch('devices_data.json');
                 globalData = await res.json();
                 renderDashboard();
-                // نوسان فوق‌العاده سریع و لایو هر ۵۰۰ میلی‌ثانیه (0.5 ثانیه)
-                setInterval(simulateLiveFluctuation, 500);
+                // نوسان بسیار دقیق و ملایم (هر 1 ثانیه) برای حفظ ثبات و زیبایی اعداد
+                setInterval(simulateLiveFluctuation, 1000);
             } catch (e) {
                 console.error("Error loading data", e);
             }
@@ -520,7 +520,8 @@
                 const dev = globalData[devKey];
                 if (dev && dev.channels) {
                     dev.channels.forEach(ch => {
-                        const delta = Math.floor(Math.random() * 21) - 10; // نوسان بین -10 تا +10 ساتوشی
+                        // تغییرات خیلی کوچک و منظم (-3 تا +3) تا اعداد دست‌نخورده و درست بمانند
+                        const delta = Math.floor(Math.random() * 7) - 3;
                         ch.oldPrice = ch.price;
                         ch.price = Math.max(1000, ch.price + delta);
                         ch.trend = ch.price >= ch.oldPrice ? 'up' : 'down';
