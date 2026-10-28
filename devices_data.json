@@ -9,34 +9,34 @@
         "url": "https://www.walletofsatoshi.com",
         "revenue_per_active_day": 1250,
         "revenue_30_days": 37500,
-        "claimable": 467
+        "claimable": 474
       },
       {
         "id": "ch2",
         "name": "Open Node",
-        "logo": "https://www.opennode.com/favicon.ico",
+        "logo": "https://images.ctfassets.net/239znli9iqfi/4Xo92K5eW4I46a6Cq2C0sC/6f888f413a96860d5b51a5c00a0cbde7/OpenNode_Logo_Mark_RGB_Gold.png",
         "url": "https://www.opennode.com",
         "revenue_per_active_day": 1500,
         "revenue_30_days": 45000,
-        "claimable": 617
+        "claimable": 624
       },
       {
         "id": "ch3",
         "name": "WX Network",
-        "logo": "https://wx.network/favicon.ico",
+        "logo": "https://wx.network/static/images/logo.svg",
         "url": "https://wx.network",
         "revenue_per_active_day": 900,
         "revenue_30_days": 27000,
-        "claimable": 317
+        "claimable": 324
       },
       {
         "id": "ch4",
         "name": "Acing.1ml",
-        "logo": "https://1ml.com/favicon.ico",
+        "logo": "https://1ml.com/img/logo.png",
         "url": "https://1ml.com",
         "revenue_per_active_day": 2000,
         "revenue_30_days": 60000,
-        "claimable": 867
+        "claimable": 874
       }
     ]
   },
@@ -50,7 +50,7 @@
         "url": "https://btcpayserver.org",
         "revenue_per_active_day": 1100,
         "revenue_30_days": 33000,
-        "claimable": 417
+        "claimable": 437
       },
       {
         "id": "ch6",
@@ -59,34 +59,34 @@
         "url": "https://www.walletofsatoshi.com",
         "revenue_per_active_day": 1000,
         "revenue_30_days": 30000,
-        "claimable": 200
+        "claimable": 220
       },
       {
         "id": "ch7",
         "name": "Open Node",
-        "logo": "https://www.opennode.com/favicon.ico",
+        "logo": "https://images.ctfassets.net/239znli9iqfi/4Xo92K5eW4I46a6Cq2C0sC/6f888f413a96860d5b51a5c00a0cbde7/OpenNode_Logo_Mark_RGB_Gold.png",
         "url": "https://www.opennode.com",
         "revenue_per_active_day": 1200,
         "revenue_30_days": 36000,
-        "claimable": 310
+        "claimable": 330
       },
       {
         "id": "ch8",
         "name": "WX Network",
-        "logo": "https://wx.network/favicon.ico",
+        "logo": "https://wx.network/static/images/logo.svg",
         "url": "https://wx.network",
         "revenue_per_active_day": 850,
         "revenue_30_days": 25500,
-        "claimable": 190
+        "claimable": 210
       },
       {
         "id": "ch9",
         "name": "Acing.1ml",
-        "logo": "https://1ml.com/favicon.ico",
+        "logo": "https://1ml.com/img/logo.png",
         "url": "https://1ml.com",
         "revenue_per_active_day": 1800,
         "revenue_30_days": 54000,
-        "claimable": 500
+        "claimable": 520
       }
     ]
   }
