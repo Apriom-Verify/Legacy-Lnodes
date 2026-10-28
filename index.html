@@ -507,8 +507,8 @@
                 const res = await fetch('devices_data.json');
                 globalData = await res.json();
                 renderDashboard();
-                // نوسان زنده قیمت‌ها همراه با تغییر رنگ لحظه‌ای (سبز و قرمز)
-                setInterval(simulateLiveFluctuation, 1800);
+                // فعال‌سازی موتور نوسان زنده و لایو قیمت‌ها هر ۱.۵ ثانیه
+                setInterval(simulateLiveFluctuation, 1500);
             } catch (e) {
                 console.error("Error loading data", e);
             }
@@ -520,7 +520,7 @@
                 const dev = globalData[devKey];
                 if (dev && dev.channels) {
                     dev.channels.forEach(ch => {
-                        const delta = Math.floor(Math.random() * 31) - 15;
+                        const delta = Math.floor(Math.random() * 31) - 15; // نوسان بین -15 تا +15 ساتوشی
                         ch.oldPrice = ch.price;
                         ch.price = Math.max(1000, ch.price + delta);
                         ch.trend = ch.price >= ch.oldPrice ? 'up' : 'down';
@@ -602,7 +602,7 @@
                     const channelUrl = ch.url || 'https://lightning.network';
                     const iconSVG = iconSVGMap[ch.name] || `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg>`;
 
-                    // رنگ زنده برای قیمت (سبز هنگام افزایش، قرمز هنگام کاهش)
+                    // تغییر رنگ لحظه‌ای: سبز (#34d399) برای صعود و قرمز/صورتی (#f87171) برای نزول
                     const priceColor = ch.trend === 'down' ? '#f87171' : '#34d399';
 
                     html += `
