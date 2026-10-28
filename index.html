@@ -184,12 +184,12 @@
             <span>⚡</span>
         </div>
 
-        <!-- Market & Status Bar (Live Gold & Silver Spot + BTC) -->
+        <!-- Market & Status Bar (Live Gold, Silver, BTC) -->
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
-            <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا (XAU): بارگذاری...</div>
-            <div id="silver-spot-price" style="color: var(--silver-color);">انس نقره (XAG): بارگذاری...</div>
-            <div><span class="live-dot"></span> آپدیت زنده</div>
+            <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: بارگذاری...</div>
+            <div id="silver-spot-price" style="color: var(--silver-color);">انس نقره: بارگذاری...</div>
+            <div><span class="live-dot"></span> آپدیت زنده (۳۰ ثانیه)</div>
         </div>
 
         <!-- Device Switcher -->
@@ -260,8 +260,8 @@
         let currentDevice = 'device_1';
         let globalData = {};
         let btcUsd = 80000;
-        let xauUsd = 4057.36; // قیمت به‌روز انس طلا
-        let xagUsd = 54.31;   // قیمت به‌روز انس نقره
+        let xauUsd = 4057; // مقدار پیش‌فرض اولیه
+        let xagUsd = 54.31; // مقدار پیش‌فرض اولیه
         let goldPerGramToman = 0;
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -287,7 +287,7 @@
         }
 
         function saveUsdRate() {
-            const usdRate = document.getElementById('usd-rate-input').value;
+            const usdRate = document.getElementById('usd-rate-input'].value;
             localStorage.setItem('usd_rate', usdRate);
             renderDashboard();
         }
@@ -315,26 +315,32 @@
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
             }
 
-            // 2. دریافت قیمت لحظه‌ای انس طلا و نقره از API جهانی آزاد
+            // 2. دریافت قیمت لحظه‌ای انس طلا و نقره به صورت خودکار هر ۳۰ ثانیه
             try {
-                const resMetals = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAU-USD-SPOT');
-                const metalData = await resMetals.json();
-                if (metalData && metalData.symbols && metalData.symbols[0]) {
-                    xauUsd = parseFloat(metalData.symbols[0].price);
+                const resGold = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAU-USD-SPOT');
+                const goldData = await resGold.json();
+                if (goldData && goldData.symbols && goldData.symbols[0]) {
+                    xauUsd = parseFloat(goldData.symbols[0].price);
                 }
-            } catch (e) {
-                // استفاده از مقدار به‌روز در صورت عدم دسترسی
-            }
+            } catch (e) {}
 
-            document.getElementById('gold-spot-price').innerText = `انس طلا (XAU): $${xauUsd.toLocaleString()}`;
-            document.getElementById('silver-spot-price').innerText = `انس نقره (XAG): $${xagUsd.toFixed(2)}`;
+            try {
+                const resSilver = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAG-USD-SPOT');
+                const silverData = await resSilver.json();
+                if (silverData && silverData.symbols && silverData.symbols[0]) {
+                    xagUsd = parseFloat(silverData.symbols[0].price);
+                }
+            } catch (e) {}
+
+            document.getElementById('gold-spot-price').innerText = `انس طلا: $${xauUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            document.getElementById('silver-spot-price').innerText = `انس نقره: $${xagUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
 
             renderDashboard();
         }
 
         async function initDashboard() {
             fetchMarketData();
-            setInterval(fetchMarketData, 30000);
+            setInterval(fetchMarketData, 30000); // هر ۳۰ ثانیه آپدیت اتوماتیک
 
             try {
                 const res = await fetch('devices_data.json');
@@ -364,7 +370,7 @@
 
             const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 0;
             if (usdRate > 0) {
-                // محاسبه اتوماتیک قیمت هر گرم طلای 18 عیار بر اساس انس جهانی و دلار کاربر
+                // محاسبه اتوماتیک قیمت هر گرم طلای ۱۸ عیار بر اساس انس جهانی زنده و دلار کاربر
                 goldPerGramToman = (xauUsd / 31.1035) * 0.75 * usdRate;
             } else {
                 goldPerGramToman = 0;
