@@ -186,9 +186,9 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Channel Grid */
-        #channels-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        #channels-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
 
-        /* Channel Card & Link Styling */
+        /* Channel Card Style (Matching lnode.io style) */
         .channel-card { 
             background: var(--card-bg); 
             backdrop-filter: blur(10px); 
@@ -217,7 +217,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 170px;
+            min-height: 180px;
             color: var(--text-muted);
             font-weight: bold;
             font-size: 1rem;
@@ -234,9 +234,9 @@
         .channel-info { display: flex; align-items: center; gap: 10px; }
         
         .channel-icon-box { 
-            width: 44px; 
-            height: 44px; 
-            border-radius: 12px; 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 10px; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -245,21 +245,60 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             flex-shrink: 0;
         }
-        .channel-icon-box svg {
-            width: 24px;
-            height: 24px;
-            fill: #ffffff;
+        .channel-icon-box svg { width: 22px; height: 22px; fill: #ffffff; }
+
+        .channel-name { font-size: 0.95rem; font-weight: bold; color: var(--text-main); }
+        
+        /* Badge style matching lnode.io */
+        .channel-badge {
+            background: rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            color: #d8b4fe;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .channel-badge::before {
+            content: "•";
+            color: #c084fc;
+            font-size: 1.1rem;
         }
 
-        .channel-name { font-size: 1rem; font-weight: bold; color: var(--text-main); }
-        .channel-index { color: var(--accent-color); font-size: 0.9rem; font-weight: bold; }
+        .detail-link {
+            color: #60a5fa;
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .detail-link:hover { text-decoration: underline; }
+
+        /* Lnode.io data rows layout */
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.8rem;
+        }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--text-muted); font-weight: bold; font-size: 0.75rem; letter-spacing: 0.5px; }
+        .data-val { font-weight: bold; font-size: 0.9rem; color: #34d399; }
         
-        .metric-row { display: flex; gap: 10px; margin-bottom: 10px; }
-        .metric-box { flex: 1; background: rgba(11, 15, 25, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px; text-align: center; }
-        .metric-box-full { background: rgba(11, 15, 25, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px; text-align: center; width: 100%; }
-        .metric-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 5px; }
-        .metric-val { font-size: 0.95rem; font-weight: bold; color: var(--success); }
-        .metric-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
+        .action-btn-placeholder {
+            margin-top: 10px;
+            background: rgba(11, 15, 25, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 8px;
+            text-align: center;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -294,7 +333,7 @@
             <span>⚡</span>
         </div>
 
-        <!-- Market & Status Bar (Only BTC & Gold Spot) -->
+        <!-- Market & Status Bar -->
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
             <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: بارگذاری...</div>
@@ -444,13 +483,11 @@
             renderDashboard();
         }
 
-        // سیستم هوشمند دریافت انس طلا هر ۱۵ دقیقه واقعی با ذخیره در حافظه مرورگر
         async function fetchGoldPrice() {
             const nowTime = new Date().getTime();
             const savedGoldTime = localStorage.getItem('last_gold_fetch');
             const savedGoldPrice = localStorage.getItem('cached_gold_price');
 
-            // اگر ۱۵ دقیقه (۹۰۰۰۰۰ میلی‌ثانیه) نگذشته باشد و قیمت ذخیره شده وجود داشته باشد، از آن استفاده می‌کند
             if (savedGoldTime && savedGoldPrice && (nowTime - parseInt(savedGoldTime) < 900000)) {
                 xauUsd = parseFloat(savedGoldPrice);
             } else {
@@ -475,14 +512,13 @@
             fetchBtcPrice();
             fetchGoldPrice();
 
-            setInterval(fetchBtcPrice, 30000); // آپدیت بیت‌کوین هر ۳۰ ثانیه
-            setInterval(fetchGoldPrice, 60000);  // بررسی زمان هر ۱ دقیقه برای اجرای دقیق در بازه ۱۵ دقیقه‌ای
+            setInterval(fetchBtcPrice, 30000);
+            setInterval(fetchGoldPrice, 60000);
 
             try {
                 const res = await fetch('devices_data.json');
                 globalData = await res.json();
                 renderDashboard();
-                setInterval(updateAccruing, 1000);
             } catch (e) {
                 console.error("Error loading data", e);
             }
@@ -559,10 +595,7 @@
                     totalDaily += ch.revenue_per_active_day;
                     totalMonthly += ch.revenue_30_days;
 
-                    const dailyUsd = (ch.revenue_per_active_day / 100000000) * btcUsd;
-                    const monthlyUsd = (ch.revenue_30_days / 100000000) * btcUsd;
                     const channelUrl = ch.url || 'https://lightning.network';
-                    
                     const iconSVG = iconSVGMap[ch.name] || `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg>`;
 
                     html += `
@@ -574,24 +607,26 @@
                                     </div>
                                     <span class="channel-name">${ch.name}</span>
                                 </div>
-                                <span class="channel-index">#${index + 1}</span>
-                            </div>
-                            <div class="metric-row">
-                                <div class="metric-box">
-                                    <div class="metric-label">درآمد روزانه</div>
-                                    <div class="metric-val">sats ${ch.revenue_per_active_day.toLocaleString()}</div>
-                                    <div class="metric-sub">${dailyUsd.toFixed(2)} $</div>
-                                </div>
-                                <div class="metric-box">
-                                    <div class="metric-label">درآمد ۳۰ روزه</div>
-                                    <div class="metric-val">sats ${ch.revenue_30_days.toLocaleString()}</div>
-                                    <div class="metric-sub">${monthlyUsd.toFixed(2)} $</div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <div class="channel-badge">${ch.badge || 'High Yield'}</div>
+                                    <a href="${channelUrl}" target="_blank" class="detail-link" onclick="event.stopPropagation();">Detail</a>
                                 </div>
                             </div>
-                            <div class="metric-box-full">
-                                <div class="metric-label">Claimable Earnings (لحظه‌ای)</div>
-                                <div class="metric-val" id="claim-${ch.id}" style="color: var(--success);">sats ${ch.claimable.toLocaleString()} (Accruing)</div>
+                            
+                            <div class="data-row">
+                                <span class="data-label">PRICE</span>
+                                <span class="data-val" style="color: #34d399;">${ch.price.toLocaleString()} sats</span>
                             </div>
+                            <div class="data-row">
+                                <span class="data-label">EST. MONTHLY REVENUE</span>
+                                <span class="data-val" style="color: #f87171;">${ch.revenue_30_days.toLocaleString()} sats</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">EST. DAILY REVENUE</span>
+                                <span class="data-val" style="color: #f87171;">${ch.revenue_per_active_day.toLocaleString()} sats</span>
+                            </div>
+
+                            <div class="action-btn-placeholder">+</div>
                         </div>
                     `;
                 });
@@ -627,16 +662,6 @@
             document.getElementById('total-monthly-gold').innerText = `${totalMonthlyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('channels-container').innerHTML = html;
-        }
-
-        function updateAccruing() {
-            const data = globalData[currentDevice];
-            if (!data || !data.channels) return;
-            data.channels.forEach(ch => {
-                ch.claimable += 1;
-                const el = document.getElementById(`claim-${ch.id}`);
-                if (el) el.innerText = `sats ${ch.claimable.toLocaleString()} (Accruing)`;
-            });
         }
     </script>
 </body>
