@@ -325,7 +325,7 @@
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
             <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: بارگذاری...</div>
-            <div><span class="live-dot"></span> آپدیت زنده (Live)</div>
+            <div><span class="live-dot"></span> آپدیت فوق‌العاده سریع (0.5s)</div>
         </div>
 
         <!-- Device Switcher -->
@@ -507,8 +507,8 @@
                 const res = await fetch('devices_data.json');
                 globalData = await res.json();
                 renderDashboard();
-                // فعال‌سازی موتور نوسان زنده و لایو قیمت‌ها هر ۱.۵ ثانیه
-                setInterval(simulateLiveFluctuation, 1500);
+                // نوسان فوق‌العاده سریع و لایو هر ۵۰۰ میلی‌ثانیه (0.5 ثانیه)
+                setInterval(simulateLiveFluctuation, 500);
             } catch (e) {
                 console.error("Error loading data", e);
             }
@@ -520,7 +520,7 @@
                 const dev = globalData[devKey];
                 if (dev && dev.channels) {
                     dev.channels.forEach(ch => {
-                        const delta = Math.floor(Math.random() * 31) - 15; // نوسان بین -15 تا +15 ساتوشی
+                        const delta = Math.floor(Math.random() * 21) - 10; // نوسان بین -10 تا +10 ساتوشی
                         ch.oldPrice = ch.price;
                         ch.price = Math.max(1000, ch.price + delta);
                         ch.trend = ch.price >= ch.oldPrice ? 'up' : 'down';
@@ -602,7 +602,7 @@
                     const channelUrl = ch.url || 'https://lightning.network';
                     const iconSVG = iconSVGMap[ch.name] || `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg>`;
 
-                    // تغییر رنگ لحظه‌ای: سبز (#34d399) برای صعود و قرمز/صورتی (#f87171) برای نزول
+                    // تغییر رنگ آنی: سبز (#34d399) برای صعود و قرمز (#f87171) برای نزول
                     const priceColor = ch.trend === 'down' ? '#f87171' : '#34d399';
 
                     html += `
@@ -623,11 +623,11 @@
                             </div>
                             <div class="data-row">
                                 <span class="data-label">EST. MONTHLY REVENUE</span>
-                                <span class="data-val" style="color: #f87171;">${ch.revenue_30_days.toLocaleString()} sats</span>
+                                <span class="data-val" style="color: #34d399;">${ch.revenue_30_days.toLocaleString()} sats</span>
                             </div>
                             <div class="data-row">
                                 <span class="data-label">EST. DAILY REVENUE</span>
-                                <span class="data-val" style="color: #f87171;">${ch.revenue_per_active_day.toLocaleString()} sats</span>
+                                <span class="data-val" style="color: #34d399;">${ch.revenue_per_active_day.toLocaleString()} sats</span>
                             </div>
 
                             <div class="action-btn-placeholder">+</div>
