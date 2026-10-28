@@ -4,6 +4,15 @@
     "channels": [
       {
         "id": "ch1",
+        "name": "BTC Pay Server",
+        "url": "https://btcpayserver.org",
+        "badge": "High Yield",
+        "price": 635081,
+        "revenue_30_days": 58020,
+        "revenue_per_active_day": 1934
+      },
+      {
+        "id": "ch2",
         "name": "Acinq.1ml",
         "url": "https://1ml.com",
         "badge": "High Yield",
@@ -12,22 +21,13 @@
         "revenue_per_active_day": 617
       },
       {
-        "id": "ch2",
+        "id": "ch3",
         "name": "Open Node",
         "url": "https://www.opennode.com",
         "badge": "Balanced",
         "price": 759320,
         "revenue_30_days": 53970,
         "revenue_per_active_day": 1799
-      },
-      {
-        "id": "ch3",
-        "name": "Wallet Of Satoshi",
-        "url": "https://www.walletofsatoshi.com",
-        "badge": "Balanced",
-        "price": 472650,
-        "revenue_30_days": 33780,
-        "revenue_per_active_day": 3226
       },
       {
         "id": "ch4",
@@ -48,9 +48,9 @@
         "name": "BTC Pay Server",
         "url": "https://btcpayserver.org",
         "badge": "High Yield",
-        "price": 450000,
-        "revenue_30_days": 33000,
-        "revenue_per_active_day": 1100
+        "price": 635081,
+        "revenue_30_days": 58020,
+        "revenue_per_active_day": 1934
       },
       {
         "id": "ch6",
