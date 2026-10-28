@@ -188,7 +188,6 @@
         /* Channel Grid */
         #channels-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
 
-        /* Channel Card Style (Matching lnode.io style) */
         .channel-card { 
             background: var(--card-bg); 
             backdrop-filter: blur(10px); 
@@ -210,7 +209,6 @@
             transform: translateY(-3px);
         }
 
-        /* Coming Soon Card Style */
         .channel-card.coming-soon {
             background: rgba(11, 15, 25, 0.35);
             border: 1px dashed rgba(148, 163, 184, 0.25);
@@ -249,7 +247,6 @@
 
         .channel-name { font-size: 0.95rem; font-weight: bold; color: var(--text-main); }
         
-        /* Badge style matching lnode.io */
         .channel-badge {
             background: rgba(139, 92, 246, 0.2);
             border: 1px solid rgba(139, 92, 246, 0.4);
@@ -275,7 +272,6 @@
         }
         .detail-link:hover { text-decoration: underline; }
 
-        /* Lnode.io data rows layout */
         .data-row {
             display: flex;
             justify-content: space-between;
@@ -286,7 +282,7 @@
         }
         .data-row:last-child { border-bottom: none; }
         .data-label { color: var(--text-muted); font-weight: bold; font-size: 0.75rem; letter-spacing: 0.5px; }
-        .data-val { font-weight: bold; font-size: 0.9rem; color: #34d399; }
+        .data-val { font-weight: bold; font-size: 0.9rem; }
         
         .action-btn-placeholder {
             margin-top: 10px;
@@ -337,7 +333,7 @@
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
             <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: بارگذاری...</div>
-            <div><span class="live-dot"></span> آپدیت هوشمند</div>
+            <div><span class="live-dot"></span> آپدیت لحظه‌ای</div>
         </div>
 
         <!-- Device Switcher -->
@@ -519,9 +515,25 @@
                 const res = await fetch('devices_data.json');
                 globalData = await res.json();
                 renderDashboard();
+                // فعال‌سازی آپدیت زنده و ملایم اعداد هر ۳ ثانیه
+                setInterval(simulateLiveFluctuation, 3000);
             } catch (e) {
                 console.error("Error loading data", e);
             }
+        }
+
+        function simulateLiveFluctuation() {
+            if (!globalData.device_1 || !globalData.device_2) return;
+            ['device_1', 'device_2'].forEach(devKey => {
+                const dev = globalData[devKey];
+                if (dev && dev.channels) {
+                    dev.channels.forEach(ch => {
+                        const delta = Math.floor(Math.random() * 5) - 2; // نوسان کوچک بین -2 تا +2
+                        ch.revenue_per_active_day = Math.max(100, ch.revenue_per_active_day + delta);
+                    });
+                }
+            });
+            renderDashboard();
         }
 
         function switchDevice(devKey) {
@@ -547,7 +559,6 @@
                 goldPerGramToman = 0;
             }
 
-            // --- 1. Grand Totals ---
             let grandDaily = 0;
             let grandMonthly = 0;
 
@@ -579,7 +590,6 @@
             document.getElementById('grand-monthly-toman').innerText = `${Math.round(grandMonthlyToman).toLocaleString()} تومان`;
             document.getElementById('grand-monthly-gold').innerText = `${grandMonthlyGold.toFixed(3)} گرم طلا`;
 
-            // --- 2. Active Device ---
             const data = globalData[currentDevice];
             document.getElementById('device-id-display').innerText = `ID : ${data.node_id}`;
             
@@ -619,11 +629,11 @@
                             </div>
                             <div class="data-row">
                                 <span class="data-label">EST. MONTHLY REVENUE</span>
-                                <span class="data-val" style="color: #f87171;">${ch.revenue_30_days.toLocaleString()} sats</span>
+                                <span class="data-val" style="color: #fb7185;">${ch.revenue_30_days.toLocaleString()} sats</span>
                             </div>
                             <div class="data-row">
                                 <span class="data-label">EST. DAILY REVENUE</span>
-                                <span class="data-val" style="color: #f87171;">${ch.revenue_per_active_day.toLocaleString()} sats</span>
+                                <span class="data-val" style="color: #fb7185;">${ch.revenue_per_active_day.toLocaleString()} sats</span>
                             </div>
 
                             <div class="action-btn-placeholder">+</div>
@@ -653,7 +663,7 @@
 
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
             document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
-            document.getElementById('total-daily-toman').innerText = `${Math.round(totalMonthlyToman).toLocaleString()} تومان`;
+            document.getElementById('total-daily-toman').innerText = `${Math.round(totalDailyToman).toLocaleString()} تومان`;
             document.getElementById('total-daily-gold').innerText = `${totalDailyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('total-monthly-sats').innerText = `sats ${totalMonthly.toLocaleString()}`;
