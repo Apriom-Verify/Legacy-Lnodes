@@ -5,61 +5,88 @@
       {
         "id": "ch1",
         "name": "Wallet Of Satoshi",
-        "logo": "آدرس_لینک_لوگو",
+        "logo": "https://raw.githubusercontent.com/Apriom-Verify/Legacy-Lnodes/main/IMG_0689.jpeg",
         "url": "https://www.walletofsatoshi.com",
         "revenue_per_active_day": 1250,
         "revenue_30_days": 37500,
-        "claimable": 450
+        "claimable": 467
       },
       {
         "id": "ch2",
         "name": "Open Node",
-        "logo": "آدرس_لینک_لوگو",
+        "logo": "https://assets-global.website-files.com/605a9687e14a1e741e24a494/605a9687e14a1e4a3024a4f8_OpenNode_Icon_Yellow.png",
         "url": "https://www.opennode.com",
         "revenue_per_active_day": 1500,
         "revenue_30_days": 45000,
-        "claimable": 600
+        "claimable": 617
       },
       {
         "id": "ch3",
         "name": "WX Network",
-        "logo": "آدرس_لینک_لوگو",
+        "logo": "https://wx.network/favicon.ico",
         "url": "https://wx.network",
         "revenue_per_active_day": 900,
         "revenue_30_days": 27000,
-        "claimable": 300
+        "claimable": 317
       },
       {
         "id": "ch4",
         "name": "Acing.1ml",
-        "logo": "آدرس_لینک_لوگو",
+        "logo": "https://1ml.com/favicon.ico",
         "url": "https://1ml.com",
         "revenue_per_active_day": 2000,
         "revenue_30_days": 60000,
-        "claimable": 850
-      },
-      {
-        "id": "ch5",
-        "name": "BTC Pay Server",
-        "logo": "آدرس_لینک_لوگو",
-        "url": "https://btcpayserver.org",
-        "revenue_per_active_day": 1100,
-        "revenue_30_days": 33000,
-        "claimable": 400
+        "claimable": 867
       }
     ]
   },
   "device_2": {
-    "node_id": "دوم_ID_دستگاه",
+    "node_id": "840A-1100-88",
     "channels": [
       {
+        "id": "ch5",
+        "name": "BTC Pay Server",
+        "logo": "https://btcpayserver.org/favicon.ico",
+        "url": "https://btcpayserver.org",
+        "revenue_per_active_day": 1100,
+        "revenue_30_days": 33000,
+        "claimable": 417
+      },
+      {
         "id": "ch6",
-        "name": "نام کانال",
-        "logo": "آدرس_لینک_لوگو",
-        "url": "https://example.com",
+        "name": "Wallet Of Satoshi",
+        "logo": "https://raw.githubusercontent.com/Apriom-Verify/Legacy-Lnodes/main/IMG_0689.jpeg",
+        "url": "https://www.walletofsatoshi.com",
         "revenue_per_active_day": 1000,
         "revenue_30_days": 30000,
         "claimable": 200
+      },
+      {
+        "id": "ch7",
+        "name": "Open Node",
+        "logo": "https://assets-global.website-files.com/605a9687e14a1e741e24a494/605a9687e14a1e4a3024a4f8_OpenNode_Icon_Yellow.png",
+        "url": "https://www.opennode.com",
+        "revenue_per_active_day": 1200,
+        "revenue_30_days": 36000,
+        "claimable": 310
+      },
+      {
+        "id": "ch8",
+        "name": "WX Network",
+        "logo": "https://wx.network/favicon.ico",
+        "url": "https://wx.network",
+        "revenue_per_active_day": 850,
+        "revenue_30_days": 25500,
+        "claimable": 190
+      },
+      {
+        "id": "ch9",
+        "name": "Acing.1ml",
+        "logo": "https://1ml.com/favicon.ico",
+        "url": "https://1ml.com",
+        "revenue_per_active_day": 1800,
+        "revenue_30_days": 54000,
+        "claimable": 500
       }
     ]
   }
