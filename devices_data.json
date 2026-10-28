@@ -14,7 +14,7 @@
       {
         "id": "ch2",
         "name": "Open Node",
-        "logo": "https://assets-global.website-files.com/605a9687e14a1e741e24a494/605a9687e14a1e4a3024a4f8_OpenNode_Icon_Yellow.png",
+        "logo": "https://www.opennode.com/favicon.ico",
         "url": "https://www.opennode.com",
         "revenue_per_active_day": 1500,
         "revenue_30_days": 45000,
@@ -46,7 +46,7 @@
       {
         "id": "ch5",
         "name": "BTC Pay Server",
-        "logo": "https://btcpayserver.org/favicon.ico",
+        "logo": "https://btcpayserver.org/img/logo.svg",
         "url": "https://btcpayserver.org",
         "revenue_per_active_day": 1100,
         "revenue_30_days": 33000,
@@ -64,7 +64,7 @@
       {
         "id": "ch7",
         "name": "Open Node",
-        "logo": "https://assets-global.website-files.com/605a9687e14a1e741e24a494/605a9687e14a1e4a3024a4f8_OpenNode_Icon_Yellow.png",
+        "logo": "https://www.opennode.com/favicon.ico",
         "url": "https://www.opennode.com",
         "revenue_per_active_day": 1200,
         "revenue_30_days": 36000,
