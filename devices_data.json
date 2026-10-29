@@ -113,6 +113,13 @@
       "revenue_per_active_day": 1805
     },
     {
+      "name": "Lightning Pool",
+      "url": "https://lightning.engineering",
+      "price": 820000,
+      "revenue_30_days": 45000,
+      "revenue_per_active_day": 1500
+    },
+    {
       "name": "Wallet Of Satoshi",
       "url": "https://www.walletofsatoshi.com",
       "price": 472903,
@@ -153,13 +160,6 @@
       "price": 310800,
       "revenue_30_days": 15600,
       "revenue_per_active_day": 520
-    },
-    {
-      "name": "Boltz Exchange",
-      "url": "https://boltz.exchange",
-      "price": 180500,
-      "revenue_30_days": 12300,
-      "revenue_per_active_day": 410
     }
   ]
 }
