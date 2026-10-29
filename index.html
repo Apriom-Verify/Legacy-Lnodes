@@ -370,7 +370,7 @@
     <div id="top10-modal" class="modal-overlay">
         <div class="modal-card">
             <div class="modal-header">
-                <h3>🔥 ۱۰ کانال برتر و پردرآمد شبکه (Top 10 High Yield)</h3>
+                <h3>🔥 ۱۰ کانال پردرآمد سایت مرجع (Lnode.io)</h3>
                 <button class="close-modal-btn" onclick="toggleTop10Modal(false)">✕</button>
             </div>
             <div class="modal-body" id="top10-list-container">
@@ -424,7 +424,7 @@
                     <input type="number" id="usd-rate-input" value="0" placeholder="0" oninput="saveUsdRate()">
                 </div>
                 <button class="top10-btn" onclick="toggleTop10Modal(true)">
-                    <span>🏆 ۱۰ کانال برتر</span>
+                    <span>🏆 ۱۰ کانال برتر سایت</span>
                 </button>
             </div>
 
@@ -482,7 +482,7 @@
             "Open Node": `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#ffffff" stroke-width="2"/><line x1="8" y1="9" x2="16" y2="9" stroke="#ffffff" stroke-width="2"/><line x1="7" y1="12" x2="17" y2="12" stroke="#ffffff" stroke-width="2"/><line x1="8" y1="15" x2="16" y2="15" stroke="#ffffff" stroke-width="2"/><line x1="12" y1="6" x2="12" y2="18" stroke="#ffffff" stroke-width="2"/></svg>`,
             "Wallet Of Satoshi": `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffb703"/></svg>`,
             "WX Network": `<svg viewBox="0 0 24 24"><path d="M6 4h12l-6 8 6 8H6l6-8-6-8z" fill="#ffffff"/></svg>`,
-            "Acing.1ml": `<svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(90 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(150 12 12)"/></svg>`,
+            "Acinq.1ml": `<svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(90 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(150 12 12)"/></svg>`,
             "BTC Pay Server": `<svg viewBox="0 0 24 24"><path d="M7 4h6a4 4 0 0 1 0 8H7V4zm0 8h7a4 4 0 0 1 0 8H7v-8z" fill="none" stroke="#ffffff" stroke-width="2.2"/><line x1="10" y1="2" x2="10" y2="22" stroke="#ffffff" stroke-width="2"/></svg>`
         };
 
@@ -587,7 +587,7 @@
             setInterval(fetchBtcPrice, 30000);
             setInterval(fetchGoldPrice, 60000);
             
-            // به‌روزرسانی خودکار دیتای هر ۱۰ دقیقه یک‌بار (۶۰۰,۰۰۰ میلی‌ثانیه)
+            // به‌روزرسانی خودکار دیتای بازار هر ۱۰ دقیقه یک‌بار
             setInterval(loadDevicesData, 600000);
 
             setInterval(simulateLiveFluctuation, 1000);
@@ -615,19 +615,13 @@
         }
 
         function renderTop10Channels() {
-            let allChannels = [];
-            ['device_1', 'device_2'].forEach(devKey => {
-                const dev = globalData[devKey];
-                if (dev && dev.channels) {
-                    dev.channels.forEach(ch => {
-                        allChannels.push({ ...ch, deviceName: devKey === 'device_1' ? 'دستگاه ۱' : 'دستگاه ۲' });
-                    });
-                }
-            });
+            // استفاده از بخش market_all_channels (سایت مرجع) برای استخراج ۱۰ کانال برتر بر اساس بیشترین درآمد روزانه
+            let marketChannels = globalData.market_all_channels || [];
 
-            // فیلتر و مرتب‌سازی بر اساس درآمد روزانه
-            allChannels.sort((a, b) => b.revenue_per_active_day - a.revenue_per_active_day);
-            const top10 = allChannels.slice(0, 10);
+            // فرمول مرتب‌سازی پویا: بیشترین sats/day در اولویت اول (بدون در نظر گرفتن ریسک)
+            marketChannels.sort((a, b) => b.revenue_per_active_day - a.revenue_per_active_day);
+            
+            const top10 = marketChannels.slice(0, 10);
 
             let html = '';
             top10.forEach((ch, index) => {
@@ -637,12 +631,12 @@
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="rank-badge">${index + 1}</div>
                             <div>
-                                <div style="font-weight: bold; font-size: 0.95rem;">${ch.name} <span style="font-size: 0.75rem; color: var(--text-muted);">(${ch.deviceName})</span></div>
+                                <div style="font-weight: bold; font-size: 0.95rem;">${ch.name}</div>
                                 <div style="font-size: 0.8rem; color: ${priceColor};">قیمت: ${ch.price ? ch.price.toLocaleString() : 0} sats</div>
                             </div>
                         </div>
                         <div style="text-align: left;">
-                            <div style="color: #34d399; font-weight: bold; font-size: 0.9rem;">+${ch.revenue_per_active_day.toLocaleString()} sats/day</div>
+                            <div style="color: #34d399; font-weight: bold; font-size: 0.9rem;">sats/day ${ch.revenue_per_active_day.toLocaleString()}+</div>
                             <div style="font-size: 0.75rem; color: var(--text-muted);">ماهانه: ${ch.revenue_30_days.toLocaleString()} sats</div>
                         </div>
                     </div>
