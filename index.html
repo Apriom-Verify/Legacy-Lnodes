@@ -587,7 +587,7 @@
             setInterval(fetchBtcPrice, 30000);
             setInterval(fetchGoldPrice, 60000);
             
-            // به‌روزرسانی خودکار دیتای بازار هر ۱۰ دقیقه یک‌بار
+            // به‌روزرسانی خودکار اطلاعات هر ۱۰ دقیقه یک‌بار
             setInterval(loadDevicesData, 600000);
 
             setInterval(simulateLiveFluctuation, 1000);
@@ -615,12 +615,13 @@
         }
 
         function renderTop10Channels() {
-            // استفاده از بخش market_all_channels (سایت مرجع) برای استخراج ۱۰ کانال برتر بر اساس بیشترین درآمد روزانه
+            // خواندن کانال‌ها منحصراً از بخش سایت مرجع (market_all_channels)
             let marketChannels = globalData.market_all_channels || [];
 
-            // فرمول مرتب‌سازی پویا: بیشترین sats/day در اولویت اول (بدون در نظر گرفتن ریسک)
+            // فرمول مرتب‌سازی پویا بر اساس بیشترین درآمد روزانه (سود بالاتر در اولویت اول) بدون توجه به ریسک
             marketChannels.sort((a, b) => b.revenue_per_active_day - a.revenue_per_active_day);
             
+            // استخراج ۱۰ کانال برتر بازار
             const top10 = marketChannels.slice(0, 10);
 
             let html = '';
@@ -636,7 +637,7 @@
                             </div>
                         </div>
                         <div style="text-align: left;">
-                            <div style="color: #34d399; font-weight: bold; font-size: 0.9rem;">sats/day ${ch.revenue_per_active_day.toLocaleString()}+</div>
+                            <div style="color: #34d399; font-weight: bold; font-size: 0.9rem;">+sats/day ${ch.revenue_per_active_day.toLocaleString()}</div>
                             <div style="font-size: 0.75rem; color: var(--text-muted);">ماهانه: ${ch.revenue_30_days.toLocaleString()} sats</div>
                         </div>
                     </div>
