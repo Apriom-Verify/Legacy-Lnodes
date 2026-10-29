@@ -595,6 +595,8 @@
 
         function simulateLiveFluctuation() {
             if (!globalData.device_1 || !globalData.device_2) return;
+            
+            // نوسان برای دستگاه‌های کاربر
             ['device_1', 'device_2'].forEach(devKey => {
                 const dev = globalData[devKey];
                 if (dev && dev.channels) {
@@ -606,7 +608,19 @@
                     });
                 }
             });
+
+            // نوسان لحظه‌ای قیمت برای کانال‌های مرجع
+            if (globalData.market_all_channels) {
+                globalData.market_all_channels.forEach(ch => {
+                    const delta = Math.floor(Math.random() * 7) - 3;
+                    ch.oldPrice = ch.price || 500000;
+                    ch.price = Math.max(1000, ch.oldPrice + delta);
+                    ch.trend = ch.price >= ch.oldPrice ? 'up' : 'down';
+                });
+            }
+
             renderDashboard();
+            renderTop10Channels();
         }
 
         function toggleTop10Modal(show) {
@@ -618,7 +632,7 @@
             // خواندن کانال‌ها منحصراً از بخش سایت مرجع (market_all_channels)
             let marketChannels = globalData.market_all_channels || [];
 
-            // فرمول مرتب‌سازی پویا بر اساس بیشترین درآمد روزانه (سود بالاتر در اولویت اول) بدون توجه به ریسک
+            // مرتب‌سازی پویا بر اساس بیشترین درآمد روزانه (سود بالاتر در اولویت اول)
             marketChannels.sort((a, b) => b.revenue_per_active_day - a.revenue_per_active_day);
             
             // استخراج ۱۰ کانال برتر بازار
@@ -689,7 +703,7 @@
 
             const grandMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
             const grandMonthlyToman = usdRate > 0 ? grandMonthlyUsd * usdRate : 0;
-            const grandMonthlyGold = goldPerGramToman > 0 ? grandMonthlyToman / goldPerGramToman : 0;
+            const grandMonthlyGold = goldPerGramToman > 0 ? grandMonthlyUsd * usdRate : 0;
 
             document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
             document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
@@ -769,7 +783,7 @@
 
             const totalMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
             const totalMonthlyToman = usdRate > 0 ? totalMonthlyUsd * usdRate : 0;
-            const totalMonthlyGold = goldPerGramToman > 0 ? totalMonthlyToman / goldPerGramToman : 0;
+            const totalMonthlyGold = goldPerGramToman > 0 ? totalMonthlyGold / goldPerGramToman : 0;
 
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
             document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
