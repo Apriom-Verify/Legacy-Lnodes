@@ -461,9 +461,11 @@
 
         async function fetchBtcPrice() {
             try {
-                const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
+                const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
                 const data = await res.json();
-                btcUsd = data.bpi.USD.rate_float;
+                if (data && data.bitcoin && data.bitcoin.usd) {
+                    btcUsd = data.bitcoin.usd;
+                }
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString(undefined, {maximumFractionDigits:0})}`;
             } catch (e) {
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
@@ -472,24 +474,14 @@
         }
 
         async function fetchGoldPrice() {
-            const nowTime = new Date().getTime();
-            const savedGoldTime = localStorage.getItem('last_gold_fetch');
-            const savedGoldPrice = localStorage.getItem('cached_gold_price');
-
-            if (savedGoldTime && savedGoldPrice && (nowTime - parseInt(savedGoldTime) < 900000)) {
-                xauUsd = parseFloat(savedGoldPrice);
-            } else {
-                try {
-                    const resGold = await fetch('https://api.goldprice.dev/v1/prices?symbol=XAU-USD-SPOT');
-                    const goldData = await resGold.json();
-                    if (goldData && goldData.symbols && goldData.symbols[0]) {
-                        xauUsd = parseFloat(goldData.symbols[0].price);
-                        localStorage.setItem('cached_gold_price', xauUsd);
-                        localStorage.setItem('last_gold_fetch', nowTime);
-                    }
-                } catch (e) {
-                    if (savedGoldPrice) xauUsd = parseFloat(savedGoldPrice);
+            try {
+                const resGold = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether-gold&vs_currencies=usd');
+                const goldData = await resGold.json();
+                if (goldData && goldData['tether-gold'] && goldData['tether-gold'].usd) {
+                    xauUsd = goldData['tether-gold'].usd;
                 }
+            } catch (e) {
+                // در صورت خطا از مقدار پیش‌فرض استفاده می‌شود
             }
 
             document.getElementById('gold-spot-price').innerText = `انس طلا: $${xauUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
@@ -507,7 +499,6 @@
                 const res = await fetch('devices_data.json');
                 globalData = await res.json();
                 renderDashboard();
-                // نوسان بسیار دقیق و ملایم (هر 1 ثانیه) برای حفظ ثبات و زیبایی اعداد
                 setInterval(simulateLiveFluctuation, 1000);
             } catch (e) {
                 console.error("Error loading data", e);
@@ -520,7 +511,6 @@
                 const dev = globalData[devKey];
                 if (dev && dev.channels) {
                     dev.channels.forEach(ch => {
-                        // تغییرات خیلی کوچک و منظم (-3 تا +3) تا اعداد دست‌نخورده و درست بمانند
                         const delta = Math.floor(Math.random() * 7) - 3;
                         ch.oldPrice = ch.price;
                         ch.price = Math.max(1000, ch.price + delta);
@@ -603,7 +593,6 @@
                     const channelUrl = ch.url || 'https://lightning.network';
                     const iconSVG = iconSVGMap[ch.name] || `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg>`;
 
-                    // تغییر رنگ آنی: سبز (#34d399) برای صعود و قرمز (#f87171) برای نزول
                     const priceColor = ch.trend === 'down' ? '#f87171' : '#34d399';
 
                     html += `
