@@ -7,36 +7,36 @@
         "name": "BTC Pay Server",
         "url": "https://btcpayserver.org",
         "badge": "High Yield",
-        "price": 635081,
-        "revenue_30_days": 58020,
-        "revenue_per_active_day": 1934
+        "price": 628151,
+        "revenue_30_days": 59250,
+        "revenue_per_active_day": 1975
       },
       {
         "id": "ch2",
-        "name": "Acinq.1ml",
-        "url": "https://1ml.com",
-        "badge": "High Yield",
-        "price": 205730,
-        "revenue_30_days": 18510,
-        "revenue_per_active_day": 617
+        "name": "WX Network",
+        "url": "https://wx.network",
+        "badge": "Balanced",
+        "price": 791554,
+        "revenue_30_days": 58470,
+        "revenue_per_active_day": 1949
       },
       {
         "id": "ch3",
         "name": "Open Node",
         "url": "https://www.opennode.com",
         "badge": "Balanced",
-        "price": 763559,
-        "revenue_30_days": 54150,
-        "revenue_per_active_day": 1805
+        "price": 767653,
+        "revenue_30_days": 54000,
+        "revenue_per_active_day": 1800
       },
       {
         "id": "ch4",
-        "name": "WX Network",
-        "url": "https://wx.network",
-        "badge": "Balanced",
-        "price": 790708,
-        "revenue_30_days": 58740,
-        "revenue_per_active_day": 1958
+        "name": "Tippin.me",
+        "url": "https://tippin.me",
+        "badge": "High Yield",
+        "price": 815146,
+        "revenue_30_days": 60330,
+        "revenue_per_active_day": 2011
       }
     ]
   },
@@ -45,121 +45,121 @@
     "channels": [
       {
         "id": "ch5",
-        "name": "BTC Pay Server",
-        "url": "https://btcpayserver.org",
+        "name": "LNBiG [Hub-2]",
+        "url": "https://lnbig.com",
         "badge": "High Yield",
-        "price": 635081,
-        "revenue_30_days": 58020,
-        "revenue_per_active_day": 1934
+        "price": 2331712,
+        "revenue_30_days": 167250,
+        "revenue_per_active_day": 5575
       },
       {
         "id": "ch6",
-        "name": "Wallet Of Satoshi",
-        "url": "https://www.walletofsatoshi.com",
-        "badge": "Balanced",
-        "price": 472903,
-        "revenue_30_days": 36360,
-        "revenue_per_active_day": 1212
+        "name": "block-iad-1",
+        "url": "https://block.xyz",
+        "badge": "High Yield",
+        "price": 1435653,
+        "revenue_30_days": 145470,
+        "revenue_per_active_day": 4849
       },
       {
         "id": "ch7",
-        "name": "Open Node",
-        "url": "https://www.opennode.com",
+        "name": "LNBiG [Hub-3]",
+        "url": "https://lnbig.com",
         "badge": "Balanced",
-        "price": 763559,
-        "revenue_30_days": 54150,
-        "revenue_per_active_day": 1805
+        "price": 1562244,
+        "revenue_30_days": 109860,
+        "revenue_per_active_day": 3662
       },
       {
         "id": "ch8",
-        "name": "WX Network",
-        "url": "https://wx.network",
-        "badge": "Low Risk",
-        "price": 790708,
-        "revenue_30_days": 58740,
-        "revenue_per_active_day": 1958
+        "name": "Ride the Lightning",
+        "url": "https://github.com/Ride-The-Lightning/RTL",
+        "badge": "Balanced",
+        "price": 569888,
+        "revenue_30_days": 50100,
+        "revenue_per_active_day": 1670
       },
       {
         "id": "ch9",
-        "name": "Acinq.1ml",
-        "url": "https://1ml.com",
-        "badge": "High Yield",
-        "price": 205730,
-        "revenue_30_days": 18510,
-        "revenue_per_active_day": 617
+        "name": "Bitrefill",
+        "url": "https://www.bitrefill.com",
+        "badge": "Balanced",
+        "price": 589301,
+        "revenue_30_days": 50070,
+        "revenue_per_active_day": 1669
       }
     ]
   },
   "market_all_channels": [
     {
-      "name": "WX Network",
-      "url": "https://wx.network",
-      "price": 790708,
-      "revenue_30_days": 58740,
-      "revenue_per_active_day": 1958
+      "name": "LNBiG [Hub-2]",
+      "url": "https://lnbig.com",
+      "price": 2331712,
+      "revenue_30_days": 167250,
+      "revenue_per_active_day": 5575
+    },
+    {
+      "name": "block-iad-1",
+      "url": "https://block.xyz",
+      "price": 1435653,
+      "revenue_30_days": 145470,
+      "revenue_per_active_day": 4849
+    },
+    {
+      "name": "LNBiG [Hub-3]",
+      "url": "https://lnbig.com",
+      "price": 1562244,
+      "revenue_30_days": 109860,
+      "revenue_per_active_day": 3662
+    },
+    {
+      "name": "Tippin.me",
+      "url": "https://tippin.me",
+      "price": 815146,
+      "revenue_30_days": 60330,
+      "revenue_per_active_day": 2011
     },
     {
       "name": "BTC Pay Server",
       "url": "https://btcpayserver.org",
-      "price": 635081,
-      "revenue_30_days": 58020,
-      "revenue_per_active_day": 1934
+      "price": 628151,
+      "revenue_30_days": 59250,
+      "revenue_per_active_day": 1975
+    },
+    {
+      "name": "WX Network",
+      "url": "https://wx.network",
+      "price": 791554,
+      "revenue_30_days": 58470,
+      "revenue_per_active_day": 1949
     },
     {
       "name": "Open Node",
       "url": "https://www.opennode.com",
-      "price": 763559,
-      "revenue_30_days": 54150,
-      "revenue_per_active_day": 1805
+      "price": 767653,
+      "revenue_30_days": 54000,
+      "revenue_per_active_day": 1800
     },
     {
-      "name": "Kraken",
-      "url": "https://www.kraken.com",
-      "price": 2673095,
-      "revenue_30_days": 48870,
-      "revenue_per_active_day": 1629
+      "name": "Ride the Lightning",
+      "url": "https://github.com/Ride-The-Lightning/RTL",
+      "price": 569888,
+      "revenue_30_days": 50100,
+      "revenue_per_active_day": 1670
     },
     {
-      "name": "Wallet Of Satoshi",
-      "url": "https://www.walletofsatoshi.com",
-      "price": 472903,
-      "revenue_30_days": 36360,
-      "revenue_per_active_day": 1212
+      "name": "Bitrefill",
+      "url": "https://www.bitrefill.com",
+      "price": 589301,
+      "revenue_30_days": 50070,
+      "revenue_per_active_day": 1669
     },
     {
-      "name": "Bitfinex Routing",
-      "url": "https://www.bitfinex.com",
-      "price": 610400,
-      "revenue_30_days": 28500,
-      "revenue_per_active_day": 950
-    },
-    {
-      "name": "River Financial",
-      "url": "https://river.com",
-      "price": 430250,
-      "revenue_30_days": 24900,
-      "revenue_per_active_day": 830
-    },
-    {
-      "name": "Acinq.1ml",
-      "url": "https://1ml.com",
-      "price": 205730,
-      "revenue_30_days": 18510,
-      "revenue_per_active_day": 617
-    },
-    {
-      "name": "Breez Hub",
-      "url": "https://breez.technology",
-      "price": 310800,
-      "revenue_30_days": 15600,
-      "revenue_per_active_day": 520
-    },
-    {
-      "name": "Boltz Exchange",
-      "url": "https://boltz.exchange",
-      "price": 180500,
-      "revenue_30_days": 12300,
-      "revenue_per_active_day": 410
+      "name": "Thunderhub",
+      "url": "https://thunderhub.io",
+      "price": 587221,
+      "revenue_30_days": 49800,
+      "revenue_per_active_day": 1660
     }
   ]
 }
