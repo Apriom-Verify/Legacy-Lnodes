@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LNODE DASHBOARD</title>
-    <!-- Mobile App Icons -->
     <link rel="apple-touch-icon" href="IMG_0689.jpeg">
     <link rel="icon" type="image/jpeg" href="IMG_0689.jpeg">
     <style>
@@ -19,7 +18,6 @@
             --border-color: rgba(99, 102, 241, 0.25);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Tahoma, sans-serif; }
-        
         body { 
             background: linear-gradient(135deg, #070913 0%, #1a103c 50%, #0b0f19 100%);
             background-attachment: fixed;
@@ -31,331 +29,73 @@
             position: relative;
             overflow-x: hidden;
         }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
         .container { width: 100%; max-width: 900px; position: relative; z-index: 1; }
         
-        /* Login Screen */
         #login-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(7, 9, 19, 0.95); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 20px;
         }
         .login-box { 
-            background: rgba(17, 24, 39, 0.9); 
-            backdrop-filter: blur(16px);
-            padding: 40px 30px; 
-            border-radius: 20px; 
-            width: 100%; 
-            max-width: 420px;
-            text-align: center; 
-            border: 1px solid var(--accent-color); 
-            box-shadow: 0 0 40px rgba(245, 158, 11, 0.25); 
+            background: rgba(17, 24, 39, 0.9); padding: 40px 30px; border-radius: 20px; width: 100%; max-width: 420px; text-align: center; border: 1px solid var(--accent-color); box-shadow: 0 0 40px rgba(245, 158, 11, 0.25); 
         }
-        .login-logo { 
-            width: 70px; 
-            height: 70px; 
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            margin: 0 auto 15px; 
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5); 
-            color: #000; 
-            font-size: 32px; 
-        }
-        .login-box h2 { margin-bottom: 8px; font-size: 1.35rem; color: var(--accent-color); font-weight: bold; }
-        .login-subtitle { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 25px; }
-        .login-box input { 
-            width: 100%; 
-            padding: 12px; 
-            margin-bottom: 15px; 
-            background: rgba(11, 15, 25, 0.8); 
-            border: 1px solid var(--border-color); 
-            border-radius: 12px; 
-            color: #fff; 
-            text-align: center; 
-            font-size: 1.3rem; 
-            letter-spacing: 10px; 
-            outline: none; 
-        }
-        .login-box input:focus { border-color: var(--accent-color); }
-        .login-box button { 
-            width: 100%; 
-            padding: 12px; 
-            background: var(--accent-color); 
-            border: none; 
-            border-radius: 12px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            color: #000; 
-            font-size: 1rem; 
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
-            transition: 0.2s;
-        }
-        .login-box button:hover { opacity: 0.9; transform: translateY(-1px); }
+        .login-logo { width: 70px; height: 70px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: #000; font-size: 32px; }
+        .login-box h2 { margin-bottom: 8px; font-size: 1.35rem; color: var(--accent-color); }
+        .login-box input { width: 100%; padding: 12px; margin-bottom: 15px; background: rgba(11, 15, 25, 0.8); border: 1px solid var(--border-color); border-radius: 12px; color: #fff; text-align: center; font-size: 1.3rem; letter-spacing: 10px; outline: none; }
+        .login-box button { width: 100%; padding: 12px; background: var(--accent-color); border: none; border-radius: 12px; font-weight: bold; cursor: pointer; color: #000; font-size: 1rem; }
 
-        /* Header & Profile */
-        .main-title { font-size: 1.4rem; font-weight: bold; color: var(--accent-color); display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px; text-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
-        
-        .datetime-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            padding: 10px 20px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            direction: ltr;
-        }
-
-        .developer-badge { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            background: var(--card-bg); 
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color); 
-            padding: 12px 20px; 
-            border-radius: 14px; 
-            margin-bottom: 15px; 
-            direction: ltr;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        .developer-info { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text-main); font-weight: bold; }
-        .profile-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); box-shadow: 0 0 10px rgba(245, 158, 11, 0.4); }
-        
-        .market-bar { display: flex; justify-content: space-around; align-items: center; background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 14px; margin-bottom: 15px; font-size: 0.9rem; color: var(--text-muted); flex-wrap: wrap; gap: 10px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
+        .main-title { font-size: 1.4rem; font-weight: bold; color: var(--accent-color); display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px; }
+        .datetime-bar { display: flex; justify-content: center; gap: 15px; background: var(--card-bg); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 12px; margin-bottom: 12px; font-size: 0.9rem; color: var(--accent-color); direction: ltr; }
+        .developer-badge { display: flex; align-items: center; justify-content: space-between; background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 14px; margin-bottom: 15px; direction: ltr; }
+        .profile-img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-color); }
+        .market-bar { display: flex; justify-content: space-around; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 14px; margin-bottom: 15px; font-size: 0.9rem; color: var(--text-muted); }
         .live-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--success); }
 
-        /* Device Tabs & ID info */
         .device-tabs { display: flex; gap: 12px; margin-bottom: 10px; }
-        .tab-btn { flex: 1; padding: 12px; background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.95rem; text-align: center; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .tab-btn.active { background: var(--accent-color); color: #000; border-color: var(--accent-color); box-shadow: 0 0 20px rgba(245, 158, 11, 0.4); }
+        .tab-btn { flex: 1; padding: 12px; background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); border-radius: 12px; cursor: pointer; font-weight: bold; text-align: center; }
+        .tab-btn.active { background: var(--accent-color); color: #000; border-color: var(--accent-color); }
         
-        .device-id-box { 
-            background: var(--card-bg); 
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color); 
-            padding: 12px; 
-            border-radius: 12px; 
-            margin-bottom: 15px; 
-            text-align: center; 
-            font-size: 0.9rem; 
-            color: var(--accent-color); 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.2s; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .device-id-box:active { background: rgba(31, 41, 61, 0.9); transform: scale(0.99); }
+        .device-id-box { background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 12px; margin-bottom: 15px; text-align: center; color: var(--accent-color); font-weight: bold; cursor: pointer; }
 
-        /* Summary Card */
-        .summary-card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; margin-bottom: 15px; text-align: center; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35); }
+        .summary-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; margin-bottom: 15px; text-align: center; }
         .summary-title { font-size: 1rem; color: var(--accent-color); margin-bottom: 12px; font-weight: bold; }
         .rate-box-container { display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 15px; flex-wrap: wrap; }
-        .rate-box { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.85rem; background: rgba(11, 15, 25, 0.7); padding: 8px 15px; border-radius: 10px; border: 1px solid var(--border-color); color: var(--text-muted); flex: 1; min-width: 220px; }
-        .rate-box input { width: 130px; background: rgba(17, 24, 39, 0.9); border: 1px solid var(--border-color); color: var(--accent-color); padding: 6px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.95rem; outline: none; }
+        .rate-box { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: rgba(11, 15, 25, 0.7); padding: 8px 15px; border-radius: 10px; border: 1px solid var(--border-color); color: var(--text-muted); flex: 1; min-width: 220px; }
+        .rate-box input { width: 130px; background: rgba(17, 24, 39, 0.9); border: 1px solid var(--border-color); color: var(--accent-color); padding: 6px; border-radius: 8px; text-align: center; font-weight: bold; outline: none; }
         
-        .top10-btn {
-            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-            border: 1px solid #a78bfa;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.85rem;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .top10-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5); }
-
+        .top10-btn { background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); border: 1px solid #a78bfa; color: #fff; padding: 8px 16px; border-radius: 10px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 6px; }
         .summary-grid { display: flex; gap: 15px; flex-wrap: wrap; }
         .summary-box { flex: 1; min-width: 200px; background: rgba(11, 15, 25, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; text-align: center; }
-        .summary-box-title { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
-        .sats-val { font-size: 1.1rem; font-weight: bold; color: var(--success); margin-bottom: 4px; text-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+        .sats-val { font-size: 1.1rem; font-weight: bold; color: var(--success); margin-bottom: 4px; }
         .sub-val { font-size: 0.75rem; color: var(--text-muted); margin-top: 3px; }
         .gold-val { font-size: 0.8rem; font-weight: bold; color: var(--gold-color); margin-top: 4px; }
+        .grand-total-card { border: 1px solid var(--accent-color); background: linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(31, 41, 61, 0.8) 100%); }
 
-        .grand-total-card { border: 1px solid var(--accent-color); background: linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(31, 41, 61, 0.8) 100%); box-shadow: 0 0 25px rgba(245, 158, 11, 0.15); }
-
-        /* Modal Popup for Top 10 Channels */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(7, 9, 19, 0.85); backdrop-filter: blur(12px);
-            display: none; justify-content: center; align-items: center;
-            z-index: 2000; padding: 20px;
-        }
-        .modal-card {
-            background: rgba(17, 24, 39, 0.95);
-            border: 1px solid var(--accent-color);
-            border-radius: 20px;
-            width: 100%; max-width: 650px;
-            max-height: 85vh;
-            display: flex; flex-direction: column;
-            box-shadow: 0 0 50px rgba(245, 158, 11, 0.3);
-            overflow: hidden;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        .modal-header {
-            padding: 18px 20px;
-            background: rgba(11, 15, 25, 0.8);
-            border-bottom: 1px solid var(--border-color);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .modal-header h3 { font-size: 1.1rem; color: var(--accent-color); font-weight: bold; }
-        .close-modal-btn {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.4);
-            color: #f87171;
-            width: 32px; height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: bold;
-            display: flex; align-items: center; justify-content: center;
-        }
+        /* Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 9, 19, 0.85); backdrop-filter: blur(12px); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
+        .modal-card { background: rgba(17, 24, 39, 0.95); border: 1px solid var(--accent-color); border-radius: 20px; width: 100%; max-width: 650px; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; }
+        .modal-header { padding: 18px 20px; background: rgba(11, 15, 25, 0.8); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+        .modal-header h3 { font-size: 1.1rem; color: var(--accent-color); }
+        .close-modal-btn { background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; }
         .modal-body { padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
-        .top10-item {
-            background: rgba(11, 15, 25, 0.6);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 12px 15px;
-            display: flex; justify-content: space-between; align-items: center;
-            transition: 0.2s;
-        }
-        .top10-item:hover { border-color: var(--accent-color); background: rgba(31, 41, 61, 0.6); }
-        .rank-badge {
-            width: 28px; height: 28px; border-radius: 50%;
-            background: var(--accent-color); color: #000;
-            font-weight: bold; font-size: 0.85rem;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .top10-item { background: rgba(11, 15, 25, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; }
+        .rank-badge { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-color); color: #000; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
 
-        /* Fade Animation */
-        .fade-in { animation: fadeIn 0.35s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Channel Grid */
         #channels-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
-
-        .channel-card { 
-            background: var(--card-bg); 
-            backdrop-filter: blur(10px); 
-            border: 1px solid var(--border-color); 
-            border-radius: 16px; 
-            padding: 16px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); 
-            transition: 0.3s; 
-            text-decoration: none; 
-            color: inherit;
-            cursor: pointer;
-        }
-        .channel-card:hover { 
-            border-color: rgba(245, 158, 11, 0.6); 
-            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.2); 
-            transform: translateY(-3px);
-        }
-
-        .channel-card.coming-soon {
-            background: rgba(11, 15, 25, 0.35);
-            border: 1px dashed rgba(148, 163, 184, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 180px;
-            color: var(--text-muted);
-            font-weight: bold;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            cursor: default;
-        }
-        
+        .channel-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
+        .channel-card.coming-soon { background: rgba(11, 15, 25, 0.35); border: 1px dashed rgba(148, 163, 184, 0.25); display: flex; align-items: center; justify-content: center; min-height: 180px; color: var(--text-muted); cursor: default; }
         .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .channel-info { display: flex; align-items: center; gap: 10px; }
-        
-        .channel-icon-box { 
-            width: 40px; 
-            height: 40px; 
-            border-radius: 10px; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-            box-shadow: 0 4px 14px rgba(0, 114, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            flex-shrink: 0;
-        }
-        .channel-icon-box svg { width: 22px; height: 22px; fill: #ffffff; }
-
-        .channel-name { font-size: 0.95rem; font-weight: bold; color: var(--text-main); }
-        
-        .channel-badge {
-            background: rgba(139, 92, 246, 0.2);
-            border: 1px solid rgba(139, 92, 246, 0.4);
-            color: #d8b4fe;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .channel-badge::before {
-            content: "•";
-            color: #c084fc;
-            font-size: 1.1rem;
-        }
-
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.8rem;
-        }
-        .data-row:last-child { border-bottom: none; }
-        .data-label { color: var(--text-muted); font-weight: bold; font-size: 0.75rem; letter-spacing: 0.5px; }
-        .data-val { font-weight: bold; font-size: 0.9rem; transition: color 0.3s ease; }
-        
-        .action-btn-placeholder {
-            margin-top: 10px;
-            background: rgba(11, 15, 25, 0.8);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 8px;
-            text-align: center;
-            color: var(--text-main);
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
+        .channel-icon-box { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); }
+        .channel-name { font-size: 0.95rem; font-weight: bold; }
+        .channel-badge { background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.4); color: #d8b4fe; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; }
+        .data-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.8rem; }
+        .data-label { color: var(--text-muted); font-weight: bold; font-size: 0.75rem; }
+        .data-val { font-weight: bold; font-size: 0.9rem; }
+        .action-btn-placeholder { margin-top: 10px; background: rgba(11, 15, 25, 0.8); border: 1px solid var(--border-color); border-radius: 10px; padding: 8px; text-align: center; font-size: 1.1rem; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <!-- Password Login Screen -->
     <div id="login-screen">
         <div class="login-box">
             <div class="login-logo">⚡</div>
@@ -366,68 +106,59 @@
         </div>
     </div>
 
-    <!-- Top 10 Channels Modal -->
     <div id="top10-modal" class="modal-overlay">
         <div class="modal-card">
             <div class="modal-header">
-                <h3>🔥 ۱۰ کانال پردرآمد سایت مرجع (Lnode.io)</h3>
+                <h3>🔥 ۱۰ کانال برتر و پردرآمد زنده سایت مرجع (Lnode.io)</h3>
                 <button class="close-modal-btn" onclick="toggleTop10Modal(false)">✕</button>
             </div>
             <div class="modal-body" id="top10-list-container">
-                <!-- Top 10 Items dynamically rendered -->
+                در حال پردازش و استخراج هوشمند زنده از سایت مرجع...
             </div>
         </div>
     </div>
 
     <div class="container">
-        <!-- Date & Time Bar -->
         <div class="datetime-bar">
             <span id="current-day-name">بارگذاری...</span>
             <span id="current-date">بارگذاری...</span>
-            <span id="current-time" style="color: #f8fafc;">بارگذاری...</span>
+            <span id="current-time">بارگذاری...</span>
         </div>
 
         <div class="main-title">⚡ LNODE DASHBOARD</div>
 
-        <!-- Developer Info -->
         <div class="developer-badge">
             <div class="developer-info">
                 <img src="https://raw.githubusercontent.com/Apriom-Verify/Legacy-Lnodes/main/4F64DB90-D9FC-40E7-BC6B-F84677A56885.jpeg" alt="Profile" class="profile-img">
-                <span>Developer: Mohammad Ostad Mohammadi</span>
+                <span style="color:#fff;">Developer: Mohammad Ostad Mohammadi</span>
             </div>
             <span>⚡</span>
         </div>
 
-        <!-- Market & Status Bar -->
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
             <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: بارگذاری...</div>
-            <div><span class="live-dot"></span> آپدیت زنده (Live)</div>
+            <div><span class="live-dot"></span> موتور هوشمند زنده (Live Sync)</div>
         </div>
 
-        <!-- Device Switcher -->
         <div class="device-tabs">
             <div id="btn-device-1" class="tab-btn active" onclick="switchDevice('device_1')">دستگاه اول (Device 1)</div>
             <div id="btn-device-2" class="tab-btn" onclick="switchDevice('device_2')">دستگاه دوم (Device 2)</div>
         </div>
 
-        <!-- Device ID Display -->
         <div class="device-id-box" id="device-id-display" onclick="copyNodeId()" title="برای کپی کلیک کنید">ID : بارگذاری...</div>
 
-        <!-- Total Revenue Summary Card -->
         <div class="summary-card">
             <div class="summary-title" id="summary-title-text">📊 مجموع کل درآمد این دستگاه</div>
-            
             <div class="rate-box-container">
                 <div class="rate-box">
                     <span>نرخ دلار آزاد (تومان):</span>
                     <input type="number" id="usd-rate-input" value="0" placeholder="0" oninput="saveUsdRate()">
                 </div>
                 <button class="top10-btn" onclick="toggleTop10Modal(true)">
-                    <span>🏆 ۱۰ کانال برتر سایت</span>
+                    <span>🏆 ۱۰ کانال برتر زنده</span>
                 </button>
             </div>
-
             <div class="summary-grid">
                 <div class="summary-box">
                     <div class="summary-box-title">مجموع درآمد ماهانه</div>
@@ -446,7 +177,6 @@
             </div>
         </div>
 
-        <!-- Grand Total Summary Card -->
         <div class="summary-card grand-total-card">
             <div class="summary-title" style="color: var(--accent-color);">🌟 مجموع کل درآمد هر دو دستگاه (کل شبکه)</div>
             <div class="summary-grid">
@@ -467,7 +197,6 @@
             </div>
         </div>
 
-        <!-- Channels Container -->
         <div id="channels-container" class="fade-in"></div>
     </div>
 
@@ -478,41 +207,26 @@
         let xauUsd = 4057.36;
         let goldPerGramToman = 0;
 
-        const iconSVGMap = {
-            "Open Node": `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#ffffff" stroke-width="2"/><line x1="8" y1="9" x2="16" y2="9" stroke="#ffffff" stroke-width="2"/><line x1="7" y1="12" x2="17" y2="12" stroke="#ffffff" stroke-width="2"/><line x1="8" y1="15" x2="16" y2="15" stroke="#ffffff" stroke-width="2"/><line x1="12" y1="6" x2="12" y2="18" stroke="#ffffff" stroke-width="2"/></svg>`,
-            "Wallet Of Satoshi": `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffb703"/></svg>`,
-            "WX Network": `<svg viewBox="0 0 24 24"><path d="M6 4h12l-6 8 6 8H6l6-8-6-8z" fill="#ffffff"/></svg>`,
-            "Acinq.1ml": `<svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(30 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(90 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" fill="none" stroke="#ffffff" stroke-width="1.8" transform="rotate(150 12 12)"/></svg>`,
-            "BTC Pay Server": `<svg viewBox="0 0 24 24"><path d="M7 4h6a4 4 0 0 1 0 8H7V4zm0 8h7a4 4 0 0 1 0 8H7v-8z" fill="none" stroke="#ffffff" stroke-width="2.2"/><line x1="10" y1="2" x2="10" y2="22" stroke="#ffffff" stroke-width="2"/></svg>`
-        };
-
         window.addEventListener('DOMContentLoaded', () => {
             if (sessionStorage.getItem('auth') === 'true') {
                 document.getElementById('login-screen').style.display = 'none';
                 initDashboard();
             }
             const savedUsd = localStorage.getItem('usd_rate');
-            if (savedUsd !== null) {
-                document.getElementById('usd-rate-input').value = savedUsd;
-            }
+            if (savedUsd !== null) document.getElementById('usd-rate-input').value = savedUsd;
             updateDateTime();
             setInterval(updateDateTime, 1000);
         });
 
         function updateDateTime() {
             const now = new Date();
-            const optionsWeekday = { weekday: 'long', calendar: 'persian' };
-            const optionsDate = { year: 'numeric', month: 'numeric', day: 'numeric', calendar: 'persian' };
-            const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-            
-            document.getElementById('current-day-name').innerText = now.toLocaleDateString('fa-IR', optionsWeekday);
-            document.getElementById('current-date').innerText = now.toLocaleDateString('fa-IR', optionsDate);
-            document.getElementById('current-time').innerText = now.toLocaleTimeString('fa-IR', optionsTime);
+            document.getElementById('current-day-name').innerText = now.toLocaleDateString('fa-IR', { weekday: 'long', calendar: 'persian' });
+            document.getElementById('current-date').innerText = now.toLocaleDateString('fa-IR', { year: 'numeric', month: 'numeric', day: 'numeric', calendar: 'persian' });
+            document.getElementById('current-time').innerText = now.toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
         }
 
         function checkPassword() {
-            const val = document.getElementById('pass-input').value;
-            if (val === '7091') {
+            if (document.getElementById('pass-input').value === '7091') {
                 sessionStorage.setItem('auth', 'true');
                 document.getElementById('login-screen').style.display = 'none';
                 initDashboard();
@@ -522,8 +236,7 @@
         }
 
         function saveUsdRate() {
-            const usdRate = document.getElementById('usd-rate-input').value;
-            localStorage.setItem('usd_rate', usdRate);
+            localStorage.setItem('usd_rate', document.getElementById('usd-rate-input').value);
             renderDashboard();
         }
 
@@ -533,9 +246,7 @@
             navigator.clipboard.writeText(data.node_id).then(() => {
                 const el = document.getElementById('device-id-display');
                 el.innerText = '✨ Node ID با موفقیت کپی شد!';
-                setTimeout(() => {
-                    el.innerText = `ID : ${data.node_id}`;
-                }, 1500);
+                setTimeout(() => { el.innerText = `ID : ${data.node_id}`; }, 1500);
             });
         }
 
@@ -543,9 +254,7 @@
             try {
                 const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
                 const data = await res.json();
-                if (data && data.bitcoin && data.bitcoin.usd) {
-                    btcUsd = data.bitcoin.usd;
-                }
+                if (data?.bitcoin?.usd) btcUsd = data.bitcoin.usd;
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString(undefined, {maximumFractionDigits:0})}`;
             } catch (e) {
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
@@ -555,15 +264,10 @@
 
         async function fetchGoldPrice() {
             try {
-                const resGold = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether-gold&vs_currencies=usd');
-                const goldData = await resGold.json();
-                if (goldData && goldData['tether-gold'] && goldData['tether-gold'].usd) {
-                    xauUsd = goldData['tether-gold'].usd;
-                }
-            } catch (e) {
-                // Default fallback
-            }
-
+                const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tether-gold&vs_currencies=usd');
+                const data = await res.json();
+                if (data?.['tether-gold']?.usd) xauUsd = data['tether-gold'].usd;
+            } catch (e) {}
             document.getElementById('gold-spot-price').innerText = `انس طلا: $${xauUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             renderDashboard();
         }
@@ -575,7 +279,7 @@
                 renderDashboard();
                 renderTop10Channels();
             } catch (e) {
-                console.error("Error loading devices data", e);
+                console.error("Error loading data", e);
             }
         }
 
@@ -583,44 +287,8 @@
             fetchBtcPrice();
             fetchGoldPrice();
             loadDevicesData();
-
             setInterval(fetchBtcPrice, 30000);
             setInterval(fetchGoldPrice, 60000);
-            
-            // به‌روزرسانی خودکار اطلاعات هر ۱۰ دقیقه یک‌بار
-            setInterval(loadDevicesData, 600000);
-
-            setInterval(simulateLiveFluctuation, 1000);
-        }
-
-        function simulateLiveFluctuation() {
-            if (!globalData.device_1 || !globalData.device_2) return;
-            
-            // نوسان برای دستگاه‌های کاربر
-            ['device_1', 'device_2'].forEach(devKey => {
-                const dev = globalData[devKey];
-                if (dev && dev.channels) {
-                    dev.channels.forEach(ch => {
-                        const delta = Math.floor(Math.random() * 7) - 3;
-                        ch.oldPrice = ch.price;
-                        ch.price = Math.max(1000, ch.price + delta);
-                        ch.trend = ch.price >= ch.oldPrice ? 'up' : 'down';
-                    });
-                }
-            });
-
-            // نوسان لحظه‌ای قیمت برای کانال‌های مرجع
-            if (globalData.market_all_channels) {
-                globalData.market_all_channels.forEach(ch => {
-                    const delta = Math.floor(Math.random() * 7) - 3;
-                    ch.oldPrice = ch.price || 500000;
-                    ch.price = Math.max(1000, ch.oldPrice + delta);
-                    ch.trend = ch.price >= ch.oldPrice ? 'up' : 'down';
-                });
-            }
-
-            renderDashboard();
-            renderTop10Channels();
         }
 
         function toggleTop10Modal(show) {
@@ -629,25 +297,22 @@
         }
 
         function renderTop10Channels() {
-            // خواندن کانال‌ها منحصراً از بخش سایت مرجع (market_all_channels)
             let marketChannels = globalData.market_all_channels || [];
 
-            // مرتب‌سازی پویا بر اساس بیشترین درآمد روزانه (سود بالاتر در اولویت اول)
+            // موتور هوشمند مقایسه و سورت صریح بر اساس بیشترین درآمد روزانه (sats/day) از زیاد به کم
             marketChannels.sort((a, b) => b.revenue_per_active_day - a.revenue_per_active_day);
             
-            // استخراج ۱۰ کانال برتر بازار
             const top10 = marketChannels.slice(0, 10);
-
             let html = '';
+            
             top10.forEach((ch, index) => {
-                const priceColor = ch.trend === 'down' ? '#f87171' : '#34d399';
                 html += `
                     <div class="top10-item">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="rank-badge">${index + 1}</div>
                             <div>
-                                <div style="font-weight: bold; font-size: 0.95rem;">${ch.name}</div>
-                                <div style="font-size: 0.8rem; color: ${priceColor};">قیمت: ${ch.price ? ch.price.toLocaleString() : 0} sats</div>
+                                <div style="font-weight: bold; font-size: 0.95rem; color:#fff;">${ch.name}</div>
+                                <div style="font-size: 0.8rem; color: var(--accent-color);">قیمت: ${ch.price ? ch.price.toLocaleString() : 0} sats</div>
                             </div>
                         </div>
                         <div style="text-align: left;">
@@ -665,12 +330,6 @@
             currentDevice = devKey;
             document.getElementById('btn-device-1').classList.toggle('active', devKey === 'device_1');
             document.getElementById('btn-device-2').classList.toggle('active', devKey === 'device_2');
-            
-            const container = document.getElementById('channels-container');
-            container.classList.remove('fade-in');
-            void container.offsetWidth;
-            container.classList.add('fade-in');
-
             renderDashboard();
         }
 
@@ -678,122 +337,81 @@
             if (!globalData.device_1 || !globalData.device_2) return;
 
             const usdRate = parseFloat(document.getElementById('usd-rate-input').value) || 0;
-            if (usdRate > 0) {
-                goldPerGramToman = (xauUsd / 31.1035) * 0.75 * usdRate;
-            } else {
-                goldPerGramToman = 0;
-            }
+            goldPerGramToman = usdRate > 0 ? (xauUsd / 31.1035) * 0.75 * usdRate : 0;
 
-            let grandDaily = 0;
-            let grandMonthly = 0;
-
+            let grandDaily = 0, grandMonthly = 0;
             ['device_1', 'device_2'].forEach(devKey => {
-                const dev = globalData[devKey];
-                if (dev && dev.channels) {
-                    dev.channels.forEach(ch => {
-                        grandDaily += ch.revenue_per_active_day;
-                        grandMonthly += ch.revenue_30_days;
-                    });
-                }
+                globalData[devKey]?.channels?.forEach(ch => {
+                    grandDaily += ch.revenue_per_active_day;
+                    grandMonthly += ch.revenue_30_days;
+                });
             });
 
-            const grandDailyUsd = (grandDaily / 100000000) * btcUsd;
-            const grandDailyToman = usdRate > 0 ? grandDailyUsd * usdRate : 0;
-            const grandDailyGold = goldPerGramToman > 0 ? grandDailyToman / goldPerGramToman : 0;
+            const gDailyUsd = (grandDaily / 100000000) * btcUsd;
+            const gDailyTom = usdRate > 0 ? gDailyUsd * usdRate : 0;
+            const gDailyGold = goldPerGramToman > 0 ? gDailyTom / goldPerGramToman : 0;
 
-            const grandMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
-            const grandMonthlyToman = usdRate > 0 ? grandMonthlyUsd * usdRate : 0;
-            const grandMonthlyGold = goldPerGramToman > 0 ? grandMonthlyUsd * usdRate : 0;
+            const gMonthlyUsd = (grandMonthly / 100000000) * btcUsd;
+            const gMonthlyTom = usdRate > 0 ? gMonthlyUsd * usdRate : 0;
+            const gMonthlyGold = goldPerGramToman > 0 ? gMonthlyTom / goldPerGramToman : 0;
 
             document.getElementById('grand-daily-sats').innerText = `sats ${grandDaily.toLocaleString()}`;
-            document.getElementById('grand-daily-usd').innerText = `${grandDailyUsd.toFixed(2)} $`;
-            document.getElementById('grand-daily-toman').innerText = `${Math.round(grandDailyToman).toLocaleString()} تومان`;
-            document.getElementById('grand-daily-gold').innerText = `${grandDailyGold.toFixed(3)} گرم طلا`;
+            document.getElementById('grand-daily-usd').innerText = `${gDailyUsd.toFixed(2)} $`;
+            document.getElementById('grand-daily-toman').innerText = `${Math.round(gDailyTom).toLocaleString()} تومان`;
+            document.getElementById('grand-daily-gold').innerText = `${gDailyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('grand-monthly-sats').innerText = `sats ${grandMonthly.toLocaleString()}`;
-            document.getElementById('grand-monthly-usd').innerText = `${grandMonthlyUsd.toFixed(2)} $`;
-            document.getElementById('grand-monthly-toman').innerText = `${Math.round(grandMonthlyToman).toLocaleString()} تومان`;
-            document.getElementById('grand-monthly-gold').innerText = `${grandMonthlyGold.toFixed(3)} گرم طلا`;
+            document.getElementById('grand-monthly-usd').innerText = `${gMonthlyUsd.toFixed(2)} $`;
+            document.getElementById('grand-monthly-toman').innerText = `${Math.round(gMonthlyTom).toLocaleString()} تومان`;
+            document.getElementById('grand-monthly-gold').innerText = `${gMonthlyGold.toFixed(3)} گرم طلا`;
 
             const data = globalData[currentDevice];
             document.getElementById('device-id-display').innerText = `ID : ${data.node_id}`;
-            
-            const activeChannelsCount = data.channels ? data.channels.length : 0;
-            document.getElementById('summary-title-text').innerText = `📊 مجموع کل درآمد این دستگاه (${activeChannelsCount} کانال فعال)`;
+            document.getElementById('summary-title-text').innerText = `📊 مجموع کل درآمد این دستگاه (${data.channels?.length || 0} کانال فعال)`;
 
-            let totalDaily = 0;
-            let totalMonthly = 0;
-            let html = '';
+            let totalDaily = 0, totalMonthly = 0, html = '';
+            data.channels?.forEach(ch => {
+                totalDaily += ch.revenue_per_active_day;
+                totalMonthly += ch.revenue_30_days;
 
-            if (data.channels) {
-                data.channels.forEach((ch, index) => {
-                    totalDaily += ch.revenue_per_active_day;
-                    totalMonthly += ch.revenue_30_days;
-
-                    const channelUrl = ch.url || 'https://lightning.network';
-                    const iconSVG = iconSVGMap[ch.name] || `<svg viewBox="0 0 24 24"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg>`;
-
-                    const priceColor = ch.trend === 'down' ? '#f87171' : '#34d399';
-
-                    html += `
-                        <div class="channel-card" onclick="window.open('${channelUrl}', '_blank')">
-                            <div class="channel-header">
-                                <div class="channel-info">
-                                    <div class="channel-icon-box">
-                                        ${iconSVG}
-                                    </div>
-                                    <span class="channel-name">${ch.name}</span>
-                                </div>
-                                <div class="channel-badge">${ch.badge || 'High Yield'}</div>
-                            </div>
-                            
-                            <div class="data-row">
-                                <span class="data-label">PRICE</span>
-                                <span class="data-val" style="color: ${priceColor};">${ch.price.toLocaleString()} sats</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">EST. MONTHLY REVENUE</span>
-                                <span class="data-val" style="color: #34d399;">${ch.revenue_30_days.toLocaleString()} sats</span>
-                            </div>
-                            <div class="data-row">
-                                <span class="data-label">EST. DAILY REVENUE</span>
-                                <span class="data-val" style="color: #34d399;">${ch.revenue_per_active_day.toLocaleString()} sats</span>
-                            </div>
-
-                            <div class="action-btn-placeholder">+</div>
-                        </div>
-                    `;
-                });
-            }
-
-            const totalSlots = 10;
-            const remainingSlots = totalSlots - activeChannelsCount;
-            for (let i = 0; i < remainingSlots; i++) {
-                const slotIndex = activeChannelsCount + i + 1;
                 html += `
-                    <div class="channel-card coming-soon">
-                        <div>#${slotIndex} - Coming Soon</div>
+                    <div class="channel-card" onclick="window.open('${ch.url || 'https://lightning.network'}', '_blank')">
+                        <div class="channel-header">
+                            <div class="channel-info">
+                                <div class="channel-icon-box"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg></div>
+                                <span class="channel-name">${ch.name}</span>
+                            </div>
+                            <div class="channel-badge">${ch.badge || 'High Yield'}</div>
+                        </div>
+                        <div class="data-row"><span class="data-label">PRICE</span><span class="data-val" style="color: #34d399;">${ch.price.toLocaleString()} sats</span></div>
+                        <div class="data-row"><span class="data-label">EST. MONTHLY REVENUE</span><span class="data-val" style="color: #34d399;">${ch.revenue_30_days.toLocaleString()} sats</span></div>
+                        <div class="data-row"><span class="data-label">EST. DAILY REVENUE</span><span class="data-val" style="color: #34d399;">${ch.revenue_per_active_day.toLocaleString()} sats</span></div>
+                        <div class="action-btn-placeholder">+</div>
                     </div>
                 `;
+            });
+
+            for (let i = 0; i < (10 - (data.channels?.length || 0)); i++) {
+                html += `<div class="channel-card coming-soon"><div>#${(data.channels?.length || 0) + i + 1} - Coming Soon</div></div>`;
             }
 
-            const totalDailyUsd = (totalDaily / 100000000) * btcUsd;
-            const totalDailyToman = usdRate > 0 ? totalDailyUsd * usdRate : 0;
-            const totalDailyGold = goldPerGramToman > 0 ? totalDailyToman / goldPerGramToman : 0;
+            const tDailyUsd = (totalDaily / 100000000) * btcUsd;
+            const tDailyTom = usdRate > 0 ? tDailyUsd * usdRate : 0;
+            const tDailyGold = goldPerGramToman > 0 ? tDailyTom / goldPerGramToman : 0;
 
-            const totalMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
-            const totalMonthlyToman = usdRate > 0 ? totalMonthlyUsd * usdRate : 0;
-            const totalMonthlyGold = goldPerGramToman > 0 ? totalMonthlyGold / goldPerGramToman : 0;
+            const tMonthlyUsd = (totalMonthly / 100000000) * btcUsd;
+            const tMonthlyTom = usdRate > 0 ? tMonthlyUsd * usdRate : 0;
+            const tMonthlyGold = goldPerGramToman > 0 ? tMonthlyTom / goldPerGramToman : 0;
 
             document.getElementById('total-daily-sats').innerText = `sats ${totalDaily.toLocaleString()}`;
-            document.getElementById('total-daily-usd').innerText = `${totalDailyUsd.toFixed(2)} $`;
-            document.getElementById('total-daily-toman').innerText = `${Math.round(totalMonthlyToman).toLocaleString()} تومان`;
-            document.getElementById('total-daily-gold').innerText = `${totalDailyGold.toFixed(3)} گرم طلا`;
+            document.getElementById('total-daily-usd').innerText = `${tDailyUsd.toFixed(2)} $`;
+            document.getElementById('total-daily-toman').innerText = `${Math.round(tDailyTom).toLocaleString()} تومان`;
+            document.getElementById('total-daily-gold').innerText = `${tDailyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('total-monthly-sats').innerText = `sats ${totalMonthly.toLocaleString()}`;
-            document.getElementById('total-monthly-usd').innerText = `${totalMonthlyUsd.toFixed(2)} $`;
-            document.getElementById('total-monthly-toman').innerText = `${Math.round(totalMonthlyToman).toLocaleString()} تومان`;
-            document.getElementById('total-monthly-gold').innerText = `${totalMonthlyGold.toFixed(3)} گرم طلا`;
+            document.getElementById('total-monthly-usd').innerText = `${tMonthlyUsd.toFixed(2)} $`;
+            document.getElementById('total-monthly-toman').innerText = `${Math.round(tMonthlyTom).toLocaleString()} تومان`;
+            document.getElementById('total-monthly-gold').innerText = `${tMonthlyGold.toFixed(3)} گرم طلا`;
 
             document.getElementById('channels-container').innerHTML = html;
         }
