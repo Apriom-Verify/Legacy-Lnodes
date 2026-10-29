@@ -120,11 +120,46 @@
       "revenue_per_active_day": 1212
     },
     {
+      "name": "Kraken Lightning",
+      "url": "https://www.kraken.com",
+      "price": 520100,
+      "revenue_30_days": 32400,
+      "revenue_per_active_day": 1080
+    },
+    {
+      "name": "Bitfinex Routing",
+      "url": "https://www.bitfinex.com",
+      "price": 610400,
+      "revenue_30_days": 28500,
+      "revenue_per_active_day": 950
+    },
+    {
+      "name": "River Financial",
+      "url": "https://river.com",
+      "price": 430250,
+      "revenue_30_days": 24900,
+      "revenue_per_active_day": 830
+    },
+    {
       "name": "Acinq.1ml",
       "url": "https://1ml.com",
       "price": 205730,
       "revenue_30_days": 18510,
       "revenue_per_active_day": 617
+    },
+    {
+      "name": "Breez Hub",
+      "url": "https://breez.technology",
+      "price": 310800,
+      "revenue_30_days": 15600,
+      "revenue_per_active_day": 520
+    },
+    {
+      "name": "Boltz Exchange",
+      "url": "https://boltz.exchange",
+      "price": 180500,
+      "revenue_30_days": 12300,
+      "revenue_per_active_day": 410
     }
   ]
 }
