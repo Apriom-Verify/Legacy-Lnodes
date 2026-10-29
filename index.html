@@ -168,10 +168,27 @@
         /* Summary Card */
         .summary-card { background: var(--card-bg); backdrop-filter: blur(12px); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px; margin-bottom: 15px; text-align: center; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35); }
         .summary-title { font-size: 1rem; color: var(--accent-color); margin-bottom: 12px; font-weight: bold; }
-        .rate-box-container { display: flex; gap: 15px; justify-content: center; margin-bottom: 15px; flex-wrap: wrap; }
+        .rate-box-container { display: flex; gap: 15px; justify-content: center; align-items: center; margin-bottom: 15px; flex-wrap: wrap; }
         .rate-box { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.85rem; background: rgba(11, 15, 25, 0.7); padding: 8px 15px; border-radius: 10px; border: 1px solid var(--border-color); color: var(--text-muted); flex: 1; min-width: 220px; }
         .rate-box input { width: 130px; background: rgba(17, 24, 39, 0.9); border: 1px solid var(--border-color); color: var(--accent-color); padding: 6px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 0.95rem; outline: none; }
         
+        .top10-btn {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+            border: 1px solid #a78bfa;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top10-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5); }
+
         .summary-grid { display: flex; gap: 15px; flex-wrap: wrap; }
         .summary-box { flex: 1; min-width: 200px; background: rgba(11, 15, 25, 0.6); border: 1px solid var(--border-color); border-radius: 12px; padding: 15px; text-align: center; }
         .summary-box-title { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
@@ -180,6 +197,58 @@
         .gold-val { font-size: 0.8rem; font-weight: bold; color: var(--gold-color); margin-top: 4px; }
 
         .grand-total-card { border: 1px solid var(--accent-color); background: linear-gradient(145deg, rgba(17, 24, 39, 0.9) 0%, rgba(31, 41, 61, 0.8) 100%); box-shadow: 0 0 25px rgba(245, 158, 11, 0.15); }
+
+        /* Modal Popup for Top 10 Channels */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(7, 9, 19, 0.85); backdrop-filter: blur(12px);
+            display: none; justify-content: center; align-items: center;
+            z-index: 2000; padding: 20px;
+        }
+        .modal-card {
+            background: rgba(17, 24, 39, 0.95);
+            border: 1px solid var(--accent-color);
+            border-radius: 20px;
+            width: 100%; max-width: 650px;
+            max-height: 85vh;
+            display: flex; flex-direction: column;
+            box-shadow: 0 0 50px rgba(245, 158, 11, 0.3);
+            overflow: hidden;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .modal-header {
+            padding: 18px 20px;
+            background: rgba(11, 15, 25, 0.8);
+            border-bottom: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .modal-header h3 { font-size: 1.1rem; color: var(--accent-color); font-weight: bold; }
+        .close-modal-btn {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .modal-body { padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .top10-item {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: 0.2s;
+        }
+        .top10-item:hover { border-color: var(--accent-color); background: rgba(31, 41, 61, 0.6); }
+        .rank-badge {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: var(--accent-color); color: #000;
+            font-weight: bold; font-size: 0.85rem;
+            display: flex; align-items: center; justify-content: center;
+        }
 
         /* Fade Animation */
         .fade-in { animation: fadeIn 0.35s ease-in-out; }
@@ -221,11 +290,6 @@
             font-size: 1rem;
             letter-spacing: 1px;
             cursor: default;
-        }
-        .channel-card.coming-soon:hover {
-            transform: none;
-            border-color: rgba(148, 163, 184, 0.25);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         
         .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
@@ -302,6 +366,19 @@
         </div>
     </div>
 
+    <!-- Top 10 Channels Modal -->
+    <div id="top10-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>🔥 ۱۰ کانال برتر و پردرآمد شبکه (Top 10 High Yield)</h3>
+                <button class="close-modal-btn" onclick="toggleTop10Modal(false)">✕</button>
+            </div>
+            <div class="modal-body" id="top10-list-container">
+                <!-- Top 10 Items dynamically rendered -->
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Date & Time Bar -->
         <div class="datetime-bar">
@@ -342,10 +419,13 @@
             <div class="summary-title" id="summary-title-text">📊 مجموع کل درآمد این دستگاه</div>
             
             <div class="rate-box-container">
-                <div class="rate-box" style="flex: 1; max-width: 300px; margin: 0 auto;">
+                <div class="rate-box">
                     <span>نرخ دلار آزاد (تومان):</span>
                     <input type="number" id="usd-rate-input" value="0" placeholder="0" oninput="saveUsdRate()">
                 </div>
+                <button class="top10-btn" onclick="toggleTop10Modal(true)">
+                    <span>🏆 ۱۰ کانال برتر</span>
+                </button>
             </div>
 
             <div class="summary-grid">
@@ -481,28 +561,36 @@
                     xauUsd = goldData['tether-gold'].usd;
                 }
             } catch (e) {
-                // در صورت خطا از مقدار پیش‌فرض استفاده می‌شود
+                // Default fallback
             }
 
             document.getElementById('gold-spot-price').innerText = `انس طلا: $${xauUsd.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
             renderDashboard();
         }
 
-        async function initDashboard() {
-            fetchBtcPrice();
-            fetchGoldPrice();
-
-            setInterval(fetchBtcPrice, 30000);
-            setInterval(fetchGoldPrice, 60000);
-
+        async function loadDevicesData() {
             try {
                 const res = await fetch('devices_data.json');
                 globalData = await res.json();
                 renderDashboard();
-                setInterval(simulateLiveFluctuation, 1000);
+                renderTop10Channels();
             } catch (e) {
-                console.error("Error loading data", e);
+                console.error("Error loading devices data", e);
             }
+        }
+
+        async function initDashboard() {
+            fetchBtcPrice();
+            fetchGoldPrice();
+            loadDevicesData();
+
+            setInterval(fetchBtcPrice, 30000);
+            setInterval(fetchGoldPrice, 60000);
+            
+            // به‌روزرسانی خودکار دیتای هر ۱۰ دقیقه یک‌بار (۶۰۰,۰۰۰ میلی‌ثانیه)
+            setInterval(loadDevicesData, 600000);
+
+            setInterval(simulateLiveFluctuation, 1000);
         }
 
         function simulateLiveFluctuation() {
@@ -519,6 +607,49 @@
                 }
             });
             renderDashboard();
+        }
+
+        function toggleTop10Modal(show) {
+            document.getElementById('top10-modal').style.display = show ? 'flex' : 'none';
+            if (show) renderTop10Channels();
+        }
+
+        function renderTop10Channels() {
+            let allChannels = [];
+            ['device_1', 'device_2'].forEach(devKey => {
+                const dev = globalData[devKey];
+                if (dev && dev.channels) {
+                    dev.channels.forEach(ch => {
+                        allChannels.push({ ...ch, deviceName: devKey === 'device_1' ? 'دستگاه ۱' : 'دستگاه ۲' });
+                    });
+                }
+            });
+
+            // فیلتر و مرتب‌سازی بر اساس درآمد روزانه
+            allChannels.sort((a, b) => b.revenue_per_active_day - a.revenue_per_active_day);
+            const top10 = allChannels.slice(0, 10);
+
+            let html = '';
+            top10.forEach((ch, index) => {
+                const priceColor = ch.trend === 'down' ? '#f87171' : '#34d399';
+                html += `
+                    <div class="top10-item">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div class="rank-badge">${index + 1}</div>
+                            <div>
+                                <div style="font-weight: bold; font-size: 0.95rem;">${ch.name} <span style="font-size: 0.75rem; color: var(--text-muted);">(${ch.deviceName})</span></div>
+                                <div style="font-size: 0.8rem; color: ${priceColor};">قیمت: ${ch.price ? ch.price.toLocaleString() : 0} sats</div>
+                            </div>
+                        </div>
+                        <div style="text-align: left;">
+                            <div style="color: #34d399; font-weight: bold; font-size: 0.9rem;">+${ch.revenue_per_active_day.toLocaleString()} sats/day</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">ماهانه: ${ch.revenue_30_days.toLocaleString()} sats</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('top10-list-container').innerHTML = html || '<div style="text-align:center; padding: 20px; color: var(--text-muted);">کانالی یافت نشد.</div>';
         }
 
         function switchDevice(devKey) {
