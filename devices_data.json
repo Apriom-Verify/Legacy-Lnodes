@@ -113,11 +113,11 @@
       "revenue_per_active_day": 1805
     },
     {
-      "name": "Lightning Pool",
-      "url": "https://lightning.engineering",
-      "price": 820000,
-      "revenue_30_days": 45000,
-      "revenue_per_active_day": 1500
+      "name": "Kraken",
+      "url": "https://www.kraken.com",
+      "price": 2673095,
+      "revenue_30_days": 48870,
+      "revenue_per_active_day": 1629
     },
     {
       "name": "Wallet Of Satoshi",
@@ -125,13 +125,6 @@
       "price": 472903,
       "revenue_30_days": 36360,
       "revenue_per_active_day": 1212
-    },
-    {
-      "name": "Kraken Lightning",
-      "url": "https://www.kraken.com",
-      "price": 520100,
-      "revenue_30_days": 32400,
-      "revenue_per_active_day": 1080
     },
     {
       "name": "Bitfinex Routing",
@@ -160,6 +153,13 @@
       "price": 310800,
       "revenue_30_days": 15600,
       "revenue_per_active_day": 520
+    },
+    {
+      "name": "Boltz Exchange",
+      "url": "https://boltz.exchange",
+      "price": 180500,
+      "revenue_30_days": 12300,
+      "revenue_per_active_day": 410
     }
   ]
 }
