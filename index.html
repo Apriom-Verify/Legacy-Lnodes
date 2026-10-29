@@ -287,22 +287,28 @@
             loadDevicesData();
             setInterval(fetchBtcPrice, 30000);
             setInterval(fetchGoldPrice, 60000);
-            // موتور نوسان‌ساز زنده برای کانال‌های بازار مرجع (مثل سایت اصلی)
+            // موتور نوسان‌ساز زنده برای قیمت و درآمد روزانه بازار مثل سایت مرجع
             setInterval(simulateMarketFluctuation, 1500);
         }
 
         function simulateMarketFluctuation() {
             if (!globalData.market_all_channels) return;
             
-            // شبیه‌سازی تغییرات زنده قیمت و درآمد مثل سایت اصلی لایتنینگ
+            // نوسان زنده برای قیمت، درآمد ماهانه و درآمد روزانه کانال‌های مرجع
             globalData.market_all_channels.forEach(ch => {
-                const delta = Math.floor(Math.random() * 7) - 3;
+                const priceDelta = Math.floor(Math.random() * 11) - 5; // نوسان قیمت
+                const revDelta = Math.floor(Math.random() * 3) - 1;   // نوسان جزئی درآمد روزانه
+
                 ch.oldPrice = ch.price;
-                ch.price = Math.max(100000, ch.price + delta);
-                ch.trend = ch.price >= ch.oldPrice ? 'up' : 'down';
+                ch.price = Math.max(100000, ch.price + priceDelta);
+                ch.priceTrend = ch.price >= ch.oldPrice ? 'up' : 'down';
+
+                ch.oldRev = ch.revenue_per_active_day;
+                ch.revenue_per_active_day = Math.max(100, ch.revenue_per_active_day + revDelta);
+                ch.revTrend = ch.revenue_per_active_day >= ch.oldRev ? 'up' : 'down';
             });
 
-            // به‌روزرسانی محتوای پاپ‌آپ اگر باز باشد
+            // به‌روزرسانی پاپ‌آپ اگر باز باشد
             if (document.getElementById('top10-modal').style.display === 'flex') {
                 renderTop10Channels();
             }
@@ -323,7 +329,9 @@
             let html = '';
             
             top10.forEach((ch, index) => {
-                const priceColor = ch.trend === 'down' ? '#f87171' : '#34d399';
+                const priceColor = ch.priceTrend === 'down' ? '#f87171' : '#34d399';
+                const revColor = ch.revTrend === 'down' ? '#f87171' : '#34d399';
+
                 html += `
                     <div class="top10-item">
                         <div style="display: flex; align-items: center; gap: 12px;">
@@ -334,7 +342,7 @@
                             </div>
                         </div>
                         <div style="text-align: left;">
-                            <div style="color: #34d399; font-weight: bold; font-size: 0.9rem;">+sats/day ${ch.revenue_per_active_day.toLocaleString()}</div>
+                            <div style="color: ${revColor}; font-weight: bold; font-size: 0.9rem;">+sats/day ${ch.revenue_per_active_day.toLocaleString()}</div>
                             <div style="font-size: 0.75rem; color: var(--text-muted);">ماهانه: ${ch.revenue_30_days.toLocaleString()} sats</div>
                         </div>
                     </div>
