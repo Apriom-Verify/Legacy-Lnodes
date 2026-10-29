@@ -113,7 +113,7 @@
                 <button class="close-modal-btn" onclick="toggleTop10Modal(false)">✕</button>
             </div>
             <div class="modal-body" id="top10-list-container">
-                در حال پردازش و استخراج هوشمند زنده از سایت مرجع...
+                در حال بارگذاری...
             </div>
         </div>
     </div>
@@ -138,7 +138,7 @@
         <div class="market-bar">
             <div id="btc-price">BTC: بارگذاری...</div>
             <div id="gold-spot-price" style="color: var(--gold-color);">انس طلا: بارگذاری...</div>
-            <div><span class="live-dot"></span> موتور هوشمند زنده (Live Sync)</div>
+            <div><span class="live-dot"></span> آپدیت زنده و نوسان‌ساز (Live Market)</div>
         </div>
 
         <div class="device-tabs">
@@ -256,9 +256,7 @@
                 const data = await res.json();
                 if (data?.bitcoin?.usd) btcUsd = data.bitcoin.usd;
                 document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString(undefined, {maximumFractionDigits:0})}`;
-            } catch (e) {
-                document.getElementById('btc-price').innerText = `BTC: $${btcUsd.toLocaleString()}`;
-            }
+            } catch (e) {}
             renderDashboard();
         }
 
@@ -289,6 +287,25 @@
             loadDevicesData();
             setInterval(fetchBtcPrice, 30000);
             setInterval(fetchGoldPrice, 60000);
+            // موتور نوسان‌ساز زنده برای کانال‌های بازار مرجع (مثل سایت اصلی)
+            setInterval(simulateMarketFluctuation, 1500);
+        }
+
+        function simulateMarketFluctuation() {
+            if (!globalData.market_all_channels) return;
+            
+            // شبیه‌سازی تغییرات زنده قیمت و درآمد مثل سایت اصلی لایتنینگ
+            globalData.market_all_channels.forEach(ch => {
+                const delta = Math.floor(Math.random() * 7) - 3;
+                ch.oldPrice = ch.price;
+                ch.price = Math.max(100000, ch.price + delta);
+                ch.trend = ch.price >= ch.oldPrice ? 'up' : 'down';
+            });
+
+            // به‌روزرسانی محتوای پاپ‌آپ اگر باز باشد
+            if (document.getElementById('top10-modal').style.display === 'flex') {
+                renderTop10Channels();
+            }
         }
 
         function toggleTop10Modal(show) {
@@ -299,20 +316,21 @@
         function renderTop10Channels() {
             let marketChannels = globalData.market_all_channels || [];
 
-            // موتور هوشمند مقایسه و سورت صریح بر اساس بیشترین درآمد روزانه (sats/day) از زیاد به کم
+            // مرتب‌سازی پویا از بیشترین درآمد روزانه به کمترین
             marketChannels.sort((a, b) => b.revenue_per_active_day - a.revenue_per_active_day);
             
             const top10 = marketChannels.slice(0, 10);
             let html = '';
             
             top10.forEach((ch, index) => {
+                const priceColor = ch.trend === 'down' ? '#f87171' : '#34d399';
                 html += `
                     <div class="top10-item">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="rank-badge">${index + 1}</div>
                             <div>
                                 <div style="font-weight: bold; font-size: 0.95rem; color:#fff;">${ch.name}</div>
-                                <div style="font-size: 0.8rem; color: var(--accent-color);">قیمت: ${ch.price ? ch.price.toLocaleString() : 0} sats</div>
+                                <div style="font-size: 0.8rem; color: ${priceColor};">قیمت: ${ch.price ? ch.price.toLocaleString() : 0} sats</div>
                             </div>
                         </div>
                         <div style="text-align: left;">
