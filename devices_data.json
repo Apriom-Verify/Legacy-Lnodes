@@ -89,5 +89,42 @@
         "revenue_per_active_day": 617
       }
     ]
-  }
+  },
+  "market_all_channels": [
+    {
+      "name": "WX Network",
+      "url": "https://wx.network",
+      "price": 790708,
+      "revenue_30_days": 58740,
+      "revenue_per_active_day": 1958
+    },
+    {
+      "name": "BTC Pay Server",
+      "url": "https://btcpayserver.org",
+      "price": 635081,
+      "revenue_30_days": 58020,
+      "revenue_per_active_day": 1934
+    },
+    {
+      "name": "Open Node",
+      "url": "https://www.opennode.com",
+      "price": 763559,
+      "revenue_30_days": 54150,
+      "revenue_per_active_day": 1805
+    },
+    {
+      "name": "Wallet Of Satoshi",
+      "url": "https://www.walletofsatoshi.com",
+      "price": 472903,
+      "revenue_30_days": 36360,
+      "revenue_per_active_day": 1212
+    },
+    {
+      "name": "Acinq.1ml",
+      "url": "https://1ml.com",
+      "price": 205730,
+      "revenue_30_days": 18510,
+      "revenue_per_active_day": 617
+    }
+  ]
 }
