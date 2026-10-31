@@ -1,1128 +1,1010 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammad Ostad Mohammadi | مدیریت نودهای لایتنینگ</title>
-    <!-- Apple Touch Icon with exact filename -->
-    <link rel="apple-touch-icon" href="icon.png.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="icon.png.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Lnodes">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Vazirmatn Persian Font -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Vazirmatn', 'sans-serif'],
-                    },
-                    colors: {
-                        darkBg: '#030712',
-                        cardBg: '#0f172a',
-                        cardBorder: '#1e293b',
-                        accentBlue: '#00d2ff',
-                        accentPurple: '#8b5cf6',
-                        accentGold: '#f59e0b',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: #030712;
-            color: #f8fafc;
-            user-select: none;
-            overflow-x: hidden;
-        }
-        #cyber-bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.65;
-        }
-        .glow-card {
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.88) 0%, rgba(8, 14, 28, 0.94) 100%);
-            border: 1px solid rgba(0, 210, 255, 0.18);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(16px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glow-card:hover {
-            border-color: rgba(0, 210, 255, 0.5);
-            box-shadow: 0 0 35px rgba(0, 210, 255, 0.22);
-            transform: translateY(-2px);
-        }
-        .user-avatar-frame {
-            position: relative;
-            padding: 3px;
-            background: linear-gradient(135deg, #00d2ff, #8b5cf6, #f59e0b);
-            border-radius: 9999px;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        .user-avatar-frame:hover {
-            transform: scale(1.06);
-        }
-        .pulse-dot {
-            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-            animation: pulse-green 2s infinite;
-        }
-        @keyframes pulse-green {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-        }
-        .keypad-btn {
-            background: rgba(30, 41, 59, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.15s ease;
-        }
-        .keypad-btn:active {
-            transform: scale(0.92);
-            background: rgba(0, 210, 255, 0.4);
-        }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #030712; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00d2ff; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammad Ostad Mohammadi | مدیریت نودهای لایتنینگ</title>
+<!-- Apple Touch Icon with exact filename -->
+<link rel="apple-touch-icon" href="icon.png.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon.png.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lnodes">
+<!-- Tailwind CSS -->
+<script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+<!-- Lucide Icons -->
+<script src="[https://unpkg.com/lucide@latest](https://unpkg.com/lucide@latest)"></script>
+<!-- Vazirmatn Persian Font -->
+<link href="[https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css](https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css)" rel="stylesheet" type="text/css" />
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Vazirmatn', 'sans-serif'],
+},
+colors: {
+darkBg: '#030712',
+cardBg: '#0f172a',
+cardBorder: '#1e293b',
+accentBlue: '#00d2ff',
+accentPurple: '#8b5cf6',
+accentGold: '#f59e0b',
+}
+}
+}
+}
+</script>
+<style>
+body {
+font-family: 'Vazirmatn', sans-serif;
+background-color: #030712;
+color: #f8fafc;
+user-select: none;
+overflow-x: hidden;
+}
+#cyber-bg-canvas {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+z-index: 0;
+pointer-events: none;
+opacity: 0.65;
+}
+.glow-card {
+background: linear-gradient(145deg, rgba(15, 23, 42, 0.88) 0%, rgba(8, 14, 28, 0.94) 100%);
+border: 1px solid rgba(0, 210, 255, 0.18);
+box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+backdrop-filter: blur(16px);
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glow-card:hover {
+border-color: rgba(0, 210, 255, 0.5);
+box-shadow: 0 0 35px rgba(0, 210, 255, 0.22);
+transform: translateY(-2px);
+}
+.user-avatar-frame {
+position: relative;
+padding: 3px;
+background: linear-gradient(135deg, #00d2ff, #8b5cf6, #f59e0b);
+border-radius: 9999px;
+box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+cursor: pointer;
+transition: transform 0.2s ease;
+}
+.user-avatar-frame:hover {
+transform: scale(1.06);
+}
+.pulse-dot {
+box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+animation: pulse-green 2s infinite;
+}
+@keyframes pulse-green {
+0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+.keypad-btn {
+background: rgba(30, 41, 59, 0.85);
+border: 1px solid rgba(255, 255, 255, 0.15);
+transition: all 0.15s ease;
+}
+.keypad-btn:active {
+transform: scale(0.92);
+background: rgba(0, 210, 255, 0.4);
+}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #030712; }
+::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #00d2ff; }
+</style>
 </head>
 <body class="min-h-screen relative">
-
-    <!-- Canvas Cybernetic Background -->
-    <canvas id="cyber-bg-canvas"></canvas>
-
-    <!-- Profile Image Lightbox Modal -->
-    <div id="image-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeImageModal()">
-        <div class="relative max-w-md w-full text-center">
-            <div class="w-64 h-64 mx-auto rounded-full border-4 border-cyan-400 shadow-2xl shadow-cyan-500/50 overflow-hidden bg-slate-900 flex items-center justify-center p-2">
-                <!-- Miner / Server Graphic SVG -->
-                <svg viewBox="0 0 200 200" class="w-full h-full rounded-full">
-                    <defs>
-                        <linearGradient id="minerBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#0f172a"/>
-                            <stop offset="100%" stop-color="#030712"/>
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" fill="url(#minerBgGrad)"/>
-                    <!-- Server Rack Body -->
-                    <rect x="50" y="45" width="100" height="110" rx="12" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
-                    <!-- Server Units / Blades -->
-                    <rect x="62" y="60" width="76" height="22" rx="4" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
-                    <rect x="62" y="89" width="76" height="22" rx="4" fill="#0f172a" stroke="#00d2ff" stroke-width="1.5"/>
-                    <rect x="62" y="118" width="76" height="22" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
-                    <!-- LED Lights -->
-                    <circle cx="75" cy="71" r="3" fill="#22c55e" class="pulse-dot"/>
-                    <circle cx="85" cy="71" r="2" fill="#00d2ff"/>
-                    <circle cx="75" cy="100" r="3" fill="#22c55e" class="pulse-dot"/>
-                    <circle cx="85" cy="100" r="2" fill="#00d2ff"/>
-                    <circle cx="75" cy="129" r="3" fill="#22c55e" class="pulse-dot"/>
-                    <circle cx="85" cy="129" r="2" fill="#f59e0b"/>
-                    <!-- Vents -->
-                    <line x1="105" y1="71" x2="125" y2="71" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="105" y1="100" x2="125" y2="100" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="105" y1="129" x2="125" y2="129" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </div>
-            <h3 class="text-white font-black text-xl mt-4">Mohammad Ostad Mohammadi</h3>
-            <p class="text-cyan-400 font-bold text-sm">محمد استاد محمدی</p>
-            <p class="text-xs text-gray-400 mt-2">مالک و توسعه‌دهنده سیستم نودهای Lnode.io (LN961122)</p>
-            <button onclick="closeImageModal()" class="mt-4 px-6 py-2 text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white rounded-xl transition-all">
-                بستن پنجره
-            </button>
-        </div>
-    </div>
-
-    <!-- Passcode Screen (Custom Numpad Order) -->
-    <div id="lock-screen" class="fixed inset-0 z-50 bg-darkBg/95 backdrop-blur-2xl flex items-center justify-center p-4">
-        <div class="glow-card w-full max-w-sm rounded-3xl p-6 sm:p-8 text-center border-cyan-500/40 relative z-10">
-            
-            <div class="w-24 h-24 mx-auto mb-4 user-avatar-frame flex items-center justify-center bg-slate-900" onclick="openImageModal(event)">
-                <svg viewBox="0 0 200 200" class="w-full h-full rounded-full">
-                    <rect width="200" height="200" fill="#030712"/>
-                    <rect x="50" y="45" width="100" height="110" rx="12" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
-                    <rect x="62" y="60" width="76" height="22" rx="4" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
-                    <rect x="62" y="89" width="76" height="22" rx="4" fill="#0f172a" stroke="#00d2ff" stroke-width="1.5"/>
-                    <rect x="62" y="118" width="76" height="22" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
-                    <circle cx="75" cy="71" r="3" fill="#22c55e"/>
-                    <circle cx="75" cy="100" r="3" fill="#22c55e"/>
-                    <circle cx="75" cy="129" r="3" fill="#22c55e"/>
-                    <line x1="105" y1="71" x2="125" y2="71" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="105" y1="100" x2="125" y2="100" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="105" y1="129" x2="125" y2="129" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-            </div>
-
-            <h2 class="text-xl font-black text-white">Mohammad Ostad Mohammadi</h2>
-            <p class="text-xs text-cyan-400 font-bold mt-1">ورود به داشبورد نودها</p>
-            <p class="text-[11px] text-gray-400">محمد استاد محمدی</p>
-
-            <!-- Password Indicator Dots -->
-            <div class="flex items-center justify-center gap-3 my-6 dir-ltr" id="passcode-dots">
-                <span class="w-4 h-4 rounded-full border-2 border-gray-600 transition-all" id="dot-0"></span>
-                <span class="w-4 h-4 rounded-full border-2 border-gray-600 transition-all" id="dot-1"></span>
-                <span class="w-4 h-4 rounded-full border-2 border-gray-600 transition-all" id="dot-2"></span>
-                <span class="w-4 h-4 rounded-full border-2 border-gray-600 transition-all" id="dot-3"></span>
-            </div>
-
-            <p id="lock-error" class="text-xs text-rose-500 font-bold hidden mb-3 animate-bounce">رمز عبور اشتباه است!</p>
-
-            <!-- Keyboard Layout requested by User:
-                 Row 1: 9 - 8 - 7
-                 Row 2: 6 - 5 - 4
-                 Row 3: 3 - 2 - 1
-                 Row 4: پاک - 0 - حذف
-            -->
-            <div class="grid grid-cols-3 gap-3 max-w-[240px] mx-auto dir-ltr">
-                <!-- Row 1 -->
-                <button onclick="pressKey('9')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">9</button>
-                <button onclick="pressKey('8')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">8</button>
-                <button onclick="pressKey('7')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">7</button>
-                
-                <!-- Row 2 -->
-                <button onclick="pressKey('6')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">6</button>
-                <button onclick="pressKey('5')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">5</button>
-                <button onclick="pressKey('4')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">4</button>
-                
-                <!-- Row 3 -->
-                <button onclick="pressKey('3')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">3</button>
-                <button onclick="pressKey('2')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">2</button>
-                <button onclick="pressKey('1')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">1</button>
-                
-                <!-- Row 4 -->
-                <button onclick="clearKeypad()" class="keypad-btn h-12 rounded-xl text-xs font-bold text-rose-400 hover:bg-rose-500/20">پاک</button>
-                <button onclick="pressKey('0')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">0</button>
-                <button onclick="deleteKey()" class="keypad-btn h-12 rounded-xl text-xs font-bold text-amber-400 flex items-center justify-center hover:bg-amber-500/20">حذف</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Dashboard Workspace -->
-    <div id="main-dashboard" class="opacity-10 pointer-events-none transition-all duration-500 min-h-screen flex flex-col relative z-10">
-        
-        <!-- Header Navbar -->
-        <header class="border-b border-cardBorder bg-cardBg/80 backdrop-blur-xl sticky top-0 z-40">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
-                
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 user-avatar-frame flex items-center justify-center bg-slate-900 flex-shrink-0" onclick="openImageModal(event)">
-                        <svg viewBox="0 0 200 200" class="w-full h-full rounded-full">
-                            <rect width="200" height="200" fill="#030712"/>
-                            <rect x="50" y="45" width="100" height="110" rx="12" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
-                            <rect x="62" y="60" width="76" height="22" rx="4" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
-                            <rect x="62" y="89" width="76" height="22" rx="4" fill="#0f172a" stroke="#00d2ff" stroke-width="1.5"/>
-                            <rect x="62" y="118" width="76" height="22" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
-                            <circle cx="75" cy="71" r="3" fill="#22c55e"/>
-                            <circle cx="75" cy="100" r="3" fill="#22c55e"/>
-                            <circle cx="75" cy="129" r="3" fill="#22c55e"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <h1 class="font-black text-base sm:text-lg text-white">Mohammad Ostad Mohammadi</h1>
-                            <span class="text-[11px] px-2 py-0.5 rounded-md bg-purple-950 text-purple-300 border border-purple-800/50 font-mono font-bold">LN961122</span>
-                        </div>
-                        <p class="text-xs text-cyan-400 font-bold">محمد استاد محمدی | Lnode.io Fleet Manager</p>
-                    </div>
-                </div>
-
-                <!-- Clock & Date Widget -->
-                <div class="bg-darkBg/90 border border-cardBorder px-4 py-2 rounded-2xl flex items-center gap-3 text-right">
-                    <div class="p-2 bg-cyan-500/10 text-cyan-400 rounded-xl">
-                        <i data-lucide="clock" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <div id="live-clock" class="text-sm font-black text-white font-mono dir-ltr">--:--:--</div>
-                        <div id="live-date" class="text-[11px] text-gray-400">---</div>
-                    </div>
-                </div>
-
-                <!-- Total Balance & Lock Action -->
-                <div class="flex items-center gap-3">
-                    <div class="bg-darkBg/90 border border-emerald-500/40 px-4 py-2 rounded-2xl flex items-center gap-3">
-                        <div class="p-2 bg-emerald-500/10 text-emerald-400 rounded-xl">
-                            <i data-lucide="wallet" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] text-gray-400 block">موجودی ۲ دستگاه</span>
-                            <div class="flex items-center gap-1.5 mt-0.5">
-                                <span class="text-sm font-extrabold text-emerald-400">87,652 sats</span>
-                                <span id="header-balance-converted" class="text-xs text-gray-300">($83.27)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button onclick="lockApp()" class="p-2.5 bg-rose-950/40 border border-rose-800/50 text-rose-400 hover:bg-rose-900/60 rounded-xl transition-all" title="قفل صفحه">
-                        <i data-lucide="log-out" class="w-5 h-5"></i>
-                    </button>
-                </div>
-
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
-
-            <!-- Rates Control Section -->
-            <section class="glow-card rounded-3xl p-5 sm:p-6 border-cyan-500/20">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 border-b border-cardBorder pb-3">
-                    <div class="flex items-center gap-2 text-cyan-400">
-                        <i data-lucide="sliders" class="w-5 h-5"></i>
-                        <h2 class="font-bold text-sm sm:text-base text-white">تنظیمات ارزها، نرخ دلار آزاد و اونس طلا</h2>
-                    </div>
-                    <span class="text-xs text-emerald-400 flex items-center gap-1">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span>
-                        نرخ‌های جهانی و محاسبات زنده
-                    </span>
-                </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="space-y-1.5">
-                        <label class="text-xs text-gray-300 flex justify-between">
-                            <span>قیمت بیت‌کوین (دلار)</span>
-                            <span class="text-amber-400">BTC/USD</span>
-                        </label>
-                        <div class="relative">
-                            <input type="number" id="input-btc-usd" value="95000" step="100" 
-                                   class="w-full bg-darkBg border border-cardBorder rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500 pl-8 font-mono">
-                            <i data-lucide="bitcoin" class="w-4 h-4 text-amber-400 absolute left-2.5 top-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="space-y-1.5">
-                        <label class="text-xs text-gray-300 flex justify-between">
-                            <span>اونس جهانی طلا</span>
-                            <span class="text-amber-300">XAU/USD</span>
-                        </label>
-                        <div class="relative">
-                            <input type="number" id="input-gold-usd" value="2750" step="10" 
-                                   class="w-full bg-darkBg border border-cardBorder rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-400 pl-8 font-mono">
-                            <i data-lucide="coins" class="w-4 h-4 text-amber-300 absolute left-2.5 top-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="space-y-1.5">
-                        <label class="text-xs text-gray-300 flex justify-between">
-                            <span>نرخ دلار آزاد (تومان)</span>
-                            <span class="text-emerald-400 font-bold">ورودی دستی</span>
-                        </label>
-                        <div class="relative">
-                            <input type="number" id="input-usd-toman" value="70000" step="500" 
-                                   class="w-full bg-darkBg border border-cardBorder rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 pl-8 font-mono">
-                            <i data-lucide="banknote" class="w-4 h-4 text-emerald-400 absolute left-2.5 top-3"></i>
-                        </div>
-                    </div>
-
-                    <div class="space-y-1 bg-darkBg/90 border border-cardBorder rounded-xl p-3 flex flex-col justify-center">
-                        <span class="text-[11px] text-gray-400 block">قیمت ۱ گرم طلا (محاسباتی):</span>
-                        <div class="flex items-baseline justify-between mt-0.5">
-                            <span id="gold-gram-usd" class="text-xs font-bold text-amber-400">$88.41/g</span>
-                            <span id="gold-gram-toman" class="text-xs font-bold text-gray-100">۶,۱۸۸,۷۰۰ تومان</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Tabs -->
-            <section class="flex items-center gap-2 border-b border-cardBorder pb-3 overflow-x-auto">
-                <button onclick="switchTab('fleet')" id="tab-fleet" 
-                        class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/20">
-                    <i data-lucide="layers" class="w-4 h-4"></i>
-                    <span>مجموع هر ۲ دستگاه (کل شبکه)</span>
-                </button>
-                <button onclick="switchTab('node1')" id="tab-node1" 
-                        class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-darkBg border border-cardBorder text-gray-400 hover:text-white">
-                    <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
-                    <span>دستگاه ۱ (99-3100-9508)</span>
-                </button>
-                <button onclick="switchTab('node2')" id="tab-node2" 
-                        class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-darkBg border border-cardBorder text-gray-400 hover:text-white">
-                    <i data-lucide="cpu" class="w-4 h-4 text-purple-400"></i>
-                    <span>دستگاه ۲ (45-8510-8225)</span>
-                </button>
-            </section>
-
-            <!-- Summary Cards -->
-            <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                <!-- Daily Revenue Card -->
-                <div class="glow-card rounded-3xl p-6 relative overflow-hidden border-emerald-500/30">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-black uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-lg border border-emerald-800/50">
-                            مجموع درآمد روزانه (Daily)
-                        </span>
-                        <i data-lucide="sun" class="w-6 h-6 text-emerald-400"></i>
-                    </div>
-                    <div class="space-y-3">
-                        <div>
-                            <div class="text-3xl font-black text-white font-mono" id="card-daily-sats">10,941 sats</div>
-                            <div class="text-sm font-extrabold text-emerald-400 mt-0.5" id="card-daily-usd">$10.39</div>
-                        </div>
-                        <div class="pt-3 border-t border-cardBorder space-y-1.5 text-xs text-gray-300">
-                            <div class="flex items-center justify-between">
-                                <span class="text-gray-400">معادل تومان:</span>
-                                <span id="card-daily-toman" class="font-bold text-white">727,576 تومان</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-gray-400">معادل طلا:</span>
-                                <span id="card-daily-gold" class="font-bold text-amber-400">0.117 گرم طلا</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Monthly Revenue Card -->
-                <div class="glow-card rounded-3xl p-6 relative overflow-hidden border-cyan-500/30">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-black uppercase tracking-wider text-cyan-400 bg-cyan-950/80 px-3 py-1 rounded-lg border border-cyan-800/50">
-                            مجموع درآمد ماهانه (30 Days)
-                        </span>
-                        <i data-lucide="calendar" class="w-6 h-6 text-cyan-400"></i>
-                    </div>
-                    <div class="space-y-3">
-                        <div>
-                            <div class="text-3xl font-black text-white font-mono" id="card-monthly-sats">328,239 sats</div>
-                            <div class="text-sm font-extrabold text-cyan-400 mt-0.5" id="card-monthly-usd">$311.83</div>
-                        </div>
-                        <div class="pt-3 border-t border-cardBorder space-y-1.5 text-xs text-gray-300">
-                            <div class="flex items-center justify-between">
-                                <span class="text-gray-400">معادل تومان:</span>
-                                <span id="card-monthly-toman" class="font-bold text-white">21,827,280 تومان</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-gray-400">معادل طلا:</span>
-                                <span id="card-monthly-gold" class="font-bold text-amber-400">3.527 گرم طلا</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Yearly Revenue Card -->
-                <div class="glow-card rounded-3xl p-6 relative overflow-hidden border-purple-500/40 bg-gradient-to-br from-cardBg via-cardBg to-purple-950/30">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-black uppercase tracking-wider text-purple-300 bg-purple-950/80 px-3 py-1 rounded-lg border border-purple-800/50">
-                            مجموع درآمد سالیانه (365 Days)
-                        </span>
-                        <i data-lucide="award" class="w-6 h-6 text-purple-400"></i>
-                    </div>
-                    <div class="space-y-3">
-                        <div>
-                            <div class="text-3xl font-black text-white font-mono" id="card-yearly-sats">3,993,465 sats</div>
-                            <div class="text-sm font-extrabold text-purple-300 mt-0.5" id="card-yearly-usd">$3,793.79</div>
-                        </div>
-                        <div class="pt-3 border-t border-cardBorder space-y-1.5 text-xs text-gray-300">
-                            <div class="flex items-center justify-between">
-                                <span class="text-gray-400">معادل تومان:</span>
-                                <span id="card-yearly-toman" class="font-bold text-white">265,565,300 تومان</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-gray-400">معادل طلا:</span>
-                                <span id="card-yearly-gold" class="font-bold text-amber-400">42.912 گرم طلا</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-            <!-- Hardware Node Fleet Sections -->
-            <section class="space-y-6">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-lg font-black text-white flex items-center gap-2">
-                        <i data-lucide="hard-drive" class="w-5 h-5 text-cyan-400"></i>
-                        مشخصات دستگاه‌ها و کانال‌ها
-                    </h3>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-                    <!-- Node 1 Card -->
-                    <div id="node-card-1" class="glow-card rounded-3xl p-6 border-cyan-500/30">
-                        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-cardBorder">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg">
-                                    <i data-lucide="cpu" class="w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <h4 class="font-black text-base text-white">دستگاه اول (Node #1)</h4>
-                                        <span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 border border-emerald-800/40 rounded-md text-[10px] font-mono font-bold">CPU High v3.3.2</span>
-                                    </div>
-                                    <p class="text-xs text-gray-400 font-mono mt-0.5">USERNAME: 9508 - 3100 - 99</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="my-4 bg-darkBg/90 p-3.5 rounded-2xl border border-cyan-500/30 text-center">
-                            <span class="text-[10px] text-gray-400 block mb-1">کد فعال‌سازی کامل (ACTIVE CODE):</span>
-                            <span class="text-sm font-black font-mono text-cyan-300 tracking-wider">9683 - 5514 - 7239 - 1483 - 7509</span>
-                        </div>
-
-                        <div class="grid grid-cols-3 gap-2 mb-4 bg-darkBg/50 p-3 rounded-2xl border border-cardBorder text-center">
-                            <div>
-                                <span class="text-[10px] text-gray-400 block">روزانه</span>
-                                <span class="text-xs font-bold text-emerald-400">5,688 sats</span>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-gray-400 block">ماهانه</span>
-                                <span class="text-xs font-bold text-cyan-400">170,652 sats</span>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-gray-400 block">سالیانه</span>
-                                <span class="text-xs font-bold text-purple-400">2,076,120 sats</span>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2.5">
-                            <h5 class="text-xs font-bold text-gray-300 mb-2">کانال‌های فعال:</h5>
-                            
-                            <a href="https://btcpayserver.org" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-black text-white text-xs">B</div>
-                                    <div>
-                                        <span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                            BTC Pay Server 
-                                            <i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-emerald-400 font-black block font-mono">1,939 sats/روز</span>
-                                    <span class="text-[10px] text-gray-400">ماهانه: 58,184 sats</span>
-                                </div>
-                            </a>
-
-                            <a href="https://wx.network" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center font-black text-white text-xs">WX</div>
-                                    <div>
-                                        <span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                            WX Network
-                                            <i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-emerald-400 font-black block font-mono">1,937 sats/روز</span>
-                                    <span class="text-[10px] text-gray-400">ماهانه: 58,112 sats</span>
-                                </div>
-                            </a>
-
-                            <a href="https://www.walletofsatoshi.com" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-400 to-blue-500 flex items-center justify-center text-amber-300 font-black">⚡</div>
-                                    <div>
-                                        <span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                            Wallet Of Satoshi
-                                            <i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-emerald-400 font-black block font-mono">1,192 sats/روز</span>
-                                    <span class="text-[10px] text-gray-400">ماهانه: 35,757 sats</span>
-                                </div>
-                            </a>
-
-                            <a href="https://acinq.co" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-500 to-pink-600 flex items-center justify-center text-cyan-300 text-xs font-black">⚛</div>
-                                    <div>
-                                        <span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                            Acinq.1ml
-                                            <i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-emerald-400 font-black block font-mono">620 sats/روز</span>
-                                    <span class="text-[10px] text-gray-400">ماهانه: 18,599 sats</span>
-                                </div>
-                            </a>
-
-                            <div class="pt-2">
-                                <span class="text-[11px] text-gray-500 block mb-1">کانال‌های خاموش:</span>
-                                <div class="grid grid-cols-2 gap-2 text-[11px] opacity-80">
-                                    <a href="https://www.opennode.com" target="_blank" class="bg-darkBg p-2 rounded-xl border border-cardBorder flex items-center justify-between hover:border-rose-400">
-                                        <span class="text-gray-300">OpenNode</span>
-                                        <span class="text-rose-400 font-bold">Off</span>
-                                    </a>
-                                    <a href="https://tippin.me" target="_blank" class="bg-darkBg p-2 rounded-xl border border-cardBorder flex items-center justify-between hover:border-rose-400">
-                                        <span class="text-gray-300">Tippin.me</span>
-                                        <span class="text-rose-400 font-bold">Off</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Node 2 Card -->
-                    <div id="node-card-2" class="glow-card rounded-3xl p-6 border-purple-500/30">
-                        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-cardBorder">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-600 flex items-center justify-center text-white shadow-lg">
-                                    <i data-lucide="cpu" class="w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <h4 class="font-black text-base text-white">دستگاه دوم (Node #2)</h4>
-                                        <span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 border border-emerald-800/40 rounded-md text-[10px] font-mono font-bold">CPU High v3.3.2</span>
-                                    </div>
-                                    <p class="text-xs text-gray-400 font-mono mt-0.5">USERNAME: 8225 - 8510 - 45</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="my-4 bg-darkBg/90 p-3.5 rounded-2xl border border-purple-500/30 text-center">
-                            <span class="text-[10px] text-gray-400 block mb-1">کد فعال‌سازی کامل (ACTIVE CODE):</span>
-                            <span class="text-sm font-black font-mono text-purple-300 tracking-wider">3087 - 4878 - 7364 - 0203 - 6776</span>
-                        </div>
-
-                        <div class="grid grid-cols-3 gap-2 mb-4 bg-darkBg/50 p-3 rounded-2xl border border-cardBorder text-center">
-                            <div>
-                                <span class="text-[10px] text-gray-400 block">روزانه</span>
-                                <span class="text-xs font-bold text-emerald-400">5,253 sats</span>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-gray-400 block">ماهانه</span>
-                                <span class="text-xs font-bold text-cyan-400">157,587 sats</span>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-gray-400 block">سالیانه</span>
-                                <span class="text-xs font-bold text-purple-400">1,917,345 sats</span>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2.5">
-                            <h5 class="text-xs font-bold text-gray-300 mb-2">کانال‌های فعال:</h5>
-                            
-                            <a href="https://wx.network" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center font-black text-white text-xs">WX</div>
-                                    <div>
-                                        <span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                            WX Network
-                                            <i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-emerald-400 font-black block font-mono">1,842 sats/روز</span>
-                                    <span class="text-[10px] text-gray-400">ماهانه: 55,247 sats</span>
-                                </div>
-                            </a>
-
-                            <a href="https://www.opennode.com" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xs font-black">☰</div>
-                                    <div>
-                                        <span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                            OpenNode
-                                            <i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-emerald-400 font-black block font-mono">1,736 sats/روز</span>
-                                    <span class="text-[10px] text-gray-400">ماهانه: 52,067 sats</span>
-                                </div>
-                            </a>
-
-                            <a href="https://btcpayserver.org" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-black text-white text-xs">B</div>
-                                    <div>
-                                        <span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                            BTC Pay Server
-                                            <i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-emerald-400 font-black block font-mono">1,858 sats/روز</span>
-                                    <span class="text-[10px] text-gray-400">ماهانه: 55,736 sats</span>
-                                </div>
-                            </a>
-
-                            <a href="https://www.walletofsatoshi.com" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-400 to-blue-500 flex items-center justify-center text-amber-300 font-black">⚡</div>
-                                    <div>
-                                        <span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                            Wallet Of Satoshi
-                                            <i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-emerald-400 font-black block font-mono">1,078 sats/روز</span>
-                                    <span class="text-[10px] text-gray-400">ماهانه: 32,344 sats</span>
-                                </div>
-                            </a>
-
-                            <a href="https://acinq.co" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-500 to-pink-600 flex items-center justify-center text-cyan-300 text-xs font-black">⚛</div>
-                                    <div>
-                                        <span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                            Acinq.1ml
-                                            <i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-emerald-400 font-black block font-mono">617 sats/روز</span>
-                                    <span class="text-[10px] text-gray-400">ماهانه: 18,513 sats</span>
-                                </div>
-                            </a>
-
-                            <div class="pt-2">
-                                <span class="text-[11px] text-gray-500 block mb-1">کانال‌های خاموش:</span>
-                                <a href="https://tippin.me" target="_blank" class="bg-darkBg p-2 rounded-xl border border-cardBorder flex items-center justify-between text-[11px] opacity-80 hover:border-rose-400">
-                                    <span class="text-gray-300">Tippin.me</span>
-                                    <span class="text-rose-400 font-bold">Off</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- 10 Channels Expansion Simulator -->
-            <section class="glow-card rounded-3xl p-6 border-amber-500/30">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-cardBorder pb-4">
-                    <div>
-                        <h3 class="text-base font-black text-white flex items-center gap-2">
-                            <i data-lucide="flame" class="w-5 h-5 text-amber-400"></i>
-                            ۱۰ کانال برتر پیشنهادی مرجع Lnode.io (تست خرید و شبیه‌سازی)
-                        </h3>
-                        <p class="text-xs text-gray-400 mt-1">با کلیک روی «تست خرید»، درآمد این کانال‌ها به مجموع کل افزوده می‌شود.</p>
-                    </div>
-                    <div class="bg-amber-950/60 border border-amber-500/40 px-4 py-2 rounded-2xl text-left">
-                        <span class="text-[10px] text-amber-300 block">درآمد افزوده شده:</span>
-                        <span id="sim-boost-sats" class="text-sm font-black text-amber-400 font-mono">+0 sats/روز</span>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="sim-channels-list"></div>
-            </section>
-
-        </main>
-
-        <!-- Footer -->
-        <footer class="border-t border-cardBorder bg-cardBg/40 py-5 mt-auto">
-            <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-                    <span class="font-bold text-gray-300">Mohammad Ostad Mohammadi (محمد استاد محمدی)</span>
-                </div>
-                <div class="flex items-center gap-4">
-                    <span>شناسه حساب: LN961122</span>
-                    <span>•</span>
-                    <span>Mohammadostadmohammadi1370@gmail.com</span>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-
-    <script>
-        let enteredPasscode = "";
-        const correctPasscode = "7091";
-
-        function openImageModal(e) {
-            if(e) e.stopPropagation();
-            document.getElementById('image-modal').classList.remove('hidden');
-        }
-
-        function closeImageModal() {
-            document.getElementById('image-modal').classList.add('hidden');
-        }
-
-        function pressKey(key) {
-            if (enteredPasscode.length < 4) {
-                enteredPasscode += key;
-                updatePasscodeDots();
-            }
-            if (enteredPasscode.length === 4) {
-                setTimeout(checkPasscode, 150);
-            }
-        }
-
-        function deleteKey() {
-            if (enteredPasscode.length > 0) {
-                enteredPasscode = enteredPasscode.slice(0, -1);
-                updatePasscodeDots();
-            }
-        }
-
-        function clearKeypad() {
-            enteredPasscode = "";
-            updatePasscodeDots();
-        }
-
-        function updatePasscodeDots() {
-            document.getElementById('lock-error').classList.add('hidden');
-            for (let i = 0; i < 4; i++) {
-                const dot = document.getElementById(`dot-${i}`);
-                if (i < enteredPasscode.length) {
-                    dot.className = "w-4 h-4 rounded-full bg-cyan-400 border-2 border-cyan-300 shadow-md shadow-cyan-400/50 scale-110 transition-all";
-                } else {
-                    dot.className = "w-4 h-4 rounded-full border-2 border-gray-600 transition-all";
-                }
-            }
-        }
-
-        function checkPasscode() {
-            if (enteredPasscode === correctPasscode) {
-                document.getElementById('lock-screen').style.display = 'none';
-                const mainDash = document.getElementById('main-dashboard');
-                mainDash.classList.remove('opacity-10', 'pointer-events-none');
-            } else {
-                document.getElementById('lock-error').classList.remove('hidden');
-                enteredPasscode = "";
-                updatePasscodeDots();
-            }
-        }
-
-        function lockApp() {
-            enteredPasscode = "";
-            updatePasscodeDots();
-            document.getElementById('main-dashboard').classList.add('opacity-10', 'pointer-events-none');
-            document.getElementById('lock-screen').style.display = 'flex';
-        }
-
-        // Keyboard Event Listener for Passcode
-        window.addEventListener('keydown', (e) => {
-            const lockScreen = document.getElementById('lock-screen');
-            if (lockScreen.style.display !== 'none') {
-                if (e.key >= '0' && e.key <= '9') {
-                    pressKey(e.key);
-                } else if (e.key === 'Backspace') {
-                    deleteKey();
-                } else if (e.key === 'Escape') {
-                    clearKeypad();
-                }
-            }
-        });
-
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('live-clock').innerText = now.toLocaleTimeString('en-US', { hour12: false });
-            
-            const optionsShamsi = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-            const shamsiDate = new Intl.DateTimeFormat('fa-IR', optionsShamsi).format(now);
-            document.getElementById('live-date').innerText = shamsiDate;
-        }
-
-        let state = {
-            btcUsd: 95000,
-            goldUsdOz: 2750,
-            usdToman: 70000,
-            activeTab: 'fleet',
-
-            node1: { dailySats: 5688, monthlySats: 170652, yearlySats: 2076120 },
-            node2: { dailySats: 5253, monthlySats: 157587, yearlySats: 1917345 },
-
-            futureChannels: [
-                { id: 'lnbig', name: 'LNBIG [Hub-2]', dailySats: 5585, priceSats: 2331718, logo: '⚡', active: false },
-                { id: 'blocklad', name: 'block-lad-1', dailySats: 4851, priceSats: 1435671, logo: '🧱', active: false },
-                { id: 'kraken', name: 'Kraken LN Node', dailySats: 4200, priceSats: 2100000, logo: '🐙', active: false },
-                { id: 'bitfinex', name: 'Bitfinex Lightning', dailySats: 3950, priceSats: 1950000, logo: '🟢', active: false },
-                { id: 'cashapp', name: 'Cash App LN', dailySats: 3500, priceSats: 1800000, logo: '💵', active: false },
-                { id: 'strike', name: 'Strike Network', dailySats: 3200, priceSats: 1650000, logo: '⚡', active: false },
-                { id: 'river', name: 'River Financial', dailySats: 2900, priceSats: 1500000, logo: '🌊', active: false },
-                { id: 'binance', name: 'Binance Pool LN', dailySats: 2700, priceSats: 1400000, logo: '🔶', active: false },
-                { id: 'voltage', name: 'Voltage Node', dailySats: 2400, priceSats: 1250000, logo: '⚡', active: false },
-                { id: 'umbrel', name: 'Umbrel Community', dailySats: 2100, priceSats: 1100000, logo: '☂️', active: false }
-            ]
-        };
-
-        function getActiveTotals() {
-            let baseDaily = 0;
-            let baseMonthly = 0;
-            let baseYearly = 0;
-
-            if (state.activeTab === 'fleet') {
-                baseDaily = state.node1.dailySats + state.node2.dailySats;
-                baseMonthly = state.node1.monthlySats + state.node2.monthlySats;
-                baseYearly = state.node1.yearlySats + state.node2.yearlySats;
-            } else if (state.activeTab === 'node1') {
-                baseDaily = state.node1.dailySats;
-                baseMonthly = state.node1.monthlySats;
-                baseYearly = state.node1.yearlySats;
-            } else if (state.activeTab === 'node2') {
-                baseDaily = state.node2.dailySats;
-                baseMonthly = state.node2.monthlySats;
-                baseYearly = state.node2.yearlySats;
-            }
-
-            let extraDaily = 0;
-            state.futureChannels.forEach(ch => {
-                if (ch.active) extraDaily += ch.dailySats;
-            });
-
-            return {
-                totalDaily: baseDaily + extraDaily,
-                totalMonthly: baseMonthly + (extraDaily * 30),
-                totalYearly: baseYearly + (extraDaily * 365),
-                extraDaily
-            };
-        }
-
-        function satsToUSD(sats) { return (sats / 100000000) * state.btcUsd; }
-        function usdToToman(usd) { return usd * state.usdToman; }
-        function usdToGoldGrams(usd) {
-            const pricePerGramUSD = state.goldUsdOz / 31.1034768;
-            return usd / pricePerGramUSD;
-        }
-        function formatNum(num) { return new Intl.NumberFormat('fa-IR').format(Math.round(num)); }
-
-        function renderDashboard() {
-            const goldPricePerGramUSD = state.goldUsdOz / 31.1034768;
-            const goldPricePerGramToman = goldPricePerGramUSD * state.usdToman;
-
-            document.getElementById('gold-gram-usd').innerText = `$${goldPricePerGramUSD.toFixed(2)}/g`;
-            document.getElementById('gold-gram-toman').innerText = `${formatNum(goldPricePerGramToman)} تومان`;
-
-            const balanceUSD = satsToUSD(87652);
-            document.getElementById('header-balance-converted').innerText = `($${balanceUSD.toFixed(2)})`;
-
-            const totals = getActiveTotals();
-
-            // Daily Card
-            const dailyUSD = satsToUSD(totals.totalDaily);
-            document.getElementById('card-daily-sats').innerText = `${totals.totalDaily.toLocaleString()} sats`;
-            document.getElementById('card-daily-usd').innerText = `$${dailyUSD.toFixed(2)}`;
-            document.getElementById('card-daily-toman').innerText = `${formatNum(usdToToman(dailyUSD))} تومان`;
-            document.getElementById('card-daily-gold').innerText = `${usdToGoldGrams(dailyUSD).toFixed(3)} گرم طلا`;
-
-            // Monthly Card
-            const monthlyUSD = satsToUSD(totals.totalMonthly);
-            document.getElementById('card-monthly-sats').innerText = `${totals.totalMonthly.toLocaleString()} sats`;
-            document.getElementById('card-monthly-usd').innerText = `$${monthlyUSD.toFixed(2)}`;
-            document.getElementById('card-monthly-toman').innerText = `${formatNum(usdToToman(monthlyUSD))} تومان`;
-            document.getElementById('card-monthly-gold').innerText = `${usdToGoldGrams(monthlyUSD).toFixed(3)} گرم طلا`;
-
-            // Yearly Card
-            const yearlyUSD = satsToUSD(totals.totalYearly);
-            document.getElementById('card-yearly-sats').innerText = `${totals.totalYearly.toLocaleString()} sats`;
-            document.getElementById('card-yearly-usd').innerText = `$${yearlyUSD.toFixed(2)}`;
-            document.getElementById('card-yearly-toman').innerText = `${formatNum(usdToToman(yearlyUSD))} تومان`;
-            document.getElementById('card-yearly-gold').innerText = `${usdToGoldGrams(yearlyUSD).toFixed(3)} گرم طلا`;
-
-            document.getElementById('sim-boost-sats').innerText = `+${totals.extraDaily.toLocaleString()} sats/روز`;
-
-            renderFutureChannels();
-        }
-
-        function renderFutureChannels() {
-            const container = document.getElementById('sim-channels-list');
-            container.innerHTML = '';
-
-            state.futureChannels.forEach((chan, idx) => {
-                const item = document.createElement('div');
-                item.className = `p-3.5 rounded-2xl border flex items-center justify-between transition-all ${
-                    chan.active 
-                    ? 'bg-amber-950/40 border-amber-500/60 text-white' 
-                    : 'bg-darkBg/90 border-cardBorder text-gray-400'
-                }`;
-
-                const monthlyToman = usdToToman(satsToUSD(chan.dailySats * 30));
-
-                item.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl ${chan.active ? 'bg-amber-500 text-black' : 'bg-cardBorder text-gray-300'} font-bold text-xs flex items-center justify-center text-base">
-                            ${chan.logo}
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-2">
-                                <h4 class="font-black text-xs ${chan.active ? 'text-amber-300' : 'text-gray-200'}">${chan.name}</h4>
-                                <span class="text-[9px] px-1.5 py-0.2 bg-darkBg border border-cardBorder rounded text-gray-400">#${idx + 1}</span>
-                            </div>
-                            <span class="text-[10px] text-gray-400 font-mono">قیمت: sats ${chan.priceSats.toLocaleString()}</span>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-3">
-                        <div class="text-right text-xs">
-                            <span class="font-black text-emerald-400 block font-mono">+${chan.dailySats.toLocaleString()} sats/روز</span>
-                            <span class="text-[10px] text-gray-400">~${formatNum(monthlyToman)} تومان/ماه</span>
-                        </div>
-                        <button onclick="toggleChannel('${chan.id}')" 
-                                class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                                    chan.active 
-                                    ? 'bg-amber-500 text-black shadow-md shadow-amber-500/30' 
-                                    : 'bg-cardBorder hover:bg-gray-700 text-white'
-                                }">
-                            ${chan.active ? 'روشن شد' : 'تست خرید'}
-                        </button>
-                    </div>
-                `;
-                container.appendChild(item);
-            });
-        }
-
-        function toggleChannel(id) {
-            const chan = state.futureChannels.find(c => c.id === id);
-            if (chan) {
-                chan.active = !chan.active;
-                renderDashboard();
-            }
-        }
-
-        function switchTab(tab) {
-            state.activeTab = tab;
-            ['fleet', 'node1', 'node2'].forEach(t => {
-                const btn = document.getElementById(`tab-${t}`);
-                if (t === tab) {
-                    btn.className = "px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/20";
-                } else {
-                    btn.className = "px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-darkBg border border-cardBorder text-gray-400 hover:text-white";
-                }
-            });
-
-            const card1 = document.getElementById('node-card-1');
-            const card2 = document.getElementById('node-card-2');
-            if (tab === 'node1') { card1.style.display = 'block'; card2.style.display = 'none'; }
-            else if (tab === 'node2') { card1.style.display = 'none'; card2.style.display = 'block'; }
-            else { card1.style.display = 'block'; card2.style.display = 'block'; }
-
-            renderDashboard();
-        }
-
-        async function fetchLivePrices() {
-            try {
-                const btcRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
-                const btcData = await btcRes.json();
-                if (btcData && btcData.bitcoin && btcData.bitcoin.usd) {
-                    state.btcUsd = btcData.bitcoin.usd;
-                    document.getElementById('input-btc-usd').value = Math.round(state.btcUsd);
-                }
-            } catch (e) {
-                console.log('BTC price fallback active');
-            }
-
-            try {
-                const goldRes = await fetch('https://api.gold-api.com/price/XAU');
-                const goldData = await goldRes.json();
-                if (goldData && goldData.price) {
-                    state.goldUsdOz = parseFloat(goldData.price);
-                    document.getElementById('input-gold-usd').value = Math.round(state.goldUsdOz);
-                }
-            } catch (e) {
-                console.log('Gold price fallback active');
-            }
-
-            renderDashboard();
-        }
-
-        document.getElementById('input-btc-usd').addEventListener('input', (e) => {
-            const val = parseFloat(e.target.value);
-            if (!isNaN(val) && val > 0) { state.btcUsd = val; renderDashboard(); }
-        });
-
-        document.getElementById('input-gold-usd').addEventListener('input', (e) => {
-            const val = parseFloat(e.target.value);
-            if (!isNaN(val) && val > 0) { state.goldUsdOz = val; renderDashboard(); }
-        });
-
-        document.getElementById('input-usd-toman').addEventListener('input', (e) => {
-            const val = parseFloat(e.target.value);
-            if (!isNaN(val) && val > 0) { state.usdToman = val; renderDashboard(); }
-        });
-
-        window.onload = function() {
-            lucide.createIcons();
-            initCyberBgCanvas();
-            updateClock();
-            setInterval(updateClock, 1000);
-            fetchLivePrices();
-            renderDashboard();
-            setInterval(fetchLivePrices, 60000);
-        };
-
-        function initCyberBgCanvas() {
-            const canvas = document.getElementById('cyber-bg-canvas');
-            const ctx = canvas.getContext('2d');
-            let width = canvas.width = window.innerWidth;
-            let height = canvas.height = window.innerHeight;
-
-            window.addEventListener('resize', () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            });
-
-            const particles = [];
-            const particleCount = Math.min(Math.floor(width / 18), 70);
-
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    vx: (Math.random() - 0.5) * 0.8,
-                    vy: (Math.random() - 0.5) * 0.8,
-                    radius: Math.random() * 2 + 1,
-                    color: i % 3 === 0 ? '#00d2ff' : i % 3 === 1 ? '#8b5cf6' : '#f59e0b'
-                });
-            }
-
-            function animateCanvas() {
-                ctx.clearRect(0, 0, width, height);
-
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-
-                        if (dist < 130) {
-                            ctx.beginPath();
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(0, 210, 255, ${0.25 * (1 - dist / 130)})`;
-                            ctx.lineWidth = 0.75;
-                            ctx.stroke();
-                        }
-                    }
-                }
-
-                particles.forEach(p => {
-                    p.x += p.vx;
-                    p.y += p.vy;
-
-                    if (p.x < 0 || p.x > width) p.vx *= -1;
-                    if (p.y < 0 || p.y > height) p.vy *= -1;
-
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = p.color;
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = p.color;
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
-                });
-
-                requestAnimationFrame(animateCanvas);
-            }
-            animateCanvas();
-        }
-    </script>
+<!-- Canvas Cybernetic Background -->
+<canvas id="cyber-bg-canvas"></canvas>
+<!-- Profile Image Lightbox Modal -->
+<div id="image-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4 cursor-pointer" onclick="closeImageModal()">
+<div class="relative max-w-md w-full text-center">
+<div class="w-64 h-64 mx-auto rounded-full border-4 border-cyan-400 shadow-2xl shadow-cyan-500/50 overflow-hidden bg-slate-900 flex items-center justify-center p-2">
+<!-- Miner / Server Graphic SVG -->
+<svg viewBox="0 0 200 200" class="w-full h-full rounded-full">
+<defs>
+<linearGradient id="minerBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#0f172a"/>
+<stop offset="100%" stop-color="#030712"/>
+</linearGradient>
+</defs>
+<rect width="200" height="200" fill="url(#minerBgGrad)"/>
+<!-- Server Rack Body -->
+<rect x="50" y="45" width="100" height="110" rx="12" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
+<!-- Server Units / Blades -->
+<rect x="62" y="60" width="76" height="22" rx="4" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+<rect x="62" y="89" width="76" height="22" rx="4" fill="#0f172a" stroke="#00d2ff" stroke-width="1.5"/>
+<rect x="62" y="118" width="76" height="22" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+<!-- LED Lights -->
+<circle cx="75" cy="71" r="3" fill="#22c55e" class="pulse-dot"/>
+<circle cx="85" cy="71" r="2" fill="#00d2ff"/>
+<circle cx="75" cy="100" r="3" fill="#22c55e" class="pulse-dot"/>
+<circle cx="85" cy="100" r="2" fill="#00d2ff"/>
+<circle cx="75" cy="129" r="3" fill="#22c55e" class="pulse-dot"/>
+<circle cx="85" cy="129" r="2" fill="#f59e0b"/>
+<!-- Vents -->
+<line x1="105" y1="71" x2="125" y2="71" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+<line x1="105" y1="100" x2="125" y2="100" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+<line x1="105" y1="129" x2="125" y2="129" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+</svg>
+</div>
+<h3 class="text-white font-black text-xl mt-4">Mohammad Ostad Mohammadi</h3>
+<p class="text-cyan-400 font-bold text-sm">محمد استاد محمدی</p>
+<p class="text-xs text-gray-400 mt-2">مالک و توسعه‌دهنده سیستم نودهای Lnode.io (LN961122)</p>
+<button onclick="closeImageModal()" class="mt-4 px-6 py-2 text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white rounded-xl transition-all">
+بستن پنجره
+</button>
+</div>
+</div>
+<!-- Passcode Screen (Custom Numpad Order) -->
+<div id="lock-screen" class="fixed inset-0 z-50 bg-darkBg/95 backdrop-blur-2xl flex items-center justify-center p-4">
+<div class="glow-card w-full max-w-sm rounded-3xl p-6 sm:p-8 text-center border-cyan-500/40 relative z-10">
+<div class="w-24 h-24 mx-auto mb-4 user-avatar-frame flex items-center justify-center bg-slate-900" onclick="openImageModal(event)">
+<svg viewBox="0 0 200 200" class="w-full h-full rounded-full">
+<rect width="200" height="200" fill="#030712"/>
+<rect x="50" y="45" width="100" height="110" rx="12" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
+<rect x="62" y="60" width="76" height="22" rx="4" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+<rect x="62" y="89" width="76" height="22" rx="4" fill="#0f172a" stroke="#00d2ff" stroke-width="1.5"/>
+<rect x="62" y="118" width="76" height="22" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+<circle cx="75" cy="71" r="3" fill="#22c55e"/>
+<circle cx="75" cy="100" r="3" fill="#22c55e"/>
+<circle cx="75" cy="129" r="3" fill="#22c55e"/>
+<line x1="105" y1="71" x2="125" y2="71" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+<line x1="105" y1="100" x2="125" y2="100" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+<line x1="105" y1="129" x2="125" y2="129" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+</svg>
+</div>
+<h2 class="text-xl font-black text-white">Mohammad Ostad Mohammadi</h2>
+<p class="text-xs text-cyan-400 font-bold mt-1">ورود به داشبورد نودها</p>
+<p class="text-[11px] text-gray-400">محمد استاد محمدی</p>
+<!-- Password Indicator Dots -->
+<div class="flex items-center justify-center gap-3 my-6 dir-ltr" id="passcode-dots">
+<span class="w-4 h-4 rounded-full border-2 border-gray-600 transition-all" id="dot-0"></span>
+<span class="w-4 h-4 rounded-full border-2 border-gray-600 transition-all" id="dot-1"></span>
+<span class="w-4 h-4 rounded-full border-2 border-gray-600 transition-all" id="dot-2"></span>
+<span class="w-4 h-4 rounded-full border-2 border-gray-600 transition-all" id="dot-3"></span>
+</div>
+<p id="lock-error" class="text-xs text-rose-500 font-bold hidden mb-3 animate-bounce">رمز عبور اشتباه است!</p>
+<!-- Keyboard Layout requested by User:
+Row 1: 9 - 8 - 7
+Row 2: 6 - 5 - 4
+Row 3: 3 - 2 - 1
+Row 4: پاک - 0 - حذف
+-->
+<div class="grid grid-cols-3 gap-3 max-w-[240px] mx-auto dir-ltr">
+<!-- Row 1 -->
+<button onclick="pressKey('9')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">9</button>
+<button onclick="pressKey('8')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">8</button>
+<button onclick="pressKey('7')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">7</button>
+<!-- Row 2 -->
+<button onclick="pressKey('6')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">6</button>
+<button onclick="pressKey('5')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">5</button>
+<button onclick="pressKey('4')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">4</button>
+<!-- Row 3 -->
+<button onclick="pressKey('3')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">3</button>
+<button onclick="pressKey('2')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">2</button>
+<button onclick="pressKey('1')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">1</button>
+<!-- Row 4 -->
+<button onclick="clearKeypad()" class="keypad-btn h-12 rounded-xl text-xs font-bold text-rose-400 hover:bg-rose-500/20">پاک</button>
+<button onclick="pressKey('0')" class="keypad-btn h-12 rounded-xl text-xl font-black text-white hover:bg-cyan-500/30">0</button>
+<button onclick="deleteKey()" class="keypad-btn h-12 rounded-xl text-xs font-bold text-amber-400 flex items-center justify-center hover:bg-amber-500/20">حذف</button>
+</div>
+</div>
+</div>
+<!-- Main Dashboard Workspace -->
+<div id="main-dashboard" class="opacity-10 pointer-events-none transition-all duration-500 min-h-screen flex flex-col relative z-10">
+<!-- Header Navbar -->
+<header class="border-b border-cardBorder bg-cardBg/80 backdrop-blur-xl sticky top-0 z-40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 user-avatar-frame flex items-center justify-center bg-slate-900 flex-shrink-0" onclick="openImageModal(event)">
+<svg viewBox="0 0 200 200" class="w-full h-full rounded-full">
+<rect width="200" height="200" fill="#030712"/>
+<rect x="50" y="45" width="100" height="110" rx="12" fill="#1e293b" stroke="#00d2ff" stroke-width="2"/>
+<rect x="62" y="60" width="76" height="22" rx="4" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+<rect x="62" y="89" width="76" height="22" rx="4" fill="#0f172a" stroke="#00d2ff" stroke-width="1.5"/>
+<rect x="62" y="118" width="76" height="22" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1.5"/>
+<circle cx="75" cy="71" r="3" fill="#22c55e"/>
+<circle cx="75" cy="100" r="3" fill="#22c55e"/>
+<circle cx="75" cy="129" r="3" fill="#22c55e"/>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h1 class="font-black text-base sm:text-lg text-white">Mohammad Ostad Mohammadi</h1>
+<span class="text-[11px] px-2 py-0.5 rounded-md bg-purple-950 text-purple-300 border border-purple-800/50 font-mono font-bold">LN961122</span>
+</div>
+<p class="text-xs text-cyan-400 font-bold">محمد استاد محمدی | Lnode.io Fleet Manager</p>
+</div>
+</div>
+<!-- Clock & Date Widget -->
+<div class="bg-darkBg/90 border border-cardBorder px-4 py-2 rounded-2xl flex items-center gap-3 text-right">
+<div class="p-2 bg-cyan-500/10 text-cyan-400 rounded-xl">
+<i data-lucide="clock" class="w-5 h-5"></i>
+</div>
+<div>
+<div id="live-clock" class="text-sm font-black text-white font-mono dir-ltr">--:--:--</div>
+<div id="live-date" class="text-[11px] text-gray-400">---</div>
+</div>
+</div>
+<!-- Total Balance & Lock Action -->
+<div class="flex items-center gap-3">
+<div class="bg-darkBg/90 border border-emerald-500/40 px-4 py-2 rounded-2xl flex items-center gap-3">
+<div class="p-2 bg-emerald-500/10 text-emerald-400 rounded-xl">
+<i data-lucide="wallet" class="w-5 h-5"></i>
+</div>
+<div>
+<span class="text-[10px] text-gray-400 block">موجودی ۲ دستگاه</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="text-sm font-extrabold text-emerald-400">87,652 sats</span>
+<span id="header-balance-converted" class="text-xs text-gray-300">($83.27)</span>
+</div>
+</div>
+</div>
+<button onclick="lockApp()" class="p-2.5 bg-rose-950/40 border border-rose-800/50 text-rose-400 hover:bg-rose-900/60 rounded-xl transition-all" title="قفل صفحه">
+<i data-lucide="log-out" class="w-5 h-5"></i>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
+<!-- Rates Control Section -->
+<section class="glow-card rounded-3xl p-5 sm:p-6 border-cyan-500/20">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4 border-b border-cardBorder pb-3">
+<div class="flex items-center gap-2 text-cyan-400">
+<i data-lucide="sliders" class="w-5 h-5"></i>
+<h2 class="font-bold text-sm sm:text-base text-white">تنظیمات ارزها، نرخ دلار آزاد و اونس طلا</h2>
+</div>
+<span class="text-xs text-emerald-400 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span>
+نرخ‌های جهانی و محاسبات زنده
+</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+<div class="space-y-1.5">
+<label class="text-xs text-gray-300 flex justify-between">
+<span>قیمت بیت‌کوین (دلار)</span>
+<span class="text-amber-400">BTC/USD</span>
+</label>
+<div class="relative">
+<input type="number" id="input-btc-usd" value="95000" step="100" 
+class="w-full bg-darkBg border border-cardBorder rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500 pl-8 font-mono">
+<i data-lucide="bitcoin" class="w-4 h-4 text-amber-400 absolute left-2.5 top-3"></i>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs text-gray-300 flex justify-between">
+<span>اونس جهانی طلا</span>
+<span class="text-amber-300">XAU/USD</span>
+</label>
+<div class="relative">
+<input type="number" id="input-gold-usd" value="2750" step="10" 
+class="w-full bg-darkBg border border-cardBorder rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-400 pl-8 font-mono">
+<i data-lucide="coins" class="w-4 h-4 text-amber-300 absolute left-2.5 top-3"></i>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs text-gray-300 flex justify-between">
+<span>نرخ دلار آزاد (تومان)</span>
+<span class="text-emerald-400 font-bold">ورودی دستی</span>
+</label>
+<div class="relative">
+<input type="number" id="input-usd-toman" value="70000" step="500" 
+class="w-full bg-darkBg border border-cardBorder rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 pl-8 font-mono">
+<i data-lucide="banknote" class="w-4 h-4 text-emerald-400 absolute left-2.5 top-3"></i>
+</div>
+</div>
+<div class="space-y-1 bg-darkBg/90 border border-cardBorder rounded-xl p-3 flex flex-col justify-center">
+<span class="text-[11px] text-gray-400 block">قیمت ۱ گرم طلا (محاسباتی):</span>
+<div class="flex items-baseline justify-between mt-0.5">
+<span id="gold-gram-usd" class="text-xs font-bold text-amber-400">$88.41/g</span>
+<span id="gold-gram-toman" class="text-xs font-bold text-gray-100">۶,۱۸۸,۷۰۰ تومان</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Tabs -->
+<section class="flex items-center gap-2 border-b border-cardBorder pb-3 overflow-x-auto">
+<button onclick="switchTab('fleet')" id="tab-fleet" 
+class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/20">
+<i data-lucide="layers" class="w-4 h-4"></i>
+<span>مجموع هر ۲ دستگاه (کل شبکه)</span>
+</button>
+<button onclick="switchTab('node1')" id="tab-node1" 
+class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-darkBg border border-cardBorder text-gray-400 hover:text-white">
+<i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
+<span>دستگاه ۱ (99-3100-9508)</span>
+</button>
+<button onclick="switchTab('node2')" id="tab-node2" 
+class="px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-darkBg border border-cardBorder text-gray-400 hover:text-white">
+<i data-lucide="cpu" class="w-4 h-4 text-purple-400"></i>
+<span>دستگاه ۲ (45-8510-8225)</span>
+</button>
+</section>
+<!-- Summary Cards -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Daily Revenue Card -->
+<div class="glow-card rounded-3xl p-6 relative overflow-hidden border-emerald-500/30">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-black uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-lg border border-emerald-800/50">
+مجموع درآمد روزانه (Daily)
+</span>
+<i data-lucide="sun" class="w-6 h-6 text-emerald-400"></i>
+</div>
+<div class="space-y-3">
+<div>
+<div class="text-3xl font-black text-white font-mono" id="card-daily-sats">10,941 sats</div>
+<div class="text-sm font-extrabold text-emerald-400 mt-0.5" id="card-daily-usd">$10.39</div>
+</div>
+<div class="pt-3 border-t border-cardBorder space-y-1.5 text-xs text-gray-300">
+<div class="flex items-center justify-between">
+<span class="text-gray-400">معادل تومان:</span>
+<span id="card-daily-toman" class="font-bold text-white">727,576 تومان</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-400">معادل طلا:</span>
+<span id="card-daily-gold" class="font-bold text-amber-400">0.117 گرم طلا</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Monthly Revenue Card -->
+<div class="glow-card rounded-3xl p-6 relative overflow-hidden border-cyan-500/30">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-black uppercase tracking-wider text-cyan-400 bg-cyan-950/80 px-3 py-1 rounded-lg border border-cyan-800/50">
+مجموع درآمد ماهانه (30 Days)
+</span>
+<i data-lucide="calendar" class="w-6 h-6 text-cyan-400"></i>
+</div>
+<div class="space-y-3">
+<div>
+<div class="text-3xl font-black text-white font-mono" id="card-monthly-sats">328,239 sats</div>
+<div class="text-sm font-extrabold text-cyan-400 mt-0.5" id="card-monthly-usd">$311.83</div>
+</div>
+<div class="pt-3 border-t border-cardBorder space-y-1.5 text-xs text-gray-300">
+<div class="flex items-center justify-between">
+<span class="text-gray-400">معادل تومان:</span>
+<span id="card-monthly-toman" class="font-bold text-white">21,827,280 تومان</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-400">معادل طلا:</span>
+<span id="card-monthly-gold" class="font-bold text-amber-400">3.527 گرم طلا</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Yearly Revenue Card -->
+<div class="glow-card rounded-3xl p-6 relative overflow-hidden border-purple-500/40 bg-gradient-to-br from-cardBg via-cardBg to-purple-950/30">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-black uppercase tracking-wider text-purple-300 bg-purple-950/80 px-3 py-1 rounded-lg border border-purple-800/50">
+مجموع درآمد سالیانه (365 Days)
+</span>
+<i data-lucide="award" class="w-6 h-6 text-purple-400"></i>
+</div>
+<div class="space-y-3">
+<div>
+<div class="text-3xl font-black text-white font-mono" id="card-yearly-sats">3,993,465 sats</div>
+<div class="text-sm font-extrabold text-purple-300 mt-0.5" id="card-yearly-usd">$3,793.79</div>
+</div>
+<div class="pt-3 border-t border-cardBorder space-y-1.5 text-xs text-gray-300">
+<div class="flex items-center justify-between">
+<span class="text-gray-400">معادل تومان:</span>
+<span id="card-yearly-toman" class="font-bold text-white">265,565,300 تومان</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-400">معادل طلا:</span>
+<span id="card-yearly-gold" class="font-bold text-amber-400">42.912 گرم طلا</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Hardware Node Fleet Sections -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-black text-white flex items-center gap-2">
+<i data-lucide="hard-drive" class="w-5 h-5 text-cyan-400"></i>
+مشخصات دستگاه‌ها و کانال‌ها
+</h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Node 1 Card -->
+<div id="node-card-1" class="glow-card rounded-3xl p-6 border-cyan-500/30">
+<div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-cardBorder">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-lg">
+<i data-lucide="cpu" class="w-6 h-6"></i>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-black text-base text-white">دستگاه اول (Node #1)</h4>
+<span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 border border-emerald-800/40 rounded-md text-[10px] font-mono font-bold">CPU High v3.3.2</span>
+</div>
+<p class="text-xs text-gray-400 font-mono mt-0.5">USERNAME: 9508 - 3100 - 99</p>
+</div>
+</div>
+</div>
+<div class="my-4 bg-darkBg/90 p-3.5 rounded-2xl border border-cyan-500/30 text-center">
+<span class="text-[10px] text-gray-400 block mb-1">کد فعال‌سازی کامل (ACTIVE CODE):</span>
+<span class="text-sm font-black font-mono text-cyan-300 tracking-wider">Mohammad Ostad Mohammadi</span>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4 bg-darkBg/50 p-3 rounded-2xl border border-cardBorder text-center">
+<div>
+<span class="text-[10px] text-gray-400 block">روزانه</span>
+<span class="text-xs font-bold text-emerald-400">5,688 sats</span>
+</div>
+<div>
+<span class="text-[10px] text-gray-400 block">ماهانه</span>
+<span class="text-xs font-bold text-cyan-400">170,652 sats</span>
+</div>
+<div>
+<span class="text-[10px] text-gray-400 block">سالیانه</span>
+<span class="text-xs font-bold text-purple-400">2,076,120 sats</span>
+</div>
+</div>
+<div class="space-y-2.5">
+<h5 class="text-xs font-bold text-gray-300 mb-2">کانال‌های فعال:</h5>
+<a href="[https://btcpayserver.org](https://btcpayserver.org)" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-black text-white text-xs">B</div>
+<div>
+<span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+BTC Pay Server
+<i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
+</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-emerald-400 font-black block font-mono">1,939 sats/روز</span>
+<span class="text-[10px] text-gray-400">ماهانه: 58,184 sats</span>
+</div>
+</a>
+<a href="[https://wx.network](https://wx.network)" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center font-black text-white text-xs">WX</div>
+<div>
+<span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+WX Network
+<i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
+</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-emerald-400 font-black block font-mono">1,937 sats/روز</span>
+<span class="text-[10px] text-gray-400">ماهانه: 58,112 sats</span>
+</div>
+</a>
+<a href="[https://www.walletofsatoshi.com](https://www.walletofsatoshi.com)" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-400 to-blue-500 flex items-center justify-center text-amber-300 font-black">⚡</div>
+<div>
+<span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+Wallet Of Satoshi
+<i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
+</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-emerald-400 font-black block font-mono">1,192 sats/روز</span>
+<span class="text-[10px] text-gray-400">ماهانه: 35,757 sats</span>
+</div>
+</a>
+<a href="[https://acinq.co](https://acinq.co)" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-500 to-pink-600 flex items-center justify-center text-cyan-300 text-xs font-black">⚛</div>
+<div>
+<span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+Acinq.1ml
+<i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
+</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-emerald-400 font-black block font-mono">620 sats/روز</span>
+<span class="text-[10px] text-gray-400">ماهانه: 18,599 sats</span>
+</div>
+</a>
+<div class="pt-2">
+<span class="text-[11px] text-gray-500 block mb-1">کانال‌های خاموش:</span>
+<div class="grid grid-cols-2 gap-2 text-[11px] opacity-80">
+<a href="[https://www.opennode.com](https://www.opennode.com)" target="_blank" class="bg-darkBg p-2 rounded-xl border border-cardBorder flex items-center justify-between hover:border-rose-400">
+<span class="text-gray-300">OpenNode</span>
+<span class="text-rose-400 font-bold">Off</span>
+</a>
+<a href="[https://tippin.me](https://tippin.me)" target="_blank" class="bg-darkBg p-2 rounded-xl border border-cardBorder flex items-center justify-between hover:border-rose-400">
+<span class="text-gray-300">Tippin.me</span>
+<span class="text-rose-400 font-bold">Off</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Node 2 Card -->
+<div id="node-card-2" class="glow-card rounded-3xl p-6 border-purple-500/30">
+<div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-cardBorder">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-600 flex items-center justify-center text-white shadow-lg">
+<i data-lucide="cpu" class="w-6 h-6"></i>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-black text-base text-white">دستگاه دوم (Node #2)</h4>
+<span class="px-2 py-0.5 bg-emerald-950 text-emerald-400 border border-emerald-800/40 rounded-md text-[10px] font-mono font-bold">CPU High v3.3.2</span>
+</div>
+<p class="text-xs text-gray-400 font-mono mt-0.5">USERNAME: 8225 - 8510 - 45</p>
+</div>
+</div>
+</div>
+<div class="my-4 bg-darkBg/90 p-3.5 rounded-2xl border border-purple-500/30 text-center">
+<span class="text-[10px] text-gray-400 block mb-1">کد فعال‌سازی کامل (ACTIVE CODE):</span>
+<span class="text-sm font-black font-mono text-purple-300 tracking-wider">Mohammad Ostad Mohammadi</span>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4 bg-darkBg/50 p-3 rounded-2xl border border-cardBorder text-center">
+<div>
+<span class="text-[10px] text-gray-400 block">روزانه</span>
+<span class="text-xs font-bold text-emerald-400">5,253 sats</span>
+</div>
+<div>
+<span class="text-[10px] text-gray-400 block">ماهانه</span>
+<span class="text-xs font-bold text-cyan-400">157,587 sats</span>
+</div>
+<div>
+<span class="text-[10px] text-gray-400 block">سالیانه</span>
+<span class="text-xs font-bold text-purple-400">1,917,345 sats</span>
+</div>
+</div>
+<div class="space-y-2.5">
+<h5 class="text-xs font-bold text-gray-300 mb-2">کانال‌های فعال:</h5>
+<a href="[https://wx.network](https://wx.network)" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center font-black text-white text-xs">WX</div>
+<div>
+<span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+WX Network
+<i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
+</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-emerald-400 font-black block font-mono">1,842 sats/روز</span>
+<span class="text-[10px] text-gray-400">ماهانه: 55,247 sats</span>
+</div>
+</a>
+<a href="[https://www.opennode.com](https://www.opennode.com)" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xs font-black">☰</div>
+<div>
+<span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+OpenNode
+<i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
+</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-emerald-400 font-black block font-mono">1,736 sats/روز</span>
+<span class="text-[10px] text-gray-400">ماهانه: 52,067 sats</span>
+</div>
+</a>
+<a href="[https://btcpayserver.org](https://btcpayserver.org)" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-black text-white text-xs">B</div>
+<div>
+<span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+BTC Pay Server
+<i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
+</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-emerald-400 font-black block font-mono">1,858 sats/روز</span>
+<span class="text-[10px] text-gray-400">ماهانه: 55,736 sats</span>
+</div>
+</a>
+<a href="[https://www.walletofsatoshi.com](https://www.walletofsatoshi.com)" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-400 to-blue-500 flex items-center justify-center text-amber-300 font-black">⚡</div>
+<div>
+<span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+Wallet Of Satoshi
+<i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
+</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-emerald-400 font-black block font-mono">1,078 sats/روز</span>
+<span class="text-[10px] text-gray-400">ماهانه: 32,344 sats</span>
+</div>
+</a>
+<a href="[https://acinq.co](https://acinq.co)" target="_blank" class="bg-darkBg/80 p-3 rounded-2xl border border-cardBorder flex items-center justify-between text-xs hover:border-cyan-400 transition-all cursor-pointer group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-500 to-pink-600 flex items-center justify-center text-cyan-300 text-xs font-black">⚛</div>
+<div>
+<span class="font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-1">
+Acinq.1ml
+<i data-lucide="external-link" class="w-3 h-3 text-cyan-400"></i>
+</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-emerald-400 font-black block font-mono">617 sats/روز</span>
+<span class="text-[10px] text-gray-400">ماهانه: 18,513 sats</span>
+</div>
+</a>
+<div class="pt-2">
+<span class="text-[11px] text-gray-500 block mb-1">کانال‌های خاموش:</span>
+<a href="[https://tippin.me](https://tippin.me)" target="_blank" class="bg-darkBg p-2 rounded-xl border border-cardBorder flex items-center justify-between text-[11px] opacity-80 hover:border-rose-400">
+<span class="text-gray-300">Tippin.me</span>
+<span class="text-rose-400 font-bold">Off</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 10 Channels Expansion Simulator -->
+<section class="glow-card rounded-3xl p-6 border-amber-500/30">
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 border-b border-cardBorder pb-4">
+<div>
+<h3 class="text-base font-black text-white flex items-center gap-2">
+<i data-lucide="flame" class="w-5 h-5 text-amber-400"></i>
+۱۰ کانال برتر پیشنهادی مرجع Lnode.io (تست خرید و شبیه‌سازی)
+</h3>
+<p class="text-xs text-gray-400 mt-1">با کلیک روی «تست خرید»، درآمد این کانال‌ها به مجموع کل افزوده می‌شود.</p>
+</div>
+<div class="bg-amber-950/60 border border-amber-500/40 px-4 py-2 rounded-2xl text-left">
+<span class="text-[10px] text-amber-300 block">درآمد افزوده شده:</span>
+<span id="sim-boost-sats" class="text-sm font-black text-amber-400 font-mono">+0 sats/روز</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="sim-channels-list"></div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-cardBorder bg-cardBg/40 py-5 mt-auto">
+<div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+<span class="font-bold text-gray-300">Mohammad Ostad Mohammadi (محمد استاد محمدی)</span>
+</div>
+<div class="flex items-center gap-4">
+<span>شناسه حساب: LN961122</span>
+<span>•</span>
+<span>Mohammadostadmohammadi1370@gmail.com</span>
+</div>
+</div>
+</footer>
+</div>
+<script>
+let enteredPasscode = "";
+const correctPasscode = "7091";
+function openImageModal(e) {
+if(e) e.stopPropagation();
+document.getElementById('image-modal').classList.remove('hidden');
+}
+function closeImageModal() {
+document.getElementById('image-modal').classList.add('hidden');
+}
+function pressKey(key) {
+if (enteredPasscode.length < 4) {
+enteredPasscode += key;
+updatePasscodeDots();
+}
+if (enteredPasscode.length === 4) {
+setTimeout(checkPasscode, 150);
+}
+}
+function deleteKey() {
+if (enteredPasscode.length > 0) {
+enteredPasscode = enteredPasscode.slice(0, -1);
+updatePasscodeDots();
+}
+}
+function clearKeypad() {
+enteredPasscode = "";
+updatePasscodeDots();
+}
+function updatePasscodeDots() {
+document.getElementById('lock-error').classList.add('hidden');
+for (let i = 0; i < 4; i++) {
+const dot = document.getElementById(dot-${i});
+if (i < enteredPasscode.length) {
+dot.className = "w-4 h-4 rounded-full bg-cyan-400 border-2 border-cyan-300 shadow-md shadow-cyan-400/50 scale-110 transition-all";
+} else {
+dot.className = "w-4 h-4 rounded-full border-2 border-gray-600 transition-all";
+}
+}
+}
+function checkPasscode() {
+if (enteredPasscode === correctPasscode) {
+document.getElementById('lock-screen').style.display = 'none';
+const mainDash = document.getElementById('main-dashboard');
+mainDash.classList.remove('opacity-10', 'pointer-events-none');
+} else {
+document.getElementById('lock-error').classList.remove('hidden');
+enteredPasscode = "";
+updatePasscodeDots();
+}
+}
+function lockApp() {
+enteredPasscode = "";
+updatePasscodeDots();
+document.getElementById('main-dashboard').classList.add('opacity-10', 'pointer-events-none');
+document.getElementById('lock-screen').style.display = 'flex';
+}
+// Keyboard Event Listener for Passcode
+window.addEventListener('keydown', (e) => {
+const lockScreen = document.getElementById('lock-screen');
+if (lockScreen.style.display !== 'none') {
+if (e.key >= '0' && e.key <= '9') {
+pressKey(e.key);
+} else if (e.key === 'Backspace') {
+deleteKey();
+} else if (e.key === 'Escape') {
+clearKeypad();
+}
+}
+});
+function updateClock() {
+const now = new Date();
+document.getElementById('live-clock').innerText = now.toLocaleTimeString('en-US', { hour12: false });
+const optionsShamsi = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+const shamsiDate = new Intl.DateTimeFormat('fa-IR', optionsShamsi).format(now);
+document.getElementById('live-date').innerText = shamsiDate;
+}
+let state = {
+btcUsd: 95000,
+goldUsdOz: 2750,
+usdToman: 70000,
+activeTab: 'fleet',
+node1: { dailySats: 5688, monthlySats: 170652, yearlySats: 2076120 },
+node2: { dailySats: 5253, monthlySats: 157587, yearlySats: 1917345 },
+futureChannels: [
+{ id: 'lnbig', name: 'LNBIG [Hub-2]', dailySats: 5585, priceSats: 2331718, logo: '⚡', active: false },
+{ id: 'blocklad', name: 'block-lad-1', dailySats: 4851, priceSats: 1435671, logo: '🧱', active: false },
+{ id: 'kraken', name: 'Kraken LN Node', dailySats: 4200, priceSats: 2100000, logo: '🐙', active: false },
+{ id: 'bitfinex', name: 'Bitfinex Lightning', dailySats: 3950, priceSats: 1950000, logo: '🟢', active: false },
+{ id: 'cashapp', name: 'Cash App LN', dailySats: 3500, priceSats: 1800000, logo: '💵', active: false },
+{ id: 'strike', name: 'Strike Network', dailySats: 3200, priceSats: 1650000, logo: '⚡', active: false },
+{ id: 'river', name: 'River Financial', dailySats: 2900, priceSats: 1500000, logo: '🌊', active: false },
+{ id: 'binance', name: 'Binance Pool LN', dailySats: 2700, priceSats: 1400000, logo: '🔶', active: false },
+{ id: 'voltage', name: 'Voltage Node', dailySats: 2400, priceSats: 1250000, logo: '⚡', active: false },
+{ id: 'umbrel', name: 'Umbrel Community', dailySats: 2100, priceSats: 1100000, logo: '☂️', active: false }
+]
+};
+function getActiveTotals() {
+let baseDaily = 0;
+let baseMonthly = 0;
+let baseYearly = 0;
+if (state.activeTab === 'fleet') {
+baseDaily = state.node1.dailySats + state.node2.dailySats;
+baseMonthly = state.node1.monthlySats + state.node2.monthlySats;
+baseYearly = state.node1.yearlySats + state.node2.yearlySats;
+} else if (state.activeTab === 'node1') {
+baseDaily = state.node1.dailySats;
+baseMonthly = state.node1.monthlySats;
+baseYearly = state.node1.yearlySats;
+} else if (state.activeTab === 'node2') {
+baseDaily = state.node2.dailySats;
+baseMonthly = state.node2.monthlySats;
+baseYearly = state.node2.yearlySats;
+}
+let extraDaily = 0;
+state.futureChannels.forEach(ch => {
+if (ch.active) extraDaily += ch.dailySats;
+});
+return {
+totalDaily: baseDaily + extraDaily,
+totalMonthly: baseMonthly + (extraDaily * 30),
+totalYearly: baseYearly + (extraDaily * 365),
+extraDaily
+};
+}
+function satsToUSD(sats) { return (sats / 100000000) * state.btcUsd; }
+function usdToToman(usd) { return usd * state.usdToman; }
+function usdToGoldGrams(usd) {
+const pricePerGramUSD = state.goldUsdOz / 31.1034768;
+return usd / pricePerGramUSD;
+}
+function formatNum(num) { return new Intl.NumberFormat('fa-IR').format(Math.round(num)); }
+function renderDashboard() {
+const goldPricePerGramUSD = state.goldUsdOz / 31.1034768;
+const goldPricePerGramToman = goldPricePerGramUSD * state.usdToman;
+document.getElementById('gold-gram-usd').innerText = $${goldPricePerGramUSD.toFixed(2)}/g;
+document.getElementById('gold-gram-toman').innerText = ${formatNum(goldPricePerGramToman)} تومان;
+const balanceUSD = satsToUSD(87652);
+document.getElementById('header-balance-converted').innerText = ($${balanceUSD.toFixed(2)});
+const totals = getActiveTotals();
+// Daily Card
+const dailyUSD = satsToUSD(totals.totalDaily);
+document.getElementById('card-daily-sats').innerText = ${totals.totalDaily.toLocaleString()} sats;
+document.getElementById('card-daily-usd').innerText = $${dailyUSD.toFixed(2)};
+document.getElementById('card-daily-toman').innerText = ${formatNum(usdToToman(dailyUSD))} تومان;
+document.getElementById('card-daily-gold').innerText = ${usdToGoldGrams(dailyUSD).toFixed(3)} گرم طلا;
+// Monthly Card
+const monthlyUSD = satsToUSD(totals.totalMonthly);
+document.getElementById('card-monthly-sats').innerText = ${totals.totalMonthly.toLocaleString()} sats;
+document.getElementById('card-monthly-usd').innerText = $${monthlyUSD.toFixed(2)};
+document.getElementById('card-monthly-toman').innerText = ${formatNum(usdToToman(monthlyUSD))} تومان;
+document.getElementById('card-monthly-gold').innerText = ${usdToGoldGrams(monthlyUSD).toFixed(3)} گرم طلا;
+// Yearly Card
+const yearlyUSD = satsToUSD(totals.totalYearly);
+document.getElementById('card-yearly-sats').innerText = ${totals.totalYearly.toLocaleString()} sats;
+document.getElementById('card-yearly-usd').innerText = $${yearlyUSD.toFixed(2)};
+document.getElementById('card-yearly-toman').innerText = ${formatNum(usdToToman(yearlyUSD))} تومان;
+document.getElementById('card-yearly-gold').innerText = ${usdToGoldGrams(yearlyUSD).toFixed(3)} گرم طلا;
+document.getElementById('sim-boost-sats').innerText = +${totals.extraDaily.toLocaleString()} sats/روز;
+renderFutureChannels();
+}
+function renderFutureChannels() {
+const container = document.getElementById('sim-channels-list');
+container.innerHTML = '';
+state.futureChannels.forEach((chan, idx) => {
+const item = document.createElement('div');
+item.className = p-3.5 rounded-2xl border flex items-center justify-between transition-all ${ chan.active  ? 'bg-amber-950/40 border-amber-500/60 text-white'  : 'bg-darkBg/90 border-cardBorder text-gray-400' };
+const monthlyToman = usdToToman(satsToUSD(chan.dailySats * 30));
+item.innerHTML = `
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl ${chan.active ? 'bg-amber-500 text-black' : 'bg-cardBorder text-gray-300'} font-bold text-xs flex items-center justify-center text-base">
+{chan.logo}
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-black text-xs ${chan.active ? 'text-amber-300' : 'text-gray-200'}">{chan.name}</h4>
+<span class="text-[9px] px-1.5 py-0.2 bg-darkBg border border-cardBorder rounded text-gray-400">#${idx + 1}</span>
+</div>
+<span class="text-[10px] text-gray-400 font-mono">قیمت: sats ${chan.priceSats.toLocaleString()}</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="text-right text-xs">
+<span class="font-black text-emerald-400 block font-mono">+{chan.dailySats.toLocaleString()} sats/روز</span>
+<span class="text-[10px] text-gray-400">~{formatNum(monthlyToman)} تومان/ماه</span>
+</div>
+<button onclick="toggleChannel('${chan.id}')" 
+class="px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+chan.active 
+? 'bg-amber-500 text-black shadow-md shadow-amber-500/30' 
+: 'bg-cardBorder hover:bg-gray-700 text-white'
+}">
+${chan.active ? 'روشن شد' : 'تست خرید'}
+</button>
+</div>
+`;
+container.appendChild(item);
+});
+}
+function toggleChannel(id) {
+const chan = state.futureChannels.find(c => c.id === id);
+if (chan) {
+chan.active = !chan.active;
+renderDashboard();
+}
+}
+function switchTab(tab) {
+state.activeTab = tab;
+['fleet', 'node1', 'node2'].forEach(t => {
+const btn = document.getElementById(tab-${t});
+if (t === tab) {
+btn.className = "px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg shadow-cyan-500/20";
+} else {
+btn.className = "px-5 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 bg-darkBg border border-cardBorder text-gray-400 hover:text-white";
+}
+});
+const card1 = document.getElementById('node-card-1');
+const card2 = document.getElementById('node-card-2');
+if (tab === 'node1') { card1.style.display = 'block'; card2.style.display = 'none'; }
+else if (tab === 'node2') { card1.style.display = 'none'; card2.style.display = 'block'; }
+else { card1.style.display = 'block'; card2.style.display = 'block'; }
+renderDashboard();
+}
+async function fetchLivePrices() {
+try {
+const btcRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+const btcData = await btcRes.json();
+if (btcData && btcData.bitcoin && btcData.bitcoin.usd) {
+state.btcUsd = btcData.bitcoin.usd;
+document.getElementById('input-btc-usd').value = Math.round(state.btcUsd);
+}
+} catch (e) {
+console.log('BTC price fallback active');
+}
+try {
+const goldRes = await fetch('https://api.gold-api.com/price/XAU');
+const goldData = await goldRes.json();
+if (goldData && goldData.price) {
+state.goldUsdOz = parseFloat(goldData.price);
+document.getElementById('input-gold-usd').value = Math.round(state.goldUsdOz);
+}
+} catch (e) {
+console.log('Gold price fallback active');
+}
+renderDashboard();
+}
+document.getElementById('input-btc-usd').addEventListener('input', (e) => {
+const val = parseFloat(e.target.value);
+if (!isNaN(val) && val > 0) { state.btcUsd = val; renderDashboard(); }
+});
+document.getElementById('input-gold-usd').addEventListener('input', (e) => {
+const val = parseFloat(e.target.value);
+if (!isNaN(val) && val > 0) { state.goldUsdOz = val; renderDashboard(); }
+});
+document.getElementById('input-usd-toman').addEventListener('input', (e) => {
+const val = parseFloat(e.target.value);
+if (!isNaN(val) && val > 0) { state.usdToman = val; renderDashboard(); }
+});
+window.onload = function() {
+lucide.createIcons();
+initCyberBgCanvas();
+updateClock();
+setInterval(updateClock, 1000);
+fetchLivePrices();
+renderDashboard();
+setInterval(fetchLivePrices, 60000);
+};
+function initCyberBgCanvas() {
+const canvas = document.getElementById('cyber-bg-canvas');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+window.addEventListener('resize', () => {
+width = canvas.width = window.innerWidth;
+height = canvas.height = window.innerHeight;
+});
+const particles = [];
+const particleCount = Math.min(Math.floor(width / 18), 70);
+for (let i = 0; i < particleCount; i++) {
+particles.push({
+x: Math.random() * width,
+y: Math.random() * height,
+vx: (Math.random() - 0.5) * 0.8,
+vy: (Math.random() - 0.5) * 0.8,
+radius: Math.random() * 2 + 1,
+color: i % 3 === 0 ? '#00d2ff' : i % 3 === 1 ? '#8b5cf6' : '#f59e0b'
+});
+}
+function animateCanvas() {
+ctx.clearRect(0, 0, width, height);
+for (let i = 0; i < particles.length; i++) {
+for (let j = i + 1; j < particles.length; j++) {
+const dx = particles[i].x - particles[j].x;
+const dy = particles[i].y - particles[j].y;
+const dist = Math.sqrt(dx * dx + dy * dy);
+if (dist < 130) {
+ctx.beginPath();
+ctx.moveTo(particles[i].x, particles[i].y);
+ctx.lineTo(particles[j].x, particles[j].y);
+ctx.strokeStyle = rgba(0, 210, 255, ${0.25 * (1 - dist / 130)});
+ctx.lineWidth = 0.75;
+ctx.stroke();
+}
+}
+}
+particles.forEach(p => {
+p.x += p.vx;
+p.y += p.vy;
+if (p.x < 0 || p.x > width) p.vx *= -1;
+if (p.y < 0 || p.y > height) p.vy *= -1;
+ctx.beginPath();
+ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+ctx.fillStyle = p.color;
+ctx.shadowBlur = 10;
+ctx.shadowColor = p.color;
+ctx.fill();
+ctx.shadowBlur = 0;
+});
+requestAnimationFrame(animateCanvas);
+}
+animateCanvas();
+}
+</script>
 </body>
 </html>
