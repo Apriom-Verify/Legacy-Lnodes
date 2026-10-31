@@ -808,6 +808,20 @@
             document.getElementById('lock-screen').style.display = 'flex';
         }
 
+        // Keyboard Event Listener for Passcode
+        window.addEventListener('keydown', (e) => {
+            const lockScreen = document.getElementById('lock-screen');
+            if (lockScreen.style.display !== 'none') {
+                if (e.key >= '0' && e.key <= '9') {
+                    pressKey(e.key);
+                } else if (e.key === 'Backspace') {
+                    deleteKey();
+                } else if (e.key === 'Escape') {
+                    clearKeypad();
+                }
+            }
+        });
+
         function updateClock() {
             const now = new Date();
             document.getElementById('live-clock').innerText = now.toLocaleTimeString('en-US', { hour12: false });
