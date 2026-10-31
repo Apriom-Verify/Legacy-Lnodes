@@ -85,8 +85,7 @@
         .channel-card.coming-soon { background: rgba(11, 15, 25, 0.35); border: 1px dashed rgba(148, 163, 184, 0.25); display: flex; align-items: center; justify-content: center; min-height: 180px; color: var(--text-muted); cursor: default; }
         .channel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
         .channel-info { display: flex; align-items: center; gap: 10px; }
-        .channel-icon-box { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); }
-        .channel-icon-box img { width: 100%; height: 100%; object-fit: cover; }
+        .channel-icon-box { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); }
         .channel-name { font-size: 0.95rem; font-weight: bold; }
         .channel-badge { background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.4); color: #d8b4fe; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; }
         .data-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.8rem; }
@@ -288,12 +287,14 @@
             loadDevicesData();
             setInterval(fetchBtcPrice, 30000);
             setInterval(fetchGoldPrice, 60000);
+            // موتور نوسان‌ساز زنده برای کانال‌های دستگاه و بازار
             setInterval(simulateMarketFluctuation, 1500);
         }
 
         function simulateMarketFluctuation() {
             if (!globalData.device_1 || !globalData.device_2 || !globalData.market_all_channels) return;
             
+            // نوسان زنده قیمت و درآمد کانال‌های دستگاه‌ها
             ['device_1', 'device_2'].forEach(devKey => {
                 const dev = globalData[devKey];
                 if (dev && dev.channels) {
@@ -314,6 +315,7 @@
                 }
             });
 
+            // نوسان زنده کانال‌های بازار مرجع
             globalData.market_all_channels.forEach(ch => {
                 const priceDelta = Math.floor(Math.random() * 11) - 5;
                 const revDelta = Math.floor(Math.random() * 3) - 1;
@@ -350,13 +352,11 @@
             top10.forEach((ch, index) => {
                 const priceColor = ch.priceTrend === 'down' ? '#f87171' : '#34d399';
                 const revColor = ch.revTrend === 'down' ? '#f87171' : '#34d399';
-                const iconHtml = ch.icon ? `<img src="${ch.icon}" alt="${ch.name}">` : `<svg viewBox="0 0 24 24" width="20" height="20"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg>`;
 
                 html += `
                     <div class="top10-item">
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <div class="rank-badge">${index + 1}</div>
-                            <div class="channel-icon-box" style="width: 32px; height: 32px; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05);">${iconHtml}</div>
                             <div>
                                 <div style="font-weight: bold; font-size: 0.95rem; color:#fff;">${ch.name}</div>
                                 <div style="font-size: 0.8rem; color: ${priceColor};">قیمت: ${ch.price ? ch.price.toLocaleString() : 0} sats</div>
@@ -423,13 +423,12 @@
 
                 const priceColor = ch.priceTrend === 'down' ? '#f87171' : '#34d399';
                 const revColor = ch.revTrend === 'down' ? '#f87171' : '#34d399';
-                const iconHtml = ch.icon ? `<img src="${ch.icon}" alt="${ch.name}">` : `<svg viewBox="0 0 24 24" width="22" height="22"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg>`;
 
                 html += `
                     <div class="channel-card" onclick="window.open('${ch.url || 'https://lightning.network'}', '_blank')">
                         <div class="channel-header">
                             <div class="channel-info">
-                                <div class="channel-icon-box">${iconHtml}</div>
+                                <div class="channel-icon-box"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M13 2L3 14h7v8l10-12h-7z" fill="#ffffff"/></svg></div>
                                 <span class="channel-name">${ch.name}</span>
                             </div>
                             <div class="channel-badge">${ch.badge || 'High Yield'}</div>
