@@ -7,7 +7,7 @@
         "name": "BTC Pay Server",
         "url": "https://btcpayserver.org",
         "badge": "High Yield",
-        "icon": "https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=035",
+        "icon": "https://btcpayserver.org/img/logo.svg",
         "price": 628151,
         "revenue_30_days": 59250,
         "revenue_per_active_day": 1975
@@ -17,20 +17,10 @@
         "name": "WX Network",
         "url": "https://wx.network",
         "badge": "Balanced",
-        "icon": "https://cryptologos.cc/logos/tether-usdt-logo.svg?v=035",
+        "icon": "https://wx.network/images/logo.svg",
         "price": 791554,
         "revenue_30_days": 58470,
         "revenue_per_active_day": 1949
-      },
-      {
-        "id": "ch3",
-        "name": "Open Node",
-        "url": "https://opennode.com",
-        "badge": "Balanced",
-        "icon": "https://cryptologos.cc/logos/lightning-network-ln-logo.svg?v=035",
-        "price": 767653,
-        "revenue_30_days": 54000,
-        "revenue_per_active_day": 1800
       }
     ]
   },
@@ -38,51 +28,33 @@
     "node_id": "8225851045",
     "channels": [
       {
-        "id": "ch4",
-        "name": "LNBiG [Hub-3]",
+        "id": "ch5",
+        "name": "LNBiG [Hub-2]",
         "url": "https://lnbig.com",
         "badge": "High Yield",
-        "icon": "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=035",
-        "price": 1562244,
-        "revenue_30_days": 109860,
-        "revenue_per_active_day": 3662
-      },
-      {
-        "id": "ch5",
-        "name": "Ride the Lightning",
-        "url": "https://github.com/Ride-The-Lightning/RTL",
-        "badge": "Balanced",
-        "icon": "https://cryptologos.cc/logos/cardano-ada-logo.svg?v=035",
-        "price": 569888,
-        "revenue_30_days": 50100,
-        "revenue_per_active_day": 1670
+        "icon": "https://lnbig.com/favicon.ico",
+        "price": 2331712,
+        "revenue_30_days": 167250,
+        "revenue_per_active_day": 5575
       }
     ]
   },
   "market_all_channels": [
     {
-      "name": "LNBiG [Hub-3]",
+      "name": "LNBiG [Hub-2]",
       "url": "https://lnbig.com",
-      "icon": "https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=035",
-      "price": 1562244,
-      "revenue_30_days": 109860,
-      "revenue_per_active_day": 3662
+      "icon": "https://lnbig.com/favicon.ico",
+      "price": 2331712,
+      "revenue_30_days": 167250,
+      "revenue_per_active_day": 5575
     },
     {
       "name": "block-iad-1",
       "url": "https://block.xyz",
-      "icon": "https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=035",
+      "icon": "https://block.xyz/favicon.ico",
       "price": 1435653,
       "revenue_30_days": 145470,
       "revenue_per_active_day": 4849
-    },
-    {
-      "name": "Ride the Lightning",
-      "url": "https://github.com/Ride-The-Lightning/RTL",
-      "icon": "https://cryptologos.cc/logos/cardano-ada-logo.svg?v=035",
-      "price": 569888,
-      "revenue_30_days": 50100,
-      "revenue_per_active_day": 1670
     }
   ]
 }
