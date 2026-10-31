@@ -6,6 +6,7 @@
     <title>Mohammad Ostad Mohammadi | مدیریت نودهای لایتنینگ</title>
     <!-- Apple Touch Icon for Add to Home Screen -->
     <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -1021,7 +1022,7 @@
 
         document.getElementById('input-gold-usd').addEventListener('input', (e) => {
             const val = parseFloat(e.target.value);
-            if (!isNaN(val) && val > 0) { state.goldUsdOz = val; renderDashboard(); }
+            if (!isNaN(val) > 0) { state.goldUsdOz = val; renderDashboard(); }
         });
 
         document.getElementById('input-usd-toman').addEventListener('input', (e) => {
